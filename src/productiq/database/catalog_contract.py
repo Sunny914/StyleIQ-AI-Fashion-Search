@@ -1,0 +1,38 @@
+"""Product catalog database contract constants."""
+
+from __future__ import annotations
+
+from data.catalog.schema import AJIO_SOURCE_NAME
+from data.export.schema import ATTRIBUTE_COLUMNS, PROCESSED_COLUMN_COUNT, PROCESSED_COLUMN_ORDER
+
+PRODUCTS_TABLE_NAME = "products"
+
+# Aligns with Phase 2.9 processed dataset schema version 1.0.0.
+PRODUCT_CATALOG_DB_SCHEMA_VERSION = "1.0.0"
+
+CATALOG_COLUMN_ORDER: tuple[str, ...] = PROCESSED_COLUMN_ORDER
+CATALOG_COLUMN_COUNT = PROCESSED_COLUMN_COUNT
+
+CATALOG_REQUIRED_COLUMNS: tuple[str, ...] = tuple(
+    column for column in CATALOG_COLUMN_ORDER if column not in ATTRIBUTE_COLUMNS
+)
+
+CATALOG_NULLABLE_ATTRIBUTE_COLUMNS: tuple[str, ...] = ATTRIBUTE_COLUMNS
+
+CATALOG_SOURCE_CHECK_VALUE = AJIO_SOURCE_NAME
+
+assert CATALOG_COLUMN_COUNT == 22
+assert CATALOG_REQUIRED_COLUMNS[0] == "product_id"
+assert set(CATALOG_REQUIRED_COLUMNS) | set(CATALOG_NULLABLE_ATTRIBUTE_COLUMNS) == set(
+    CATALOG_COLUMN_ORDER
+)
+
+__all__ = [
+    "CATALOG_COLUMN_COUNT",
+    "CATALOG_COLUMN_ORDER",
+    "CATALOG_NULLABLE_ATTRIBUTE_COLUMNS",
+    "CATALOG_REQUIRED_COLUMNS",
+    "CATALOG_SOURCE_CHECK_VALUE",
+    "PRODUCTS_TABLE_NAME",
+    "PRODUCT_CATALOG_DB_SCHEMA_VERSION",
+]
