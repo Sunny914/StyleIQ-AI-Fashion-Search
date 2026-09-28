@@ -95,3 +95,7 @@ class SemanticRetrievalError(RetrievalError):
 
 class RankingError(ValidationError):
     """Raised when ranking contract validation or invariant checks fail."""
+
+
+class RecommendationError(ValidationError):
+    """Raised when recommendation contract validation or invariant checks fail."""
