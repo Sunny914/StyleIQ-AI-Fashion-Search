@@ -91,3 +91,7 @@ class LexicalRetrievalError(RetrievalError):
 
 class SemanticRetrievalError(RetrievalError):
     """Raised when semantic vector or similarity input is invalid."""
+
+
+class RankingError(ValidationError):
+    """Raised when ranking contract validation or invariant checks fail."""
