@@ -69,10 +69,12 @@ Represents **intent**, not retrieval mechanics.
 ## Candidate contract — `RecommendationCandidate`
 
 - `product_id`
-- `candidate_generation_score` — optional, finite; **not** the final recommendation score
-- `source` — `RecommendationCandidateSource` (`VECTOR`, `ATTRIBUTE`, `BM25`, `POPULARITY`, `BEHAVIORAL`)
+- `sources` — sorted tuple of `RecommendationCandidateSource` (multi-source after union in 11.2+)
+- `candidate_generation_score` — optional, finite; **not** the final recommendation score (not comparable across source kinds)
 
-Generators are **not** implemented in 11.1.
+Provenance enum values include `VECTOR`, `ATTRIBUTE`, `BM25`, `POPULARITY`, `BEHAVIORAL`.
+
+Candidate generators are implemented in Phase 11.2+ (see `recommendation-candidate-generation.md`).
 
 ## Ranked recommendation — `RankedRecommendation`
 

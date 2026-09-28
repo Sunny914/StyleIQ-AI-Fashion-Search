@@ -100,3 +100,26 @@ python scripts/run_rrf_retrieval_benchmark.py
 - **`hybrid_rrf_benchmark_v1_analysis.jsonl`** (per-query first relevant ranks)
 
 Does not modify lexical or semantic benchmark run files.
+
+---
+
+## Recommendation evaluation benchmark (Phase 11.7)
+
+### Purpose
+
+Offline **recommendation** quality measurement on seed products (not search queries). Uses curated graded judgments; **not** user clicks or purchases.
+
+### Artifact
+
+- **`productiq_recommendation_v1.json`** — version `1.0.0`, **20** seed cases, graded relevance **0–3**
+- Catalog context: `resources/processed/product_representations.parquet` (checksum in JSON metadata)
+
+### Labeling policy
+
+Judgments come from the same manual offline catalog review batches as lexical v1. Labels are **not** derived from BM25, embeddings, candidate scores, baseline ranker, or selection output.
+
+### Limitations
+
+Small curated sample; recall is relative to judged IDs only; no behavioral ground truth.
+
+See `docs/architecture/recommendation-evaluation.md`.

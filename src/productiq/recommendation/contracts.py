@@ -23,8 +23,10 @@ class RecommendationType(StrEnum):
 
 SUPPORTED_RECOMMENDATION_TYPES: frozenset[RecommendationType] = frozenset(RecommendationType)
 
-# Phase 11.1 establishes contracts only; candidate generation is not implemented.
-IMPLEMENTED_RECOMMENDATION_TYPES: frozenset[RecommendationType] = frozenset()
+# Phase 11.8 wires SIMILAR through the production pipeline (11.2–11.6).
+IMPLEMENTED_RECOMMENDATION_TYPES: frozenset[RecommendationType] = frozenset(
+    {RecommendationType.SIMILAR},
+)
 
 
 class RecommendationCandidateSource(StrEnum):
@@ -66,16 +68,22 @@ class RecommendationRequest(BaseModel):
 
 
 class RecommendationCandidate(BaseModel):
-    """One product from a future candidate-generation stage (generation score ≠ final score)."""
+    """One product from candidate generation (generation score ≠ final recommendation score)."""
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
     product_id: str = Field(min_length=1)
+    sources: tuple[RecommendationCandidateSource, ...] = Field(
+        min_length=1,
+        description="Deterministic ordered provenance (sorted by source value).",
+    )
     candidate_generation_score: float | None = Field(
         default=None,
-        description="Score from candidate generation only; not the final recommendation_score.",
+        description=(
+            "Score from one generator per merge policy; not comparable across source kinds. "
+            "Not the final recommendation_score."
+        ),
     )
-    source: RecommendationCandidateSource
 
     @field_validator("product_id")
     @classmethod
@@ -93,6 +101,44 @@ class RecommendationCandidate(BaseModel):
             msg = "candidate_generation_score must be a finite number when present"
             raise ValueError(msg)
         return value
+
+    @model_validator(mode="after")
+    def validate_sources(self) -> Self:
+        ordered = tuple(sorted(self.sources, key=lambda item: item.value))
+        if len(ordered) != len(set(ordered)):
+            msg = "sources must not contain duplicates"
+            raise ValueError(msg)
+        if ordered != self.sources:
+            msg = "sources must be sorted deterministically by source value"
+            raise ValueError(msg)
+        return self
+
+
+class RecommendationGeneratorFailureRecord(BaseModel):
+    """Observed generator failure when partial candidate generation is enabled."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    generator_name: str = Field(min_length=1)
+    error_message: str = Field(min_length=1)
+
+
+class RecommendationCandidateGenerationResult(BaseModel):
+    """Output of Phase 11.2 candidate generation (not ranked recommendations)."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    seed_product_id: str = Field(min_length=1)
+    recommendation_type: RecommendationType
+    candidates: tuple[RecommendationCandidate, ...] = ()
+    candidate_pool_top_k: int = Field(gt=0)
+    config: RecommendationConfig = Field(default_factory=RecommendationConfig)
+    generator_failures: tuple[RecommendationGeneratorFailureRecord, ...] = ()
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def returned_candidate_count(self) -> int:
+        return len(self.candidates)
 
 
 class RankedRecommendation(BaseModel):
@@ -198,7 +244,9 @@ __all__ = [
     "SUPPORTED_RECOMMENDATION_TYPES",
     "RankedRecommendation",
     "RecommendationCandidate",
+    "RecommendationCandidateGenerationResult",
     "RecommendationCandidateSource",
+    "RecommendationGeneratorFailureRecord",
     "RecommendationRequest",
     "RecommendationResponse",
     "RecommendationType",

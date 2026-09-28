@@ -44,7 +44,7 @@ def _candidate(
     return RecommendationCandidate(
         product_id=product_id,
         candidate_generation_score=score,
-        source=source,
+        sources=(source,),
     )
 
 
@@ -148,17 +148,21 @@ def test_recommendation_request_rejects_extra_fields() -> None:
 
 def test_supported_vs_implemented_recommendation_types() -> None:
     assert RecommendationType.SIMILAR in SUPPORTED_RECOMMENDATION_TYPES
-    assert IMPLEMENTED_RECOMMENDATION_TYPES == frozenset()
+    assert IMPLEMENTED_RECOMMENDATION_TYPES == frozenset({RecommendationType.SIMILAR})
 
 
-def test_validate_recommendation_type_implemented_raises_in_phase_11_1() -> None:
+def test_validate_recommendation_type_implemented_similar_ok() -> None:
+    validate_recommendation_type_implemented(RecommendationType.SIMILAR)
+
+
+def test_validate_recommendation_type_implemented_raises_for_unsupported() -> None:
     with pytest.raises(RecommendationError, match="not implemented"):
-        validate_recommendation_type_implemented(RecommendationType.SIMILAR)
+        validate_recommendation_type_implemented(RecommendationType.PERSONALIZED)
 
 
 def test_recommendation_candidate_valid() -> None:
     candidate = _candidate("P9", source=RecommendationCandidateSource.BM25)
-    assert candidate.source is RecommendationCandidateSource.BM25
+    assert candidate.sources[0] is RecommendationCandidateSource.BM25
     assert candidate.candidate_generation_score == pytest.approx(0.5)
 
 
@@ -167,7 +171,7 @@ def test_recommendation_candidate_rejects_empty_product_id(bad_product_id: str) 
     with pytest.raises(ValidationError):
         RecommendationCandidate(
             product_id=bad_product_id,
-            source=RecommendationCandidateSource.VECTOR,
+            sources=(RecommendationCandidateSource.VECTOR,),
         )
 
 
@@ -177,7 +181,7 @@ def test_recommendation_candidate_rejects_non_finite_generation_score(bad_score:
         RecommendationCandidate(
             product_id="P1",
             candidate_generation_score=bad_score,
-            source=RecommendationCandidateSource.VECTOR,
+            sources=(RecommendationCandidateSource.VECTOR,),
         )
 
 
@@ -185,7 +189,7 @@ def test_recommendation_candidate_allows_missing_generation_score() -> None:
     candidate = RecommendationCandidate(
         product_id="P1",
         candidate_generation_score=None,
-        source=RecommendationCandidateSource.POPULARITY,
+        sources=(RecommendationCandidateSource.POPULARITY,),
     )
     assert candidate.candidate_generation_score is None
 

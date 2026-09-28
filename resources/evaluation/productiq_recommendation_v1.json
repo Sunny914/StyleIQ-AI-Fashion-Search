@@ -1,0 +1,399 @@
+{
+  "metadata": {
+    "benchmark_name": "productiq_recommendation_v1",
+    "benchmark_version": "1.0.0",
+    "catalog_artifact": "resources/processed/product_representations.parquet",
+    "source_representation_checksum": "7fc2b6c08ef03233bdae1c845f4a087cd578fdb6d861b7d64ec72c71e92c3379",
+    "eligible_catalog_product_count": 367172,
+    "methodology": "Offline recommendation evaluation benchmark v1 using real catalog product IDs shared with the Phase 4.8 lexical review batches.",
+    "labeling_methodology": "Human-curated graded judgments (0-3) from inspectable catalog attributes during the same offline review sessions as retrieval benchmarks. Labels are NOT user clicks, purchases, or model scores.",
+    "seed_selection_methodology": "Twenty diverse seeds chosen from lexical benchmark product IDs spanning brand/activity, brand/color, material, gender, and multi-attribute groups including alternate seeds for overlap checks.",
+    "limitations": "Small curated sample; incomplete catalog ground truth; judgments are proxy relevance not behavioral truth; recall is relative to judged IDs only."
+  },
+  "cases": [
+    {
+      "seed_product_id": "460946942002",
+      "seed_category": "brand_activity",
+      "methodology_note": "Nike running seed; judgments are co-reviewed athletic SKUs.",
+      "relevance_judgments": [
+        {
+          "product_id": "460825114005",
+          "grade": 3
+        },
+        {
+          "product_id": "460811249001",
+          "grade": 3
+        },
+        {
+          "product_id": "460825084001",
+          "grade": 2
+        },
+        {
+          "product_id": "460557829004",
+          "grade": 2
+        },
+        {
+          "product_id": "460825086003",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "seed_product_id": "460825114005",
+      "seed_category": "brand_activity",
+      "methodology_note": "Alternate Nike running seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "460946942002",
+          "grade": 3
+        },
+        {
+          "product_id": "460811249001",
+          "grade": 3
+        },
+        {
+          "product_id": "460825198003",
+          "grade": 2
+        },
+        {
+          "product_id": "460626089004",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469193981005",
+      "seed_category": "brand_color",
+      "methodology_note": "Black Nike seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469038340002",
+          "grade": 3
+        },
+        {
+          "product_id": "469038355001",
+          "grade": 3
+        },
+        {
+          "product_id": "469097886002",
+          "grade": 2
+        },
+        {
+          "product_id": "460946942002",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469038340002",
+      "seed_category": "brand_color",
+      "methodology_note": "Black Nike variant seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469193981005",
+          "grade": 3
+        },
+        {
+          "product_id": "469098019003",
+          "grade": 2
+        },
+        {
+          "product_id": "469097886002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469101811009",
+      "seed_category": "color_product",
+      "methodology_note": "Black sneakers seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469066402007",
+          "grade": 3
+        },
+        {
+          "product_id": "460855826004",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469066402007",
+      "seed_category": "color_product",
+      "methodology_note": "Black sneakers alternate seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469101811009",
+          "grade": 3
+        },
+        {
+          "product_id": "460855826004",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "441123902006",
+      "seed_category": "material_product",
+      "methodology_note": "Cotton shirt seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "440971113015",
+          "grade": 3
+        },
+        {
+          "product_id": "441213670001",
+          "grade": 3
+        },
+        {
+          "product_id": "440971113054",
+          "grade": 2
+        },
+        {
+          "product_id": "440971113005",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "440971113015",
+      "seed_category": "material_product",
+      "methodology_note": "Cotton shirt alternate seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "441123902006",
+          "grade": 3
+        },
+        {
+          "product_id": "441213670001",
+          "grade": 2
+        },
+        {
+          "product_id": "441125841002",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "seed_product_id": "463494970002",
+      "seed_category": "gender_product",
+      "methodology_note": "Women dress seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "441118513011",
+          "grade": 3
+        },
+        {
+          "product_id": "461088032003",
+          "grade": 2
+        },
+        {
+          "product_id": "441118508001",
+          "grade": 2
+        },
+        {
+          "product_id": "463203934003",
+          "grade": 1
+        }
+      ]
+    },
+    {
+      "seed_product_id": "441118513011",
+      "seed_category": "gender_product",
+      "methodology_note": "Women dress alternate seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "463494970002",
+          "grade": 3
+        },
+        {
+          "product_id": "461088032003",
+          "grade": 2
+        },
+        {
+          "product_id": "463203934003",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469112149004",
+      "seed_category": "brand_activity",
+      "methodology_note": "Adidas running seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469112263001",
+          "grade": 3
+        },
+        {
+          "product_id": "469111891001",
+          "grade": 3
+        },
+        {
+          "product_id": "469111892005",
+          "grade": 2
+        },
+        {
+          "product_id": "469111890002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469111891001",
+      "seed_category": "brand_activity",
+      "methodology_note": "Adidas running alternate seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469112149004",
+          "grade": 3
+        },
+        {
+          "product_id": "469112263001",
+          "grade": 2
+        },
+        {
+          "product_id": "469111890002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "440971113008",
+      "seed_category": "multi_attribute",
+      "methodology_note": "Black cotton shirt seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "440971114048",
+          "grade": 3
+        },
+        {
+          "product_id": "441024764055",
+          "grade": 3
+        },
+        {
+          "product_id": "441123902006",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "441024764055",
+      "seed_category": "multi_attribute",
+      "methodology_note": "Black cotton shirt alternate seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "440971113008",
+          "grade": 3
+        },
+        {
+          "product_id": "440971114048",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "460855826004",
+      "seed_category": "brand_color",
+      "methodology_note": "Puma black seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469101811009",
+          "grade": 2
+        },
+        {
+          "product_id": "469066402007",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "441125841002",
+      "seed_category": "brand_product",
+      "methodology_note": "Netplay shirt seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "441123902006",
+          "grade": 3
+        },
+        {
+          "product_id": "440971113054",
+          "grade": 2
+        },
+        {
+          "product_id": "440971113005",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "461088032003",
+      "seed_category": "multi_attribute",
+      "methodology_note": "Women floral dress seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "463203934003",
+          "grade": 3
+        },
+        {
+          "product_id": "463494970002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "463203934003",
+      "seed_category": "multi_attribute",
+      "methodology_note": "Women floral dress alternate seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "461088032003",
+          "grade": 3
+        },
+        {
+          "product_id": "463494970002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "460557829004",
+      "seed_category": "brand_activity",
+      "methodology_note": "Nike running SKU seed (sparse overlap set).",
+      "relevance_judgments": [
+        {
+          "product_id": "460946942002",
+          "grade": 3
+        },
+        {
+          "product_id": "460825114005",
+          "grade": 2
+        },
+        {
+          "product_id": "460811249001",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "seed_product_id": "469098019003",
+      "seed_category": "brand_color",
+      "methodology_note": "Black Nike SKU seed.",
+      "relevance_judgments": [
+        {
+          "product_id": "469193981005",
+          "grade": 3
+        },
+        {
+          "product_id": "469038340002",
+          "grade": 2
+        },
+        {
+          "product_id": "469097886002",
+          "grade": 1
+        }
+      ]
+    }
+  ]
+}
