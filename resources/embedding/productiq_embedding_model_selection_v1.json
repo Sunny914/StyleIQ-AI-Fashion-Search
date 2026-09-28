@@ -1,0 +1,76 @@
+{
+  "fallback_model": {
+    "architecture": "12-layer E5 transformer (English)",
+    "document_encoding": {
+      "apply_instruction_to": "document_only",
+      "instruction_prefix": "passage: ",
+      "source_field": "semantic_text"
+    },
+    "embedding_dimension": 384,
+    "fallback_rationale_summary": "Same 384-d storage; explicit query/passage prefixes; MIT; useful if BGE tooling or similarity calibration differs on ProductIQ pilot in Phase 4.11.",
+    "huggingface_model_id": "intfloat/e5-small-v2",
+    "license": "MIT",
+    "max_input_tokens": 512,
+    "model_card_url": "https://huggingface.co/intfloat/e5-small-v2",
+    "model_revision": null,
+    "normalize_embeddings": true,
+    "parameter_count_approx": "33M",
+    "provider": "Microsoft / intfloat",
+    "query_encoding": {
+      "apply_instruction_to": "query_only",
+      "instruction_prefix": "query: "
+    },
+    "role": "fallback"
+  },
+  "limitations": [
+    "English-only models; AJIO catalog text is predominantly English but brand tokens may include non-ASCII.",
+    "Model selection used published benchmarks and ProductIQ engineering criteria; no full-catalog embedding pilot was required to freeze the contract.",
+    "Phase 4.8 lexical benchmark (10 queries) is not sufficient alone to rank embedding models; reuse for Phase 4.14 semantic evaluation only."
+  ],
+  "phase_4_11_dependencies_note": "Embedding generation libraries (e.g. sentence-transformers, FlagEmbedding) are intentionally not pinned in Phase 4.10; pin versions when implementing the generation pipeline.",
+  "primary_model": {
+    "architecture": "BERT-based sentence embedding (English bge-small v1.5)",
+    "document_encoding": {
+      "apply_instruction_to": "none",
+      "instruction_prefix": "",
+      "source_field": "semantic_text"
+    },
+    "embedding_dimension": 384,
+    "huggingface_model_id": "BAAI/bge-small-en-v1.5",
+    "license": "MIT",
+    "max_input_tokens": 512,
+    "model_card_url": "https://huggingface.co/BAAI/bge-small-en-v1.5",
+    "model_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+    "normalize_embeddings": true,
+    "parameter_count_approx": "33.4M",
+    "pooling": "cls_with_linear",
+    "provider": "Beijing Academy of Artificial Intelligence (BAAI)",
+    "query_encoding": {
+      "apply_instruction_to": "query_only",
+      "instruction_prefix": "Represent this sentence for searching relevant passages: ",
+      "notes": "Passages/documents use semantic_text without instruction (short query \u2192 long passage retrieval)."
+    },
+    "role": "primary",
+    "selection_rationale_summary": "English retrieval-tuned small model; 384-dim pgvector-friendly footprint; strong MTEB retrieval vs MiniLM-class baselines; fits labeled AJIO semantic_text lengths; local CPU/GPU batch inference feasible at 367k scale."
+  },
+  "productiq_context": {
+    "catalog_product_count": 367172,
+    "phase_4_9_alignment": "L2-normalized embeddings compared via cosine similarity (SemanticVector / cosine_similarity)",
+    "query_semantic_source": "QueryRepresentation.semantic_intent",
+    "semantic_text_source": "ProductRepresentationBundle.semantic / semantic_text column",
+    "similarity_metric": "cosine"
+  },
+  "selection_date": "2026-09-27",
+  "selection_name": "productiq_embedding_model_selection_v1",
+  "selection_version": "1.0.0",
+  "storage_raw_float32_bytes_per_product": {
+    "dimension_1024_gib": 1.4,
+    "dimension_1024_mb": 1503.4,
+    "dimension_384_gib": 0.525,
+    "dimension_384_mb": 563.8,
+    "dimension_768_gib": 1.05,
+    "dimension_768_mb": 1127.6,
+    "formula": "367172 \u00d7 embedding_dimension \u00d7 4",
+    "notes": "PostgreSQL/pgvector row and index overhead will exceed raw float32 payload; HNSW/IVFFlat indexes add substantial disk."
+  }
+}

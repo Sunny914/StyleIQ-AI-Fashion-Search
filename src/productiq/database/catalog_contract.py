@@ -10,6 +10,10 @@ PRODUCTS_TABLE_NAME = "products"
 # Aligns with Phase 2.9 processed dataset schema version 1.0.0.
 PRODUCT_CATALOG_DB_SCHEMA_VERSION = "1.0.0"
 
+# Phase 4.12 pgvector column on ``products`` (does not change processed export columns).
+PRODUCT_EMBEDDING_COLUMN = "embedding"
+PRODUCT_VECTOR_CATALOG_SCHEMA_VERSION = "1.1.0"
+
 CATALOG_COLUMN_ORDER: tuple[str, ...] = PROCESSED_COLUMN_ORDER
 CATALOG_COLUMN_COUNT = PROCESSED_COLUMN_COUNT
 
@@ -35,4 +39,6 @@ __all__ = [
     "CATALOG_SOURCE_CHECK_VALUE",
     "PRODUCTS_TABLE_NAME",
     "PRODUCT_CATALOG_DB_SCHEMA_VERSION",
+    "PRODUCT_EMBEDDING_COLUMN",
+    "PRODUCT_VECTOR_CATALOG_SCHEMA_VERSION",
 ]

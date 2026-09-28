@@ -1,0 +1,154 @@
+{
+  "productiq_version": "0.1.0",
+  "analysis_version": "1.0.0",
+  "lineage": {
+    "analysis_version": "1.0.0",
+    "lexical_benchmark_name": "productiq_lexical_retrieval_v1",
+    "lexical_benchmark_version": "1.0.0",
+    "lexical_run_artifact": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\lexical_retrieval_benchmark_v1_run.json",
+    "lexical_index_mode": "full_persisted_index",
+    "semantic_run_artifact": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\semantic_retrieval_benchmark_v1_run.json",
+    "semantic_analysis_artifact": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\semantic_retrieval_benchmark_v1_analysis.jsonl",
+    "hybrid_rrf_run_artifact": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\hybrid_rrf_benchmark_v1_run.json",
+    "rrf_bm25_index_mode": "benchmark_scoped_slice_4912_docs",
+    "rrf_rank_constant": 60,
+    "retrieval_top_k": 50,
+    "k_values": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ],
+    "incomplete_judgment_warning": "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency.",
+    "rrf_scoped_bm25_limitation": "RRF retrieved lists come from hybrid_rrf_benchmark_v1_run.json live evaluation with benchmark-scoped BM25 by default; BM25 lists in that artifact are the official full-catalog Phase 4.8 runs. RRF ranks reflect scoped BM25 fusion.",
+    "bm25_native_score_limitation": "Phase 4.8 lexical run artifacts record retrieved_product_ids (ranks) only; native BM25 scores are not persisted and remain null in this analysis."
+  },
+  "query_count": 10,
+  "judged_relevant_product_count": 44,
+  "retrieval_pattern_counts": {
+    "BM25_ONLY": 7,
+    "DEPTH_LIMITED": 2,
+    "NOT_RETRIEVED_BY_EITHER": 26,
+    "RETRIEVED_BUT_RRF_LOW_RANK": 9,
+    "RETRIEVED_BY_BOTH": 10,
+    "SEMANTIC_ONLY": 1
+  },
+  "bm25_observed_classification_counts": {
+    "NOT_RETRIEVED_BY_BM25": 27,
+    "RETRIEVED_BY_BM25": 17
+  },
+  "semantic_observed_classification_counts": {
+    "NOT_RETRIEVED_BY_SEMANTIC": 33,
+    "RETRIEVED_BY_SEMANTIC": 11
+  },
+  "depth_limited_count": 2,
+  "representation_review_candidate_count": 36,
+  "by_query_category": [
+    {
+      "query_category": "brand_activity",
+      "query_count": 2,
+      "judged_relevant_product_count": 13,
+      "retrieval_pattern_counts": {
+        "BM25_ONLY": 3,
+        "RETRIEVED_BUT_RRF_LOW_RANK": 6,
+        "RETRIEVED_BY_BOTH": 10
+      },
+      "bm25_not_retrieved_count": 0,
+      "semantic_not_retrieved_count": 3,
+      "rrf_not_retrieved_count": 0,
+      "depth_limited_count": 0,
+      "representation_review_candidate_count": 6
+    },
+    {
+      "query_category": "brand_color",
+      "query_count": 2,
+      "judged_relevant_product_count": 9,
+      "retrieval_pattern_counts": {
+        "BM25_ONLY": 2,
+        "DEPTH_LIMITED": 1,
+        "NOT_RETRIEVED_BY_EITHER": 7,
+        "RETRIEVED_BUT_RRF_LOW_RANK": 1
+      },
+      "bm25_not_retrieved_count": 7,
+      "semantic_not_retrieved_count": 9,
+      "rrf_not_retrieved_count": 7,
+      "depth_limited_count": 1,
+      "representation_review_candidate_count": 8
+    },
+    {
+      "query_category": "brand_product",
+      "query_count": 1,
+      "judged_relevant_product_count": 5,
+      "retrieval_pattern_counts": {
+        "NOT_RETRIEVED_BY_EITHER": 5
+      },
+      "bm25_not_retrieved_count": 5,
+      "semantic_not_retrieved_count": 5,
+      "rrf_not_retrieved_count": 5,
+      "depth_limited_count": 0,
+      "representation_review_candidate_count": 5
+    },
+    {
+      "query_category": "color_product",
+      "query_count": 1,
+      "judged_relevant_product_count": 2,
+      "retrieval_pattern_counts": {
+        "BM25_ONLY": 2,
+        "RETRIEVED_BUT_RRF_LOW_RANK": 2
+      },
+      "bm25_not_retrieved_count": 0,
+      "semantic_not_retrieved_count": 2,
+      "rrf_not_retrieved_count": 0,
+      "depth_limited_count": 0,
+      "representation_review_candidate_count": 2
+    },
+    {
+      "query_category": "gender_product",
+      "query_count": 1,
+      "judged_relevant_product_count": 5,
+      "retrieval_pattern_counts": {
+        "NOT_RETRIEVED_BY_EITHER": 5
+      },
+      "bm25_not_retrieved_count": 5,
+      "semantic_not_retrieved_count": 5,
+      "rrf_not_retrieved_count": 5,
+      "depth_limited_count": 0,
+      "representation_review_candidate_count": 5
+    },
+    {
+      "query_category": "material_product",
+      "query_count": 1,
+      "judged_relevant_product_count": 5,
+      "retrieval_pattern_counts": {
+        "NOT_RETRIEVED_BY_EITHER": 5
+      },
+      "bm25_not_retrieved_count": 5,
+      "semantic_not_retrieved_count": 5,
+      "rrf_not_retrieved_count": 5,
+      "depth_limited_count": 0,
+      "representation_review_candidate_count": 5
+    },
+    {
+      "query_category": "multi_attribute",
+      "query_count": 2,
+      "judged_relevant_product_count": 5,
+      "retrieval_pattern_counts": {
+        "DEPTH_LIMITED": 1,
+        "NOT_RETRIEVED_BY_EITHER": 4,
+        "SEMANTIC_ONLY": 1
+      },
+      "bm25_not_retrieved_count": 5,
+      "semantic_not_retrieved_count": 4,
+      "rrf_not_retrieved_count": 1,
+      "depth_limited_count": 1,
+      "representation_review_candidate_count": 5
+    }
+  ],
+  "limitations": [
+    "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency.",
+    "Phase 4.8 lexical run artifacts record retrieved_product_ids (ranks) only; native BM25 scores are not persisted and remain null in this analysis.",
+    "RRF retrieved lists come from hybrid_rrf_benchmark_v1_run.json live evaluation with benchmark-scoped BM25 by default; BM25 lists in that artifact are the official full-catalog Phase 4.8 runs. RRF ranks reflect scoped BM25 fusion.",
+    "Interpretive diagnostics are hypotheses for investigation, not verified root causes."
+  ]
+}

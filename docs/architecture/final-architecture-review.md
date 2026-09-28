@@ -1655,3 +1655,269 @@ That principle governs:
 **Phase 0 status: COMPLETE.**
 
 The next engineering work belongs to **Phase 1 — Project Foundation & Engineering Setup**.
+
+---
+
+# 53. Phase 3 — Product Representation Layer (Final Review)
+
+**Status:** Phase 3 representation foundation **complete** (Steps 3.2–3.12).  
+**Scope:** Product-side and query-side **representation contracts** only — not retrieval, ranking, or serving.
+
+## 53.1 Responsibility of the representation layer
+
+Translate Phase 2 **canonical catalog records** into deterministic, typed, multi-view product representations suitable for offline indexing, quality checks, and dataset materialization — without performing search, embedding generation, or ranking.
+
+## 53.2 Source of truth
+
+The **Phase 2 processed canonical catalog** (`product_catalog.parquet` / equivalent PostgreSQL `products` rows) is authoritative for product facts. Representations **derive** from canonical data; they do not invent attributes. The **materialized representation dataset** (Phase 3.11) is a derived artifact for offline consumers, not a replacement for the canonical catalog.
+
+## 53.3 Why multiple product representations?
+
+Downstream systems need different shapes of the same product:
+
+| View | Role |
+|------|------|
+| Structured (`ProductRepresentation`) | Typed facets for filtering and APIs |
+| Product text | Human-readable labeled attributes |
+| Lexical | Plain searchable document (future BM25) |
+| Semantic | Labeled document + description (future embeddings) |
+| Filtering | Commercial/provenance/color metadata for hard filters |
+
+One canonical record feeds all views through orchestration (Phase 3.9).
+
+## 53.4 Lexical vs semantic separation
+
+**Lexical** text is unlabeled, search-oriented, and optimized for term matching. **Semantic** text preserves labeled clauses and explicit `Description:` context for embedding models. Merging them would blur indexing contracts and complicate independent iteration in Phase 4.
+
+## 53.5 Hard-filter fields preserved separately
+
+Prices, `source`, `color_raw`, `color_is_coded`, and `price_anomaly` live in **FilteringRepresentation** and dataset metadata columns — not in lexical/semantic documents — so constraint enforcement stays explicit (Phase 3.7 / 3.8 alignment).
+
+## 53.6 Query representation separate from product representation
+
+**QueryRepresentation** (3.8) models caller-supplied or future-parsed **query constraints and intents**. It aligns field names with product filtering metadata but does not parse natural language or execute filters in Phase 3.
+
+## 53.7 Why materialize a representation dataset?
+
+Batch Parquet (`product_representations.parquet`) gives offline index builders a **stable, checksum’d, one-row-per-product** artifact without re-running the full pipeline inside every indexer job. Generation is batched, deterministic, and atomically published (3.11).
+
+## 53.8 Determinism
+
+Frozen builders, stable field order, no timestamps in representation content, reproducible JSON/row serialization, and pipeline `model_dump` equality for identical canonical input.
+
+## 53.9 Missing data
+
+`None` means missing. No `"unknown"`, empty lists, or synthetic placeholders. Optional catalog attributes may remain absent across all views.
+
+## 53.10 Multi-value attributes
+
+Phase 2 pipe-delimited storage parses to ordered, deduplicated `list[str] | None` on structured/filtering models; dataset storage uses pipe-delimited strings when populated.
+
+## 53.11 What Phase 3 intentionally does NOT implement
+
+BM25, Elasticsearch/OpenSearch, embedding models, vector indexes, hybrid retrieval, ranking, reranking, query parsing, LLM query understanding, recommendations, Redis, FastAPI search APIs, or agents.
+
+## 53.12 Direct downstream inputs for Phase 4
+
+| Consumer (future) | Phase 3 inputs |
+|-------------------|----------------|
+| Lexical / BM25 index | `lexical_text`, `product_id` |
+| Embedding index | `semantic_text`, `product_id` |
+| Hard filtering | `FilteringRepresentation` fields / dataset metadata columns |
+| Query understanding → constraints | `QueryRepresentation` / `QueryFilterConstraints` |
+| Hybrid retrieval orchestration | Materialized dataset + canonical catalog for verification |
+
+## 53.13 Module dependency direction (approved)
+
+```text
+ontology → schema → text / lexical / semantic / filtering
+                              ↓
+                          pipeline
+                              ↓
+                          quality
+                              ↓
+                          dataset
+query_contract (parallel query-side contract)
+```
+
+No circular dependencies among representation modules; dataset generation reads canonical Parquet via Phase 2 export utilities only for input validation.
+
+## 53.14 Phase 3 closure verdict
+
+Phases 3.2–3.12 deliver a **coherent, tested, production-minded representation foundation**. Phase 4 may begin retrieval and indexing work against the materialized dataset and existing contracts.
+
+---
+
+# 54. Phase 4.2 — Search & Retrieval Contract (closure)
+
+**Status:** Contract implemented; no retrieval algorithms.
+
+## 54.1 Responsibility
+
+The `productiq.retrieval` package defines `RetrievalRequest`, `RetrievalCandidate`, `RetrievalResponse`, and the `Retriever` protocol. Retrieval consumes existing `QueryRepresentation` instances and returns ordered `product_id` candidates with method-specific scores and provenance.
+
+## 54.2 Boundary
+
+No BM25, vector indexes, PostgreSQL search, hybrid fusion, ranking, query parsing, or embedding generation in Phase 4.2. Filtering semantics remain on `QueryRepresentation`; execution timing is deferred.
+
+## 54.3 Canonical identity and scores
+
+Candidate identity is **`product_id` only**. Scores from different `RetrievalMethod` values are not comparable; normalization and fusion are explicitly out of scope.
+
+## 54.4 Documentation
+
+See **`docs/architecture/search-retrieval-contract.md`** for full contract detail, `top_k` semantics, and future retriever implementations.
+
+---
+
+# 55. Phase 4.3 — Query Representation for Retrieval (closure)
+
+**Status:** Retrieval-facing semantics documented and projected; **no change** to the Phase 3.8 `QueryRepresentation` schema.
+
+## 55.1 Architecture
+
+`build_retrieval_query_view` exposes lexical text, semantic text, and constraints for future BM25, embedding, and filter paths while `RetrievalRequest` continues to embed the full `QueryRepresentation`.
+
+## 55.2 Alignment
+
+`lexical_text` ↔ `lexical_intent`, `semantic_text` ↔ `semantic_intent`, `FilteringRepresentation` ↔ `constraints` (Phase 3.8 field alignment preserved).
+
+## 55.3 Boundary
+
+No query parsing in the retrieval layer, no embeddings, no BM25, no filter execution. See **`search-retrieval-contract.md` Phase 4.3**.
+
+---
+
+# 56. Phase 4.4 — Lexical Retrieval Foundations (closure)
+
+**Status:** Tokenization + inverted index + candidate lookup implemented; **no BM25**.
+
+## 56.1 Mechanics
+
+Deterministic tokenizer, `InvertedLexicalIndex` with posting lists, TF/DF/document length/total count, and union-based candidate retrieval keyed by `product_id`.
+
+## 56.2 Boundary
+
+No BM25, TF-IDF scoring, embeddings, vector search, hybrid fusion, or ranking. Full-catalog index build deferred to later BM25 stages.
+
+## 56.3 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.4**.
+
+---
+
+# 57. Phase 4.5 — BM25 Scoring (closure)
+
+**Status:** BM25 relevance scoring over Phase 4.4 indexes; no vector/hybrid/reranking.
+
+## 57.1 Mechanics
+
+`BM25Scorer` consumes `InvertedLexicalIndex` statistics (TF, DF, lengths, `avgdl`) and scores `lexical_retrieval_text` with configurable `k1`/`b`, deterministic ranking and optional `top_k` (including via `RetrievalRequest`).
+
+## 57.2 Boundary
+
+No embeddings, FAISS/pgvector, hybrid fusion, or neural reranking. Not production-scale catalog indexing.
+
+## 57.3 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.5**.
+
+---
+
+# 58. Phase 4.6 — BM25 Lexical Index Construction (closure)
+
+**Status:** Representation Parquet → persisted pickle index + manifest; full catalog build supported.
+
+## 58.1 Mechanics
+
+`build_bm25_lexical_index_from_representation_dataset` reads `product_id` + `lexical_text`, preserves empty-lexical products, publishes `bm25_lexical_index.pkl` with SHA-256 manifest tied to representation dataset checksum.
+
+## 58.2 Boundary
+
+No semantic/vector indexes, no Elasticsearch, no incremental/distributed indexing, no lexical_text regeneration.
+
+## 58.3 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.6**.
+
+---
+
+# 59. Phase 4.7 — BM25 Candidate Retrieval (closure)
+
+**Status:** `BM25Retriever` implements `Retriever`; posting-list candidates + existing `BM25Scorer`.
+
+## 59.1 Flow
+
+`RetrievalRequest` → lexical posting union → BM25 rank → `RetrievalCandidate` / `RetrievalResponse`.
+
+## 59.2 Boundary
+
+No filtering, embeddings, vector search, hybrid fusion, or reranking in this phase.
+
+## 59.3 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.7**.
+
+---
+
+# 60. Phase 4.8 — Lexical Retrieval Evaluation (closure)
+
+**Status:** Benchmark JSON + metric library + `LexicalRetrievalEvaluator` (Retriever-agnostic).
+
+## 60.1 Separation
+
+Retriever retrieves; dataset stores judgments; metrics score lists; evaluator orchestrates.
+
+## 60.2 Boundary
+
+No embeddings, hybrid fusion, reranking, or LLM judges. Binary relevance only (graded relevance can extend contracts later).
+
+## 60.3 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.8** and **`resources/evaluation/README.md`**.
+
+---
+
+# 61. Phase 4.9 — Semantic Retrieval Foundations (closure)
+
+**Status:** `SemanticVector`, cosine similarity, `VectorIndex` protocol boundary, alignment helpers; no embeddings or search execution.
+
+## 61.1 Alignment
+
+`semantic_text` ↔ `semantic_intent` via existing `RetrievalQueryView`.
+
+## 61.2 Boundary
+
+No vector storage or semantic `Retriever` implementation in Phase 4.9 (selection frozen in Phase 4.10).
+
+## 61.3 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.9**.
+
+---
+
+# 62. Phase 4.10 — Embedding Model Selection (closure)
+
+**Status:** Primary `BAAI/bge-small-en-v1.5` and fallback `intfloat/e5-small-v2` frozen in JSON; no generation pipeline.
+
+## 62.1 Documentation
+
+See **`docs/architecture/embedding-model-selection.md`** and **`resources/embedding/README.md`**.
+
+## 62.2 Boundary
+
+No 367k embedding job, no pgvector index, no semantic `Retriever` implementation in this phase.
+
+---
+
+# 63. Phase 4.11 — Embedding Generation (closure)
+
+**Status:** Local BGE-small batch pipeline from `semantic_text` → `product_embeddings.parquet` + manifest.
+
+## 63.1 Documentation
+
+See **`search-retrieval-contract.md` Phase 4.11** and **`resources/processed/product_embeddings.manifest.json`** after generation.
+
+## 63.2 Boundary
+
+No pgvector schema, no vector index build, no semantic retrieval execution in this phase.

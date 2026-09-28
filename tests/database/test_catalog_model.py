@@ -13,6 +13,7 @@ from productiq.database.catalog_contract import (
     CATALOG_NULLABLE_ATTRIBUTE_COLUMNS,
     CATALOG_REQUIRED_COLUMNS,
     CATALOG_SOURCE_CHECK_VALUE,
+    PRODUCT_EMBEDDING_COLUMN,
     PRODUCT_CATALOG_DB_SCHEMA_VERSION,
     PRODUCTS_TABLE_NAME,
 )
@@ -29,8 +30,10 @@ def test_product_catalog_db_schema_version_matches_processed_contract() -> None:
 
 def test_product_model_column_names_match_processed_contract() -> None:
     column_names = {column.name for column in Product.__table__.columns}
-    assert column_names == set(PROCESSED_COLUMN_ORDER)
-    assert tuple(Product.__table__.columns.keys()) == tuple(PROCESSED_COLUMN_ORDER)
+    assert set(PROCESSED_COLUMN_ORDER).issubset(column_names)
+    assert column_names == set(PROCESSED_COLUMN_ORDER) | {"embedding"}
+    processed_columns = [name for name in Product.__table__.columns.keys() if name != "embedding"]
+    assert tuple(processed_columns) == tuple(PROCESSED_COLUMN_ORDER)
 
 
 def test_product_primary_key_is_product_id() -> None:
@@ -87,6 +90,16 @@ def test_expected_catalog_indexes_exist() -> None:
         "ix_products_color_normalized",
         "ix_products_source",
     }
+
+
+def test_embedding_column_is_nullable_pgvector() -> None:
+    from pgvector.sqlalchemy import Vector
+
+    table = Product.__table__
+    column = table.c[PRODUCT_EMBEDDING_COLUMN]
+    assert column.nullable is True
+    assert isinstance(column.type, Vector)
+    assert column.type.dim == 384
 
 
 def test_postgresql_ddl_includes_products_table_and_source_check() -> None:

@@ -267,6 +267,12 @@ The objective is to create a consistent representation of product meaning and at
 
 After processing, each product should have a canonical representation.
 
+Phase 3.9 (`build_product_representation_bundle`) orchestrates the approved product-side builders (structured, text, lexical, semantic, filtering) from each canonical record without performing retrieval or embedding work.
+
+Phase 3.10 validates those bundles for structural quality and cross-view consistency before they feed downstream indexing (validation only; no retrieval metrics).
+
+Phase 3.11 materializes validated representations into `product_representations.parquet` (one row per `product_id`) for future lexical/semantic indexing.
+
 Conceptually:
 
 ```text

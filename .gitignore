@@ -52,3 +52,12 @@ verify_log.txt
 resources/raw/*
 
 
+
+# Temporary local backup files
+_accidental_files_backup/
+
+# Temporary generated parquet files
+*.parquet.tmp
+
+# Local generated embedding artifact (do not commit; exceeds GitHub file limits)
+resources/processed/product_embeddings.parquet

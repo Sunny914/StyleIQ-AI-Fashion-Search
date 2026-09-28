@@ -1,0 +1,368 @@
+{
+  "framework_version": "1.0.0",
+  "benchmark_name": "productiq_lexical_retrieval_v1",
+  "benchmark_version": "1.0.0",
+  "comparisons": [
+    {
+      "framework_version": "1.0.0",
+      "compatible": true,
+      "incompatibility_reasons": [],
+      "baseline_system_name": "bm25",
+      "comparison_system_name": "semantic",
+      "baseline_lineage": {
+        "framework_version": "1.0.0",
+        "benchmark_name": "productiq_lexical_retrieval_v1",
+        "benchmark_version": "1.0.0",
+        "system_name": "bm25",
+        "retrieval_method": "bm25",
+        "retrieval_top_k": 50,
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_mode": "artifact",
+        "source_artifact_path": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\lexical_retrieval_benchmark_v1_run.json",
+        "bm25_index_mode": "full_persisted_index",
+        "embedding_model_id": null,
+        "embedding_model_revision": null,
+        "embedding_dimension": null,
+        "similarity_metric": null,
+        "vector_index_name": null,
+        "rrf_rank_constant": null,
+        "rrf_bm25_index_mode": null,
+        "evaluation_timestamp_utc": null,
+        "limitations": [
+          "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency."
+        ],
+        "extra": {}
+      },
+      "comparison_lineage": {
+        "framework_version": "1.0.0",
+        "benchmark_name": "productiq_lexical_retrieval_v1",
+        "benchmark_version": "1.0.0",
+        "system_name": "semantic",
+        "retrieval_method": "vector",
+        "retrieval_top_k": 50,
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_mode": "artifact",
+        "source_artifact_path": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\semantic_retrieval_benchmark_v1_run.json",
+        "bm25_index_mode": null,
+        "embedding_model_id": "BAAI/bge-small-en-v1.5",
+        "embedding_model_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+        "embedding_dimension": 384,
+        "similarity_metric": "cosine",
+        "vector_index_name": "product_vector_index",
+        "rrf_rank_constant": null,
+        "rrf_bm25_index_mode": null,
+        "evaluation_timestamp_utc": null,
+        "limitations": [
+          "Incomplete ground truth: judged relevant_product_ids are a curated subset, not every truly relevant SKU among ~367k products. Precision@K, Recall@K, and MRR are benchmark measurements under these judgments only.",
+          "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency."
+        ],
+        "extra": {}
+      },
+      "precision_at_k_deltas": {
+        "1": {
+          "absolute_delta": -0.19999999999999998,
+          "relative_delta": -0.6666666666666666
+        },
+        "5": {
+          "absolute_delta": -0.22,
+          "relative_delta": -0.8461538461538461
+        },
+        "10": {
+          "absolute_delta": -0.12,
+          "relative_delta": -0.75
+        },
+        "20": {
+          "absolute_delta": -0.055,
+          "relative_delta": -0.6470588235294117
+        },
+        "50": {
+          "absolute_delta": -0.012000000000000004,
+          "relative_delta": -0.3529411764705883
+        }
+      },
+      "recall_at_k_deltas": {
+        "1": {
+          "absolute_delta": -0.062499999999999986,
+          "relative_delta": -0.7575757575757575
+        },
+        "5": {
+          "absolute_delta": -0.25583333333333336,
+          "relative_delta": -0.8647887323943663
+        },
+        "10": {
+          "absolute_delta": -0.26833333333333337,
+          "relative_delta": -0.805
+        },
+        "20": {
+          "absolute_delta": -0.26,
+          "relative_delta": -0.7428571428571429
+        },
+        "50": {
+          "absolute_delta": -0.15999999999999998,
+          "relative_delta": -0.45714285714285713
+        }
+      },
+      "mrr_delta": {
+        "absolute_delta": -0.21515151515151515,
+        "relative_delta": -0.6439909297052154
+      },
+      "limitations": [
+        "Comparison reports metric deltas only; it does not rank systems or recommend changes."
+      ]
+    },
+    {
+      "framework_version": "1.0.0",
+      "compatible": true,
+      "incompatibility_reasons": [],
+      "baseline_system_name": "bm25",
+      "comparison_system_name": "rrf",
+      "baseline_lineage": {
+        "framework_version": "1.0.0",
+        "benchmark_name": "productiq_lexical_retrieval_v1",
+        "benchmark_version": "1.0.0",
+        "system_name": "bm25",
+        "retrieval_method": "bm25",
+        "retrieval_top_k": 50,
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_mode": "artifact",
+        "source_artifact_path": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\lexical_retrieval_benchmark_v1_run.json",
+        "bm25_index_mode": "full_persisted_index",
+        "embedding_model_id": null,
+        "embedding_model_revision": null,
+        "embedding_dimension": null,
+        "similarity_metric": null,
+        "vector_index_name": null,
+        "rrf_rank_constant": null,
+        "rrf_bm25_index_mode": null,
+        "evaluation_timestamp_utc": null,
+        "limitations": [
+          "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency."
+        ],
+        "extra": {}
+      },
+      "comparison_lineage": {
+        "framework_version": "1.0.0",
+        "benchmark_name": "productiq_lexical_retrieval_v1",
+        "benchmark_version": "1.0.0",
+        "system_name": "rrf",
+        "retrieval_method": "hybrid_rrf",
+        "retrieval_top_k": 50,
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_mode": "artifact",
+        "source_artifact_path": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\hybrid_rrf_benchmark_v1_run.json",
+        "bm25_index_mode": null,
+        "embedding_model_id": null,
+        "embedding_model_revision": null,
+        "embedding_dimension": null,
+        "similarity_metric": null,
+        "vector_index_name": null,
+        "rrf_rank_constant": 60,
+        "rrf_bm25_index_mode": "benchmark_scoped_slice_4912_docs",
+        "evaluation_timestamp_utc": null,
+        "limitations": [
+          "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency.",
+          "RRF metrics are from live hybrid_rrf_benchmark_v1_run.json with scoped BM25 by default; not directly comparable to full-catalog BM25 artifact configuration."
+        ],
+        "extra": {}
+      },
+      "precision_at_k_deltas": {
+        "1": {
+          "absolute_delta": 0.0,
+          "relative_delta": 0.0
+        },
+        "5": {
+          "absolute_delta": -0.020000000000000018,
+          "relative_delta": -0.07692307692307698
+        },
+        "10": {
+          "absolute_delta": 0.010000000000000009,
+          "relative_delta": 0.06250000000000006
+        },
+        "20": {
+          "absolute_delta": 0.0049999999999999906,
+          "relative_delta": 0.058823529411764594
+        },
+        "50": {
+          "absolute_delta": 0.007999999999999993,
+          "relative_delta": 0.2352941176470586
+        }
+      },
+      "recall_at_k_deltas": {
+        "1": {
+          "absolute_delta": -0.016666666666666663,
+          "relative_delta": -0.202020202020202
+        },
+        "5": {
+          "absolute_delta": 0.009999999999999953,
+          "relative_delta": 0.033802816901408295
+        },
+        "10": {
+          "absolute_delta": 0.04999999999999999,
+          "relative_delta": 0.14999999999999994
+        },
+        "20": {
+          "absolute_delta": 0.06666666666666671,
+          "relative_delta": 0.1904761904761906
+        },
+        "50": {
+          "absolute_delta": 0.15000000000000002,
+          "relative_delta": 0.42857142857142866
+        }
+      },
+      "mrr_delta": {
+        "absolute_delta": 0.07655334861217211,
+        "relative_delta": 0.22913927475752197
+      },
+      "limitations": [
+        "Comparison reports metric deltas only; it does not rank systems or recommend changes.",
+        "RRF or hybrid lineage may include scoped BM25; cross-system deltas are descriptive only when retrieval configurations differ."
+      ]
+    },
+    {
+      "framework_version": "1.0.0",
+      "compatible": true,
+      "incompatibility_reasons": [],
+      "baseline_system_name": "semantic",
+      "comparison_system_name": "rrf",
+      "baseline_lineage": {
+        "framework_version": "1.0.0",
+        "benchmark_name": "productiq_lexical_retrieval_v1",
+        "benchmark_version": "1.0.0",
+        "system_name": "semantic",
+        "retrieval_method": "vector",
+        "retrieval_top_k": 50,
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_mode": "artifact",
+        "source_artifact_path": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\semantic_retrieval_benchmark_v1_run.json",
+        "bm25_index_mode": null,
+        "embedding_model_id": "BAAI/bge-small-en-v1.5",
+        "embedding_model_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+        "embedding_dimension": 384,
+        "similarity_metric": "cosine",
+        "vector_index_name": "product_vector_index",
+        "rrf_rank_constant": null,
+        "rrf_bm25_index_mode": null,
+        "evaluation_timestamp_utc": null,
+        "limitations": [
+          "Incomplete ground truth: judged relevant_product_ids are a curated subset, not every truly relevant SKU among ~367k products. Precision@K, Recall@K, and MRR are benchmark measurements under these judgments only.",
+          "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency."
+        ],
+        "extra": {}
+      },
+      "comparison_lineage": {
+        "framework_version": "1.0.0",
+        "benchmark_name": "productiq_lexical_retrieval_v1",
+        "benchmark_version": "1.0.0",
+        "system_name": "rrf",
+        "retrieval_method": "hybrid_rrf",
+        "retrieval_top_k": 50,
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_mode": "artifact",
+        "source_artifact_path": "E:\\AI-ML ENGINEERING\\PORTFOLIO-PROJECTS\\ProductIQ\\resources\\evaluation\\hybrid_rrf_benchmark_v1_run.json",
+        "bm25_index_mode": null,
+        "embedding_model_id": null,
+        "embedding_model_revision": null,
+        "embedding_dimension": null,
+        "similarity_metric": null,
+        "vector_index_name": null,
+        "rrf_rank_constant": 60,
+        "rrf_bm25_index_mode": "benchmark_scoped_slice_4912_docs",
+        "evaluation_timestamp_utc": null,
+        "limitations": [
+          "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency.",
+          "RRF metrics are from live hybrid_rrf_benchmark_v1_run.json with scoped BM25 by default; not directly comparable to full-catalog BM25 artifact configuration."
+        ],
+        "extra": {}
+      },
+      "precision_at_k_deltas": {
+        "1": {
+          "absolute_delta": 0.19999999999999998,
+          "relative_delta": 1.9999999999999998
+        },
+        "5": {
+          "absolute_delta": 0.19999999999999998,
+          "relative_delta": 4.999999999999999
+        },
+        "10": {
+          "absolute_delta": 0.13,
+          "relative_delta": 3.25
+        },
+        "20": {
+          "absolute_delta": 0.05999999999999999,
+          "relative_delta": 1.9999999999999993
+        },
+        "50": {
+          "absolute_delta": 0.019999999999999997,
+          "relative_delta": 0.909090909090909
+        }
+      },
+      "recall_at_k_deltas": {
+        "1": {
+          "absolute_delta": 0.04583333333333332,
+          "relative_delta": 2.291666666666666
+        },
+        "5": {
+          "absolute_delta": 0.2658333333333333,
+          "relative_delta": 6.645833333333333
+        },
+        "10": {
+          "absolute_delta": 0.31833333333333336,
+          "relative_delta": 4.897435897435898
+        },
+        "20": {
+          "absolute_delta": 0.32666666666666666,
+          "relative_delta": 3.6296296296296298
+        },
+        "50": {
+          "absolute_delta": 0.31,
+          "relative_delta": 1.631578947368421
+        }
+      },
+      "mrr_delta": {
+        "absolute_delta": 0.29170486376368726,
+        "relative_delta": 2.4525504469303643
+      },
+      "limitations": [
+        "Comparison reports metric deltas only; it does not rank systems or recommend changes.",
+        "RRF or hybrid lineage may include scoped BM25; cross-system deltas are descriptive only when retrieval configurations differ."
+      ]
+    }
+  ],
+  "limitations": "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency."
+}

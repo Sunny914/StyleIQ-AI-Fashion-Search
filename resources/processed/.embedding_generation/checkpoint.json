@@ -1,0 +1,19 @@
+{
+  "batch_size": 64,
+  "checkpoint_version": "1.0.0",
+  "chunk_file_count": 6,
+  "chunk_size": 10000,
+  "completed_product_count": 60288,
+  "device": "cpu",
+  "document_encoding_rule": "raw semantic_text without instruction prefix",
+  "embedding_dimension": 384,
+  "last_product_id": "464067019002",
+  "model_id": "BAAI/bge-small-en-v1.5",
+  "model_revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+  "normalization_method": "l2",
+  "source_representation_checksum": "7fc2b6c08ef03233bdae1c845f4a087cd578fdb6d861b7d64ec72c71e92c3379",
+  "source_representation_row_count": 367172,
+  "status": "in_progress",
+  "target_product_count": 367172,
+  "updated_at_utc": "2026-09-27T08:54:30.022107+00:00"
+}

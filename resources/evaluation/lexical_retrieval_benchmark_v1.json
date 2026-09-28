@@ -1,0 +1,124 @@
+{
+  "benchmark_name": "productiq_lexical_retrieval_v1",
+  "benchmark_version": "1.0.0",
+  "catalog_artifact": "resources/processed/product_representations.parquet",
+  "source_representation_checksum": "7fc2b6c08ef03233bdae1c845f4a087cd578fdb6d861b7d64ec72c71e92c3379",
+  "methodology": "Manually judged binary relevance for a small query set. Judgments reflect inspectable lexical/attribute alignment with product representation rows, not exhaustive relevance over the full catalog.",
+  "limitations": "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency.",
+  "queries": [
+    {
+      "query_id": "q_nike_running",
+      "query_text": "Nike running",
+      "category": "brand_activity",
+      "relevant_product_ids": [
+        "460946942002",
+        "460825114005",
+        "460811249001",
+        "460825084001",
+        "460557829004",
+        "460825086003",
+        "460825198003",
+        "460626089004"
+      ]
+    },
+    {
+      "query_id": "q_black_nike",
+      "query_text": "black Nike",
+      "category": "brand_color",
+      "relevant_product_ids": [
+        "469193981005",
+        "469038340002",
+        "469038355001",
+        "469097886002",
+        "469098019003",
+        "460946942002"
+      ]
+    },
+    {
+      "query_id": "q_black_sneakers",
+      "query_text": "black sneakers",
+      "category": "color_product",
+      "relevant_product_ids": [
+        "469101811009",
+        "469066402007"
+      ]
+    },
+    {
+      "query_id": "q_cotton_shirt",
+      "query_text": "cotton shirt",
+      "category": "material_product",
+      "relevant_product_ids": [
+        "441123902006",
+        "440971113015",
+        "441213670001",
+        "440971113054",
+        "440971113005"
+      ]
+    },
+    {
+      "query_id": "q_women_dress",
+      "query_text": "women dress",
+      "category": "gender_product",
+      "relevant_product_ids": [
+        "463494970002",
+        "441118513011",
+        "461088032003",
+        "441118508001",
+        "463203934003"
+      ]
+    },
+    {
+      "query_id": "q_adidas_running",
+      "query_text": "adidas running",
+      "category": "brand_activity",
+      "relevant_product_ids": [
+        "469112149004",
+        "469112263001",
+        "469111891001",
+        "469111892005",
+        "469111890002"
+      ]
+    },
+    {
+      "query_id": "q_black_cotton_shirt",
+      "query_text": "black cotton shirt",
+      "category": "multi_attribute",
+      "relevant_product_ids": [
+        "440971113008",
+        "440971114048",
+        "441024764055"
+      ]
+    },
+    {
+      "query_id": "q_puma_black",
+      "query_text": "Puma black",
+      "category": "brand_color",
+      "relevant_product_ids": [
+        "460855826004",
+        "469101811009",
+        "469066402007"
+      ]
+    },
+    {
+      "query_id": "q_netplay_shirt",
+      "query_text": "Netplay shirt",
+      "category": "brand_product",
+      "relevant_product_ids": [
+        "441123902006",
+        "440971113015",
+        "440971113054",
+        "440971113005",
+        "441125841002"
+      ]
+    },
+    {
+      "query_id": "q_women_floral_dress",
+      "query_text": "women floral dress",
+      "category": "multi_attribute",
+      "relevant_product_ids": [
+        "461088032003",
+        "463203934003"
+      ]
+    }
+  ]
+}

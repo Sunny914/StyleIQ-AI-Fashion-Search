@@ -162,6 +162,8 @@ A valid searchable product must satisfy:
 6. The product embedding, if present, corresponds to the correct product.
 7. Product data is traceable to its source record.
 
+**Phase 3.9 (implemented):** From a Phase 2 canonical catalog record, `ProductRepresentationBundle` groups the structured product object plus text, lexical, semantic, and filtering representations via `build_product_representation_bundle` / `ProductRepresentationPipeline.build`. Builders construct each view; the pipeline only orchestrates them.
+
 ---
 
 # 6. Query Contract
@@ -389,6 +391,8 @@ For a valid embedding:
 ---
 
 # 13. Retrieval Contract
+
+Phase 4.2 implements the typed contract in `docs/architecture/search-retrieval-contract.md` (`RetrievalRequest`, `RetrievalCandidate`, `RetrievalResponse`, `Retriever`). The narrative below remains the high-level interface view.
 
 The retrieval layer receives:
 

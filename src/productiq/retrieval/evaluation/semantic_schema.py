@@ -1,0 +1,25 @@
+"""Phase 4.14 semantic retrieval evaluation constants."""
+
+from __future__ import annotations
+
+from productiq.retrieval.evaluation.schema import (
+    DEFAULT_EVALUATION_K_VALUES,
+    DEFAULT_RETRIEVAL_EVALUATION_TOP_K,
+)
+
+SEMANTIC_RETRIEVAL_BENCHMARK_VERSION = "1.0.0"
+SEMANTIC_RETRIEVAL_BENCHMARK_FILENAME = "semantic_retrieval_benchmark_v1.json"
+SEMANTIC_RETRIEVAL_BENCHMARK_RUN_FILENAME = "semantic_retrieval_benchmark_v1_run.json"
+SEMANTIC_RETRIEVAL_ANALYSIS_FILENAME = "semantic_retrieval_benchmark_v1_analysis.jsonl"
+
+SEMANTIC_RETRIEVAL_METHOD = "vector"
+
+__all__ = [
+    "DEFAULT_EVALUATION_K_VALUES",
+    "DEFAULT_RETRIEVAL_EVALUATION_TOP_K",
+    "SEMANTIC_RETRIEVAL_ANALYSIS_FILENAME",
+    "SEMANTIC_RETRIEVAL_BENCHMARK_FILENAME",
+    "SEMANTIC_RETRIEVAL_BENCHMARK_RUN_FILENAME",
+    "SEMANTIC_RETRIEVAL_BENCHMARK_VERSION",
+    "SEMANTIC_RETRIEVAL_METHOD",
+]

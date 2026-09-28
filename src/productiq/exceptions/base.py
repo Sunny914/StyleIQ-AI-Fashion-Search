@@ -59,3 +59,35 @@ class DataAttributeError(ProductIQError):
 
 class DataExportError(ProductIQError):
     """Raised when processed dataset export or validation cannot be performed."""
+
+
+class ProductRepresentationError(ValidationError):
+    """Raised when structured product representation build or validation fails."""
+
+
+class FilteringRepresentationError(ValidationError):
+    """Raised when metadata/filtering representation build or validation fails."""
+
+
+class QueryRepresentationError(ValidationError):
+    """Raised when query representation build or validation fails."""
+
+
+class RepresentationQualityError(ValidationError):
+    """Raised when representation quality validation input is invalid."""
+
+
+class RepresentationDatasetError(ValidationError):
+    """Raised when representation dataset generation or validation fails."""
+
+
+class RetrievalError(ValidationError):
+    """Raised when retrieval contract validation fails."""
+
+
+class LexicalRetrievalError(RetrievalError):
+    """Raised when lexical indexing or tokenization input is invalid."""
+
+
+class SemanticRetrievalError(RetrievalError):
+    """Raised when semantic vector or similarity input is invalid."""

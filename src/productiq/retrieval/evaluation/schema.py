@@ -1,0 +1,15 @@
+"""Phase 4.8 lexical retrieval evaluation constants."""
+
+from __future__ import annotations
+
+DEFAULT_EVALUATION_K_VALUES: tuple[int, ...] = (1, 5, 10, 20, 50)
+DEFAULT_RETRIEVAL_EVALUATION_TOP_K = 50
+LEXICAL_RETRIEVAL_BENCHMARK_VERSION = "1.0.0"
+LEXICAL_RETRIEVAL_BENCHMARK_FILENAME = "lexical_retrieval_benchmark_v1.json"
+
+__all__ = [
+    "DEFAULT_EVALUATION_K_VALUES",
+    "DEFAULT_RETRIEVAL_EVALUATION_TOP_K",
+    "LEXICAL_RETRIEVAL_BENCHMARK_FILENAME",
+    "LEXICAL_RETRIEVAL_BENCHMARK_VERSION",
+]
