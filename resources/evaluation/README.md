@@ -123,3 +123,151 @@ Judgments come from the same manual offline catalog review batches as lexical v1
 Small curated sample; recall is relative to judged IDs only; no behavioral ground truth.
 
 See `docs/architecture/recommendation-evaluation.md`.
+
+---
+
+## Search evaluation benchmark (Phase 12.2)
+
+### Purpose
+
+Offline **search** quality measurement on curated queries (not recommendation seeds). Uses graded judgments **0–3**; Phase 12.3+ runners consume the same artifact.
+
+### Artifact
+
+- **`productiq_search_benchmark_v1.json`** — artifact schema `12.2.0`, benchmark version `1.0.0`, **10** queries, **44** judgments (grade **2**, derived from lexical v1 binary labels)
+- Catalog context: `resources/processed/product_representations.parquet` (checksum in metadata)
+
+### Legacy source
+
+Judgments align with **`lexical_retrieval_benchmark_v1.json`** (`productiq_lexical_retrieval_v1`). Use `convert_lexical_benchmark_path_to_search` for explicit adaptation; legacy 4.8 evaluation behavior is unchanged.
+
+See `docs/architecture/search-benchmark-artifact.md`.
+
+```bash
+python scripts/run_search_baseline_evaluation.py --variants bm25
+```
+
+---
+
+## Search baseline runs (Phase 12.5)
+
+Persisted variant evaluations under `resources/evaluation/`:
+
+- `productiq_search_benchmark_v1_baseline_bm25_run.json`
+- `productiq_search_benchmark_v1_baseline_semantic_run.json`
+- `productiq_search_benchmark_v1_baseline_rrf_run.json`
+
+See `docs/architecture/search-baseline-evaluation.md`.
+
+---
+
+## Search experiment comparison (Phase 12.6)
+
+Groups the Phase 12.5 baseline artifacts under one evaluation envelope and reports **descriptive metric deltas** vs an explicit **reference variant** (default: BM25). No winner or significance testing.
+
+- **`productiq_search_benchmark_v1_baseline_comparison_experiment_v1.json`** — experiment definition + `SearchEvaluationExperimentResult`
+
+```python
+from pathlib import Path
+
+from productiq.retrieval.evaluation.search_evaluation import run_default_baseline_comparison_experiment
+
+run_default_baseline_comparison_experiment(Path("."))
+```
+
+See `docs/architecture/search-experiment-framework.md`.
+
+---
+
+## Search ranking experiment (Phase 12.7)
+
+Fixed **RRF candidate pool**; compare retrieval order vs Phase 10 baseline ranker vs experimental LTR. LTR loads from `PRODUCTIQ_EXPERIMENTAL_LTR_ARTIFACT_DIR`, `resources/processed/experimental_ltr_ranker/`, or trained reference `resources/models/ranking_ltr_reference_v10_7_0/` (see Phase 10.7 notebook).
+
+- **`productiq_search_ranking_experiment_v1.json`**
+
+```python
+from pathlib import Path
+from productiq.retrieval.evaluation.search_evaluation.ranking_experiment_runner import (
+    run_default_search_ranking_experiment,
+)
+
+run_default_search_ranking_experiment(Path("."))
+```
+
+See `docs/architecture/search-ranking-experimentation.md`.
+
+---
+
+## Search failure analysis (Phase 12.8)
+
+Deterministic diagnostics over Phase 12.5 baseline runs and optional Phase 12.7 ranking experiment (observed ranks and retrieval patterns only; no causal claims).
+
+- **`productiq_search_failure_analysis_v1.json`**
+
+```python
+from pathlib import Path
+from productiq.retrieval.evaluation.search_evaluation.failure_analysis_runner import (
+    run_default_search_failure_analysis,
+)
+
+run_default_search_failure_analysis(Path("."))
+```
+
+See `docs/architecture/search-failure-analysis.md`.
+
+---
+
+## Search statistical analysis (Phase 12.9)
+
+Paired query-level bootstrap confidence intervals and sign-flip permutation p-values over Phase 12.5 / 12.7 per-query metrics (no retrieval, ranking, or metric recomputation; no winner/promotion fields).
+
+- **`productiq_search_statistical_analysis_v1.json`**
+
+```python
+from pathlib import Path
+from productiq.retrieval.evaluation.search_evaluation.statistical_runner import (
+    run_default_search_statistical_analysis,
+)
+
+run_default_search_statistical_analysis(Path("."))
+```
+
+See `docs/architecture/search-statistical-analysis.md`.
+
+---
+
+## Search evaluation report (Phase 12.10)
+
+Read-only synthesis of Phase 12.5–12.9 artifacts with reproducibility manifest and deterministic Markdown render.
+
+- **`productiq_search_evaluation_report_v1.json`**
+- **`reports/productiq_search_evaluation_report_v1.md`**
+
+```python
+from pathlib import Path
+from productiq.retrieval.evaluation.search_evaluation.reporting import (
+    run_default_search_evaluation_report,
+)
+
+run_default_search_evaluation_report(Path("."))
+```
+
+See `docs/architecture/search-evaluation-reporting.md`.
+
+---
+
+## Search evaluation hardening (Phase 12.11)
+
+Fail-closed integrity, cross-artifact invariants, provenance checks, and determinism audit over canonical Phase 12 artifacts.
+
+```python
+from pathlib import Path
+from productiq.retrieval.evaluation.search_evaluation.hardening import (
+    run_search_evaluation_hardening_audit,
+)
+
+run_search_evaluation_hardening_audit(Path("."), include_determinism=True, determinism_repetitions=5)
+```
+
+See `docs/architecture/search-evaluation-hardening.md`.
+

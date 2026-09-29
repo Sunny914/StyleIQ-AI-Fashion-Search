@@ -1,0 +1,260 @@
+{
+  "artifact_schema_version": "12.2.0",
+  "metadata": {
+    "benchmark_name": "productiq_search_benchmark_v1",
+    "benchmark_version": "1.0.0",
+    "catalog_artifact": "resources/processed/product_representations.parquet",
+    "source_representation_checksum": "7fc2b6c08ef03233bdae1c845f4a087cd578fdb6d861b7d64ec72c71e92c3379",
+    "methodology": "Graded search evaluation benchmark v1 derived from the Phase 4.8 lexical review set (productiq_lexical_retrieval_v1). Judgments preserve the same query/product pairs with uniform grade 2 for each formerly binary relevant ID (legacy min_relevant_grade=2).",
+    "labeling_methodology": "Human-curated binary relevance from the lexical v1 offline review mapped to grade 2 (relevant). Grades 0/1/3 are reserved for future refinement; v1 does not introduce new labels beyond the lexical relevant set.",
+    "limitations": "Incomplete ground truth: many other catalog products may also be relevant. Benchmark size is intentionally small for portfolio transparency."
+  },
+  "queries": [
+    {
+      "query_id": "q_adidas_running",
+      "query_text": "adidas running",
+      "query_category": "brand_activity",
+      "relevance_judgments": [
+        {
+          "product_id": "469111890002",
+          "grade": 2
+        },
+        {
+          "product_id": "469111891001",
+          "grade": 2
+        },
+        {
+          "product_id": "469111892005",
+          "grade": 2
+        },
+        {
+          "product_id": "469112149004",
+          "grade": 2
+        },
+        {
+          "product_id": "469112263001",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_black_cotton_shirt",
+      "query_text": "black cotton shirt",
+      "query_category": "multi_attribute",
+      "relevance_judgments": [
+        {
+          "product_id": "440971113008",
+          "grade": 2
+        },
+        {
+          "product_id": "440971114048",
+          "grade": 2
+        },
+        {
+          "product_id": "441024764055",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_black_nike",
+      "query_text": "black Nike",
+      "query_category": "brand_color",
+      "relevance_judgments": [
+        {
+          "product_id": "460946942002",
+          "grade": 2
+        },
+        {
+          "product_id": "469038340002",
+          "grade": 2
+        },
+        {
+          "product_id": "469038355001",
+          "grade": 2
+        },
+        {
+          "product_id": "469097886002",
+          "grade": 2
+        },
+        {
+          "product_id": "469098019003",
+          "grade": 2
+        },
+        {
+          "product_id": "469193981005",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_black_sneakers",
+      "query_text": "black sneakers",
+      "query_category": "color_product",
+      "relevance_judgments": [
+        {
+          "product_id": "469066402007",
+          "grade": 2
+        },
+        {
+          "product_id": "469101811009",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_cotton_shirt",
+      "query_text": "cotton shirt",
+      "query_category": "material_product",
+      "relevance_judgments": [
+        {
+          "product_id": "440971113005",
+          "grade": 2
+        },
+        {
+          "product_id": "440971113015",
+          "grade": 2
+        },
+        {
+          "product_id": "440971113054",
+          "grade": 2
+        },
+        {
+          "product_id": "441123902006",
+          "grade": 2
+        },
+        {
+          "product_id": "441213670001",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_netplay_shirt",
+      "query_text": "Netplay shirt",
+      "query_category": "brand_product",
+      "relevance_judgments": [
+        {
+          "product_id": "440971113005",
+          "grade": 2
+        },
+        {
+          "product_id": "440971113015",
+          "grade": 2
+        },
+        {
+          "product_id": "440971113054",
+          "grade": 2
+        },
+        {
+          "product_id": "441123902006",
+          "grade": 2
+        },
+        {
+          "product_id": "441125841002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_nike_running",
+      "query_text": "Nike running",
+      "query_category": "brand_activity",
+      "relevance_judgments": [
+        {
+          "product_id": "460557829004",
+          "grade": 2
+        },
+        {
+          "product_id": "460626089004",
+          "grade": 2
+        },
+        {
+          "product_id": "460811249001",
+          "grade": 2
+        },
+        {
+          "product_id": "460825084001",
+          "grade": 2
+        },
+        {
+          "product_id": "460825086003",
+          "grade": 2
+        },
+        {
+          "product_id": "460825114005",
+          "grade": 2
+        },
+        {
+          "product_id": "460825198003",
+          "grade": 2
+        },
+        {
+          "product_id": "460946942002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_puma_black",
+      "query_text": "Puma black",
+      "query_category": "brand_color",
+      "relevance_judgments": [
+        {
+          "product_id": "460855826004",
+          "grade": 2
+        },
+        {
+          "product_id": "469066402007",
+          "grade": 2
+        },
+        {
+          "product_id": "469101811009",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_women_dress",
+      "query_text": "women dress",
+      "query_category": "gender_product",
+      "relevance_judgments": [
+        {
+          "product_id": "441118508001",
+          "grade": 2
+        },
+        {
+          "product_id": "441118513011",
+          "grade": 2
+        },
+        {
+          "product_id": "461088032003",
+          "grade": 2
+        },
+        {
+          "product_id": "463203934003",
+          "grade": 2
+        },
+        {
+          "product_id": "463494970002",
+          "grade": 2
+        }
+      ]
+    },
+    {
+      "query_id": "q_women_floral_dress",
+      "query_text": "women floral dress",
+      "query_category": "multi_attribute",
+      "relevance_judgments": [
+        {
+          "product_id": "461088032003",
+          "grade": 2
+        },
+        {
+          "product_id": "463203934003",
+          "grade": 2
+        }
+      ]
+    }
+  ]
+}

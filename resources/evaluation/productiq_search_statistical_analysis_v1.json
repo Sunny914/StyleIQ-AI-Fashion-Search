@@ -1,0 +1,3509 @@
+{
+  "artifact_schema_version": "12.9.0",
+  "analysis_result": {
+    "analysis_name": "productiq_search_statistical_analysis",
+    "analysis_version": "1.0.0",
+    "description": "Paired query-level statistical analysis over Phase 12.5 baselines and optional Phase 12.7 ranking experiment artifacts.",
+    "configuration": {
+      "comparison_pairs": [
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "source": "baseline_artifact"
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "source": "baseline_artifact"
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "source": "ranking_experiment"
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "source": "ranking_experiment"
+        }
+      ],
+      "bootstrap": {
+        "n_bootstrap_samples": 200,
+        "confidence_level": 0.95,
+        "random_seed": 42,
+        "ci_method": "percentile"
+      },
+      "permutation": {
+        "n_permutations": 200,
+        "random_seed": 42,
+        "test_statistic": "abs_mean_paired_difference"
+      },
+      "multiple_testing_method": "none",
+      "small_sample_query_threshold": 30
+    },
+    "lineage": {
+      "evaluation_version": "12.1.0",
+      "analysis_version": "1.0.0",
+      "benchmark_name": "productiq_search_benchmark_v1",
+      "benchmark_version": "1.0.0",
+      "source_baseline_artifacts": [
+        "resources/evaluation/productiq_search_benchmark_v1_baseline_bm25_run.json",
+        "resources/evaluation/productiq_search_benchmark_v1_baseline_rrf_run.json",
+        "resources/evaluation/productiq_search_benchmark_v1_baseline_semantic_run.json"
+      ],
+      "source_ranking_experiment_artifact": "resources/evaluation/productiq_search_ranking_experiment_v1.json"
+    },
+    "comparisons": [
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.3,
+        "observed_delta": -0.1,
+        "mean_absolute_paired_difference": 0.1,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.5,
+        "observed_delta": 0.1,
+        "mean_absolute_paired_difference": 0.1,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.3,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.5,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.2,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3,
+          "upper": 0.3,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.7,
+        "candidate_mean": 0.6,
+        "observed_delta": -0.1,
+        "mean_absolute_paired_difference": 0.1,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.8,
+        "candidate_mean": 0.7,
+        "observed_delta": -0.1,
+        "mean_absolute_paired_difference": 0.1,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "mrr",
+        "k": null,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.42972582972582973,
+        "candidate_mean": 0.4106442577030812,
+        "observed_delta": -0.01908157202274849,
+        "mean_absolute_paired_difference": 0.10479585773703422,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.12149647737883032,
+          "upper": 0.11904761904761907,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5223880597014925,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.3,
+        "observed_delta": -0.1,
+        "mean_absolute_paired_difference": 0.1,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.34692787260227564,
+        "candidate_mean": 0.3202908625906088,
+        "observed_delta": -0.02663701001166686,
+        "mean_absolute_paired_difference": 0.10400757145857517,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.13064458147024205,
+          "upper": 0.1160558421703625,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3610545698882585,
+        "candidate_mean": 0.3436773330363454,
+        "observed_delta": -0.01737723685191313,
+        "mean_absolute_paired_difference": 0.09474779829882145,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.12625173243671747,
+          "upper": 0.10737409759082613,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.736318407960199,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4089329789146756,
+        "candidate_mean": 0.35493122191589216,
+        "observed_delta": -0.054001756998783436,
+        "mean_absolute_paired_difference": 0.09998432957010576,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.14530434198935285,
+          "upper": 0.045982572571322336,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.3582089552238806,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4328282233143108,
+        "candidate_mean": 0.3810422447039513,
+        "observed_delta": -0.05178597861035953,
+        "mean_absolute_paired_difference": 0.09776855118168187,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.1378213536894562,
+          "upper": 0.043778981005225245,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.2835820895522388,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.3,
+        "observed_delta": -0.1,
+        "mean_absolute_paired_difference": 0.1,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.26,
+        "candidate_mean": 0.24,
+        "observed_delta": -0.02,
+        "mean_absolute_paired_difference": 0.06000000000000001,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.1,
+          "upper": 0.06000000000000001,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.17,
+        "candidate_mean": 0.17,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.02,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.030000000000000006,
+          "upper": 0.030000000000000006,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.10500000000000001,
+        "candidate_mean": 0.09,
+        "observed_delta": -0.015,
+        "mean_absolute_paired_difference": 0.015,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.034999999999999996,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5373134328358209,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.048,
+        "candidate_mean": 0.041999999999999996,
+        "observed_delta": -0.006,
+        "mean_absolute_paired_difference": 0.006,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.015999999999999997,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5124378109452736,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.11583333333333332,
+        "candidate_mean": 0.06583333333333333,
+        "observed_delta": -0.05,
+        "mean_absolute_paired_difference": 0.05,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.15,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.29583333333333334,
+        "candidate_mean": 0.3058333333333333,
+        "observed_delta": 0.009999999999999998,
+        "mean_absolute_paired_difference": 0.09,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.08,
+          "upper": 0.15,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.36666666666666664,
+        "candidate_mean": 0.38333333333333336,
+        "observed_delta": 0.01666666666666667,
+        "mean_absolute_paired_difference": 0.08333333333333333,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.1,
+          "upper": 0.15,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.4166666666666667,
+        "observed_delta": -0.08333333333333334,
+        "mean_absolute_paired_difference": 0.08333333333333334,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.2166666666666667,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5373134328358209,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5866666666666667,
+        "candidate_mean": 0.5,
+        "observed_delta": -0.08666666666666667,
+        "mean_absolute_paired_difference": 0.08666666666666667,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.24000000000000005,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5124378109452736,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.1,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.25870646766169153,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.1,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.25870646766169153,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.2,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": -0.1,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.26865671641791045,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.7,
+        "candidate_mean": 0.2,
+        "observed_delta": -0.5,
+        "mean_absolute_paired_difference": 0.5,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.8,
+          "upper": -0.2,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.1044776119402985,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.8,
+        "candidate_mean": 0.3,
+        "observed_delta": -0.5,
+        "mean_absolute_paired_difference": 0.5,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.8,
+          "upper": -0.2,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.06965174129353234,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "mrr",
+        "k": null,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.42972582972582973,
+        "candidate_mean": 0.11893939393939394,
+        "observed_delta": -0.3107864357864358,
+        "mean_absolute_paired_difference": 0.3107864357864358,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6021645021645021,
+          "upper": -0.05205627705627706,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.01990049751243781,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.1,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.25870646766169153,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.34692787260227564,
+        "candidate_mean": 0.055314647000814364,
+        "observed_delta": -0.2916132256014613,
+        "mean_absolute_paired_difference": 0.2916132256014613,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5407836178068269,
+          "upper": -0.08937070599837127,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.17412935323383086,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3610545698882585,
+        "candidate_mean": 0.07163633171044212,
+        "observed_delta": -0.2894182381778164,
+        "mean_absolute_paired_difference": 0.2894182381778164,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5081402483875714,
+          "upper": -0.08937070599837127,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.0945273631840796,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4089329789146756,
+        "candidate_mean": 0.0838693559740079,
+        "observed_delta": -0.3250636229406677,
+        "mean_absolute_paired_difference": 0.3250636229406677,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5166116430130995,
+          "upper": -0.15758527263524943,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.03482587064676617,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4328282233143108,
+        "candidate_mean": 0.11521108963004441,
+        "observed_delta": -0.3176171336842664,
+        "mean_absolute_paired_difference": 0.3176171336842664,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5139032415797111,
+          "upper": -0.13544956876270375,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.014925373134328358,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4,
+        "candidate_mean": 0.1,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.25870646766169153,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.26,
+        "candidate_mean": 0.04,
+        "observed_delta": -0.22000000000000003,
+        "mean_absolute_paired_difference": 0.22000000000000003,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.44000000000000006,
+          "upper": -0.06,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.17412935323383086,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.17,
+        "candidate_mean": 0.04,
+        "observed_delta": -0.13,
+        "mean_absolute_paired_difference": 0.13,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.27,
+          "upper": -0.04,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.0945273631840796,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.10500000000000001,
+        "candidate_mean": 0.030000000000000006,
+        "observed_delta": -0.075,
+        "mean_absolute_paired_difference": 0.075,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.11500000000000002,
+          "upper": -0.04,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.03482587064676617,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.048,
+        "candidate_mean": 0.022,
+        "observed_delta": -0.026000000000000002,
+        "mean_absolute_paired_difference": 0.026000000000000002,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.04,
+          "upper": -0.012,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.029850746268656716,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.11583333333333332,
+        "candidate_mean": 0.02,
+        "observed_delta": -0.09583333333333333,
+        "mean_absolute_paired_difference": 0.09583333333333333,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.20416666666666666,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.25870646766169153,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.29583333333333334,
+        "candidate_mean": 0.04,
+        "observed_delta": -0.2558333333333333,
+        "mean_absolute_paired_difference": 0.2558333333333333,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.45583333333333337,
+          "upper": -0.0625,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.17412935323383086,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.36666666666666664,
+        "candidate_mean": 0.065,
+        "observed_delta": -0.30166666666666664,
+        "mean_absolute_paired_difference": 0.30166666666666664,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5116666666666666,
+          "upper": -0.10833333333333332,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.0945273631840796,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.09,
+        "observed_delta": -0.41,
+        "mean_absolute_paired_difference": 0.41,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.64,
+          "upper": -0.21999999999999997,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.03482587064676617,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "comparison_source": "baseline_artifact",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5866666666666667,
+        "candidate_mean": 0.19,
+        "observed_delta": -0.39666666666666667,
+        "mean_absolute_paired_difference": 0.39666666666666667,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.64,
+          "upper": -0.17333333333333334,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.029850746268656716,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3,
+        "candidate_mean": 0.3,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.5,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.5,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.6,
+        "candidate_mean": 0.6,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.7,
+        "candidate_mean": 0.7,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "mrr",
+        "k": null,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4106442577030812,
+        "candidate_mean": 0.4106442577030812,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3,
+        "candidate_mean": 0.3,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3202908625906088,
+        "candidate_mean": 0.3202908625906088,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3436773330363454,
+        "candidate_mean": 0.3436773330363454,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.35493122191589216,
+        "candidate_mean": 0.35493122191589216,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3810422447039513,
+        "candidate_mean": 0.3810422447039513,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3,
+        "candidate_mean": 0.3,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.24,
+        "candidate_mean": 0.24,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.17,
+        "candidate_mean": 0.17,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.09,
+        "candidate_mean": 0.09,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.041999999999999996,
+        "candidate_mean": 0.041999999999999996,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.06583333333333333,
+        "candidate_mean": 0.06583333333333333,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3058333333333333,
+        "candidate_mean": 0.3058333333333333,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.38333333333333336,
+        "candidate_mean": 0.38333333333333336,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4166666666666667,
+        "candidate_mean": 0.4166666666666667,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.5,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3,
+        "candidate_mean": 0.0,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.26865671641791045,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.1,
+        "observed_delta": -0.4,
+        "mean_absolute_paired_difference": 0.6,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.8,
+          "upper": 0.1,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.25870646766169153,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.2,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.5,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.7,
+          "upper": 0.1,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.42786069651741293,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.6,
+        "candidate_mean": 0.4,
+        "observed_delta": -0.2,
+        "mean_absolute_paired_difference": 0.2,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.4,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5422885572139303,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.7,
+        "candidate_mean": 0.7,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "mrr",
+        "k": null,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4106442577030812,
+        "candidate_mean": 0.08195584468823008,
+        "observed_delta": -0.3286884130148512,
+        "mean_absolute_paired_difference": 0.4169237071324982,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6019388214125057,
+          "upper": -0.009910310277957335,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.08955223880597014,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3,
+        "candidate_mean": 0.0,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.26865671641791045,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3202908625906088,
+        "candidate_mean": 0.0732828620477791,
+        "observed_delta": -0.24700800054282968,
+        "mean_absolute_paired_difference": 0.3935737246383879,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5094130525432135,
+          "upper": 0.057443534142953535,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.22885572139303484,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3436773330363454,
+        "candidate_mean": 0.08820887996390844,
+        "observed_delta": -0.25546845307243693,
+        "mean_absolute_paired_difference": 0.4020341771679952,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5040532199007124,
+          "upper": 0.07236955205908288,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.20398009950248755,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.35493122191589216,
+        "candidate_mean": 0.14772814962495973,
+        "observed_delta": -0.20720307229093246,
+        "mean_absolute_paired_difference": 0.33126101862739715,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.44783324095152166,
+          "upper": 0.06165289433608091,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.23880597014925373,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3810422447039513,
+        "candidate_mean": 0.215042719958858,
+        "observed_delta": -0.16599952474509325,
+        "mean_absolute_paired_difference": 0.25140676998952816,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.3259155697532096,
+          "upper": 0.028839098218484814,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.18407960199004975,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3,
+        "candidate_mean": 0.0,
+        "observed_delta": -0.3,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.6,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.26865671641791045,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.24,
+        "candidate_mean": 0.06,
+        "observed_delta": -0.18,
+        "mean_absolute_paired_difference": 0.3,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.42000000000000004,
+          "upper": 0.07999999999999999,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.32338308457711445,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.17,
+        "candidate_mean": 0.05,
+        "observed_delta": -0.12000000000000002,
+        "mean_absolute_paired_difference": 0.18,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.28,
+          "upper": 0.029999999999999992,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.29850746268656714,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.09,
+        "candidate_mean": 0.06,
+        "observed_delta": -0.030000000000000006,
+        "mean_absolute_paired_difference": 0.05,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.08,
+          "upper": 0.014999999999999994,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.5572139303482587,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.041999999999999996,
+        "candidate_mean": 0.041999999999999996,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.06583333333333333,
+        "candidate_mean": 0.0,
+        "observed_delta": -0.06583333333333333,
+        "mean_absolute_paired_difference": 0.06583333333333333,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.13916666666666666,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.26865671641791045,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.3058333333333333,
+        "candidate_mean": 0.1,
+        "observed_delta": -0.2058333333333333,
+        "mean_absolute_paired_difference": 0.4058333333333334,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.4683333333333334,
+          "upper": 0.1375,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.3781094527363184,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.38333333333333336,
+        "candidate_mean": 0.125,
+        "observed_delta": -0.25833333333333336,
+        "mean_absolute_paired_difference": 0.4583333333333333,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.5916666666666667,
+          "upper": 0.13333333333333336,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.2885572139303483,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.4166666666666667,
+        "candidate_mean": 0.27083333333333337,
+        "observed_delta": -0.14583333333333331,
+        "mean_absolute_paired_difference": 0.2791666666666667,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": -0.4125,
+          "upper": 0.12083333333333335,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 0.43283582089552236,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      },
+      {
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "comparison_source": "ranking_experiment",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "total_queries": 10,
+        "eligible_queries": 10,
+        "excluded_queries": 0,
+        "exclusion_reasons": [],
+        "sample_size": 10,
+        "reference_mean": 0.5,
+        "candidate_mean": 0.5,
+        "observed_delta": 0.0,
+        "mean_absolute_paired_difference": 0.0,
+        "bootstrap_configuration": {
+          "n_bootstrap_samples": 200,
+          "confidence_level": 0.95,
+          "random_seed": 42,
+          "ci_method": "percentile"
+        },
+        "confidence_interval": {
+          "confidence_level": 0.95,
+          "lower": 0.0,
+          "upper": 0.0,
+          "method": "percentile"
+        },
+        "permutation_configuration": {
+          "n_permutations": 200,
+          "random_seed": 42,
+          "test_statistic": "abs_mean_paired_difference"
+        },
+        "p_value": 1.0,
+        "multiple_testing_method": "none",
+        "adjusted_p_value": null,
+        "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence.",
+        "limitations": [
+          "Statistical summaries are conditional on the curated benchmark queries only.",
+          "Results are descriptive/evidentiary and do not select a winner or promotion."
+        ]
+      }
+    ],
+    "provenance_notes": [
+      "Paired analysis uses query-aligned Phase 12.3 per-query metrics only.",
+      "No retrieval, ranking, or metric recomputation is performed.",
+      "No winner, best variant, recommended, or promotion fields are produced."
+    ]
+  },
+  "deterministic_checksum_sha256": "84159727b2f2ab353c2d5f44ad3db316f7ede6c668e29a675209e39bb6863475"
+}

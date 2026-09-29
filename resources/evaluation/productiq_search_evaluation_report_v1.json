@@ -1,0 +1,4519 @@
+{
+  "artifact_schema_version": "12.10.0",
+  "report": {
+    "metadata": {
+      "report_name": "productiq_search_evaluation_report",
+      "report_version": "1.0.0",
+      "evaluation_contract_version": "12.1.0",
+      "description": "Phase 12 evaluation reporting and reproducibility synthesis."
+    },
+    "benchmark": {
+      "benchmark_name": "productiq_search_benchmark_v1",
+      "benchmark_version": "1.0.0",
+      "benchmark_artifact_path": "resources/evaluation/productiq_search_benchmark_v1.json",
+      "benchmark_artifact_schema_version": "12.2.0",
+      "benchmark_checksum_sha256": null,
+      "query_count": 10
+    },
+    "configuration": {
+      "metric_configuration": {
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_top_k": 50,
+        "execution_top_k": 50,
+        "min_relevant_grade": 2,
+        "compute_ndcg": true
+      },
+      "execution_top_k": 50,
+      "evaluation_top_k": 50
+    },
+    "variant_summaries": [
+      {
+        "variant_name": "productiq_search_baseline_bm25",
+        "variant_version": "1.0.0",
+        "source_phase": "12.5",
+        "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_bm25_run.json",
+        "artifact_schema_version": "12.5.0",
+        "artifact_checksum_sha256": "eb36995131af9f6ab2ad1e3ed377e71b7b26626b6b81f642cefe9be5554b617b",
+        "retrieval_index_mode": "benchmark_scoped_slice_4912_docs",
+        "query_count": 10,
+        "recall_aggregate_query_count": 10,
+        "ndcg_aggregate_query_count": 10,
+        "metrics": [
+          {
+            "metric_name": "precision_at_k",
+            "k": 1,
+            "value": 0.4,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 5,
+            "value": 0.26,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 10,
+            "value": 0.17,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 20,
+            "value": 0.10500000000000001,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 50,
+            "value": 0.048,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 1,
+            "value": 0.11583333333333332,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 5,
+            "value": 0.29583333333333334,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 10,
+            "value": 0.36666666666666664,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 20,
+            "value": 0.5,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 50,
+            "value": 0.5866666666666667,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 1,
+            "value": 0.4,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 5,
+            "value": 0.4,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 10,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 20,
+            "value": 0.7,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 50,
+            "value": 0.8,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 1,
+            "value": 0.4,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 5,
+            "value": 0.34692787260227564,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 10,
+            "value": 0.3610545698882585,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 20,
+            "value": 0.4089329789146756,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 50,
+            "value": 0.4328282233143108,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "mrr",
+            "k": null,
+            "value": 0.42972582972582973,
+            "eligible_query_count": 10
+          }
+        ]
+      },
+      {
+        "variant_name": "productiq_search_baseline_rrf",
+        "variant_version": "1.0.0",
+        "source_phase": "12.5",
+        "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_rrf_run.json",
+        "artifact_schema_version": "12.5.0",
+        "artifact_checksum_sha256": "4d8a8391a2bf4fd3b21026c33ce1b6041a610e12ecdab7889b9816c8fc9f2f32",
+        "retrieval_index_mode": "benchmark_scoped_slice_4912_docs",
+        "query_count": 10,
+        "recall_aggregate_query_count": 10,
+        "ndcg_aggregate_query_count": 10,
+        "metrics": [
+          {
+            "metric_name": "precision_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 5,
+            "value": 0.24,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 10,
+            "value": 0.17,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 20,
+            "value": 0.09,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 50,
+            "value": 0.041999999999999996,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 1,
+            "value": 0.06583333333333333,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 5,
+            "value": 0.3058333333333333,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 10,
+            "value": 0.38333333333333336,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 20,
+            "value": 0.4166666666666667,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 50,
+            "value": 0.5,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 5,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 10,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 20,
+            "value": 0.6,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 50,
+            "value": 0.7,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 5,
+            "value": 0.3202908625906088,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 10,
+            "value": 0.3436773330363454,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 20,
+            "value": 0.35493122191589216,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 50,
+            "value": 0.3810422447039513,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "mrr",
+            "k": null,
+            "value": 0.4106442577030812,
+            "eligible_query_count": 10
+          }
+        ]
+      },
+      {
+        "variant_name": "productiq_search_baseline_semantic",
+        "variant_version": "1.0.0",
+        "source_phase": "12.5",
+        "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_semantic_run.json",
+        "artifact_schema_version": "12.5.0",
+        "artifact_checksum_sha256": "0825f498754aa8674b850cc1aec6f2881c9d15c845090b4409a3ed66466822c5",
+        "retrieval_index_mode": null,
+        "query_count": 10,
+        "recall_aggregate_query_count": 10,
+        "ndcg_aggregate_query_count": 10,
+        "metrics": [
+          {
+            "metric_name": "precision_at_k",
+            "k": 1,
+            "value": 0.1,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 5,
+            "value": 0.04,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 10,
+            "value": 0.04,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 20,
+            "value": 0.030000000000000006,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 50,
+            "value": 0.022,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 1,
+            "value": 0.02,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 5,
+            "value": 0.04,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 10,
+            "value": 0.065,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 20,
+            "value": 0.09,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 50,
+            "value": 0.19,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 1,
+            "value": 0.1,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 5,
+            "value": 0.1,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 10,
+            "value": 0.2,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 20,
+            "value": 0.2,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 50,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 1,
+            "value": 0.1,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 5,
+            "value": 0.055314647000814364,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 10,
+            "value": 0.07163633171044212,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 20,
+            "value": 0.0838693559740079,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 50,
+            "value": 0.11521108963004441,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "mrr",
+            "k": null,
+            "value": 0.11893939393939394,
+            "eligible_query_count": 10
+          }
+        ]
+      },
+      {
+        "variant_name": "productiq_search_ranking_baseline_ranker",
+        "variant_version": "1.0.0",
+        "source_phase": "12.7",
+        "artifact_path": "resources/evaluation/productiq_search_ranking_experiment_v1.json",
+        "artifact_schema_version": "12.7.0",
+        "artifact_checksum_sha256": "456adc8a470fd74e9c3e52f14f6e5ed5e9af0459aea3c830b424ed4724f61474",
+        "retrieval_index_mode": null,
+        "query_count": 10,
+        "recall_aggregate_query_count": 10,
+        "ndcg_aggregate_query_count": 10,
+        "metrics": [
+          {
+            "metric_name": "precision_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 5,
+            "value": 0.24,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 10,
+            "value": 0.17,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 20,
+            "value": 0.09,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 50,
+            "value": 0.041999999999999996,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 1,
+            "value": 0.06583333333333333,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 5,
+            "value": 0.3058333333333333,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 10,
+            "value": 0.38333333333333336,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 20,
+            "value": 0.4166666666666667,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 50,
+            "value": 0.5,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 5,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 10,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 20,
+            "value": 0.6,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 50,
+            "value": 0.7,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 5,
+            "value": 0.3202908625906088,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 10,
+            "value": 0.3436773330363454,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 20,
+            "value": 0.35493122191589216,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 50,
+            "value": 0.3810422447039513,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "mrr",
+            "k": null,
+            "value": 0.4106442577030812,
+            "eligible_query_count": 10
+          }
+        ]
+      },
+      {
+        "variant_name": "productiq_search_ranking_ltr",
+        "variant_version": "1.0.0",
+        "source_phase": "12.7",
+        "artifact_path": "resources/evaluation/productiq_search_ranking_experiment_v1.json",
+        "artifact_schema_version": "12.7.0",
+        "artifact_checksum_sha256": "456adc8a470fd74e9c3e52f14f6e5ed5e9af0459aea3c830b424ed4724f61474",
+        "retrieval_index_mode": null,
+        "query_count": 10,
+        "recall_aggregate_query_count": 10,
+        "ndcg_aggregate_query_count": 10,
+        "metrics": [
+          {
+            "metric_name": "precision_at_k",
+            "k": 1,
+            "value": 0.0,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 5,
+            "value": 0.06,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 10,
+            "value": 0.05,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 20,
+            "value": 0.06,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 50,
+            "value": 0.041999999999999996,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 1,
+            "value": 0.0,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 5,
+            "value": 0.1,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 10,
+            "value": 0.125,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 20,
+            "value": 0.27083333333333337,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 50,
+            "value": 0.5,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 1,
+            "value": 0.0,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 5,
+            "value": 0.1,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 10,
+            "value": 0.2,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 20,
+            "value": 0.4,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 50,
+            "value": 0.7,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 1,
+            "value": 0.0,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 5,
+            "value": 0.0732828620477791,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 10,
+            "value": 0.08820887996390844,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 20,
+            "value": 0.14772814962495973,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 50,
+            "value": 0.215042719958858,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "mrr",
+            "k": null,
+            "value": 0.08195584468823008,
+            "eligible_query_count": 10
+          }
+        ]
+      },
+      {
+        "variant_name": "productiq_search_ranking_retrieval_order",
+        "variant_version": "1.0.0",
+        "source_phase": "12.7",
+        "artifact_path": "resources/evaluation/productiq_search_ranking_experiment_v1.json",
+        "artifact_schema_version": "12.7.0",
+        "artifact_checksum_sha256": "456adc8a470fd74e9c3e52f14f6e5ed5e9af0459aea3c830b424ed4724f61474",
+        "retrieval_index_mode": null,
+        "query_count": 10,
+        "recall_aggregate_query_count": 10,
+        "ndcg_aggregate_query_count": 10,
+        "metrics": [
+          {
+            "metric_name": "precision_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 5,
+            "value": 0.24,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 10,
+            "value": 0.17,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 20,
+            "value": 0.09,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "precision_at_k",
+            "k": 50,
+            "value": 0.041999999999999996,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 1,
+            "value": 0.06583333333333333,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 5,
+            "value": 0.3058333333333333,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 10,
+            "value": 0.38333333333333336,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 20,
+            "value": 0.4166666666666667,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "recall_at_k",
+            "k": 50,
+            "value": 0.5,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 5,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 10,
+            "value": 0.5,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 20,
+            "value": 0.6,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "hit_rate_at_k",
+            "k": 50,
+            "value": 0.7,
+            "eligible_query_count": null
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 1,
+            "value": 0.3,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 5,
+            "value": 0.3202908625906088,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 10,
+            "value": 0.3436773330363454,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 20,
+            "value": 0.35493122191589216,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "ndcg_at_k",
+            "k": 50,
+            "value": 0.3810422447039513,
+            "eligible_query_count": 10
+          },
+          {
+            "metric_name": "mrr",
+            "k": null,
+            "value": 0.4106442577030812,
+            "eligible_query_count": 10
+          }
+        ]
+      }
+    ],
+    "pairwise_comparisons": [
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "reference_value": 0.4,
+        "candidate_value": 0.3,
+        "absolute_delta": -0.10000000000000003
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "reference_value": 0.4,
+        "candidate_value": 0.5,
+        "absolute_delta": 0.09999999999999998
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "reference_value": 0.5,
+        "candidate_value": 0.5,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "reference_value": 0.7,
+        "candidate_value": 0.6,
+        "absolute_delta": -0.09999999999999998
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "reference_value": 0.8,
+        "candidate_value": 0.7,
+        "absolute_delta": -0.10000000000000009
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "mrr",
+        "k": null,
+        "reference_value": 0.42972582972582973,
+        "candidate_value": 0.4106442577030812,
+        "absolute_delta": -0.019081572022748516
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "reference_value": 0.4,
+        "candidate_value": 0.3,
+        "absolute_delta": -0.10000000000000003
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "reference_value": 0.34692787260227564,
+        "candidate_value": 0.3202908625906088,
+        "absolute_delta": -0.02663701001166685
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "reference_value": 0.3610545698882585,
+        "candidate_value": 0.3436773330363454,
+        "absolute_delta": -0.017377236851913114
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "reference_value": 0.4089329789146756,
+        "candidate_value": 0.35493122191589216,
+        "absolute_delta": -0.05400175699878346
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "reference_value": 0.4328282233143108,
+        "candidate_value": 0.3810422447039513,
+        "absolute_delta": -0.051785978610359495
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "reference_value": 0.4,
+        "candidate_value": 0.3,
+        "absolute_delta": -0.10000000000000003
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "reference_value": 0.26,
+        "candidate_value": 0.24,
+        "absolute_delta": -0.020000000000000018
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "reference_value": 0.17,
+        "candidate_value": 0.17,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "reference_value": 0.10500000000000001,
+        "candidate_value": 0.09,
+        "absolute_delta": -0.015000000000000013
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "reference_value": 0.048,
+        "candidate_value": 0.041999999999999996,
+        "absolute_delta": -0.006000000000000005
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "reference_value": 0.11583333333333332,
+        "candidate_value": 0.06583333333333333,
+        "absolute_delta": -0.04999999999999999
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "reference_value": 0.29583333333333334,
+        "candidate_value": 0.3058333333333333,
+        "absolute_delta": 0.009999999999999953
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "reference_value": 0.36666666666666664,
+        "candidate_value": 0.38333333333333336,
+        "absolute_delta": 0.01666666666666672
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "reference_value": 0.5,
+        "candidate_value": 0.4166666666666667,
+        "absolute_delta": -0.08333333333333331
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_rrf",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "reference_value": 0.5866666666666667,
+        "candidate_value": 0.5,
+        "absolute_delta": -0.08666666666666667
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "reference_value": 0.4,
+        "candidate_value": 0.09999999999999998,
+        "absolute_delta": -0.30000000000000004
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "reference_value": 0.4,
+        "candidate_value": 0.09999999999999998,
+        "absolute_delta": -0.30000000000000004
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "reference_value": 0.5,
+        "candidate_value": 0.2,
+        "absolute_delta": -0.3
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "reference_value": 0.7,
+        "candidate_value": 0.2,
+        "absolute_delta": -0.49999999999999994
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "reference_value": 0.8,
+        "candidate_value": 0.30000000000000004,
+        "absolute_delta": -0.5
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "mrr",
+        "k": null,
+        "reference_value": 0.42972582972582973,
+        "candidate_value": 0.11893939393939396,
+        "absolute_delta": -0.3107864357864358
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "reference_value": 0.4,
+        "candidate_value": 0.09999999999999998,
+        "absolute_delta": -0.30000000000000004
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "reference_value": 0.34692787260227564,
+        "candidate_value": 0.05531464700081434,
+        "absolute_delta": -0.2916132256014613
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "reference_value": 0.3610545698882585,
+        "candidate_value": 0.07163633171044209,
+        "absolute_delta": -0.2894182381778164
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "reference_value": 0.4089329789146756,
+        "candidate_value": 0.08386935597400791,
+        "absolute_delta": -0.3250636229406677
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "reference_value": 0.4328282233143108,
+        "candidate_value": 0.1152110896300444,
+        "absolute_delta": -0.3176171336842664
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "reference_value": 0.4,
+        "candidate_value": 0.09999999999999998,
+        "absolute_delta": -0.30000000000000004
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "reference_value": 0.26,
+        "candidate_value": 0.04000000000000001,
+        "absolute_delta": -0.22
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "reference_value": 0.17,
+        "candidate_value": 0.04000000000000001,
+        "absolute_delta": -0.13
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "reference_value": 0.10500000000000001,
+        "candidate_value": 0.03,
+        "absolute_delta": -0.07500000000000001
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "reference_value": 0.048,
+        "candidate_value": 0.022,
+        "absolute_delta": -0.026000000000000002
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "reference_value": 0.11583333333333332,
+        "candidate_value": 0.020000000000000004,
+        "absolute_delta": -0.09583333333333331
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "reference_value": 0.29583333333333334,
+        "candidate_value": 0.03999999999999998,
+        "absolute_delta": -0.25583333333333336
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "reference_value": 0.36666666666666664,
+        "candidate_value": 0.065,
+        "absolute_delta": -0.30166666666666664
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "reference_value": 0.5,
+        "candidate_value": 0.08999999999999997,
+        "absolute_delta": -0.41000000000000003
+      },
+      {
+        "comparison_source": "baseline_experiment",
+        "reference_variant_name": "productiq_search_baseline_bm25",
+        "candidate_variant_name": "productiq_search_baseline_semantic",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "reference_value": 0.5866666666666667,
+        "candidate_value": 0.19,
+        "absolute_delta": -0.39666666666666667
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "reference_value": 0.3,
+        "candidate_value": 0.3,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "reference_value": 0.5,
+        "candidate_value": 0.5,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "reference_value": 0.5,
+        "candidate_value": 0.5,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "reference_value": 0.6,
+        "candidate_value": 0.6,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "reference_value": 0.7,
+        "candidate_value": 0.7,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "mrr",
+        "k": null,
+        "reference_value": 0.4106442577030812,
+        "candidate_value": 0.4106442577030812,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "reference_value": 0.3,
+        "candidate_value": 0.3,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "reference_value": 0.3202908625906088,
+        "candidate_value": 0.3202908625906088,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "reference_value": 0.3436773330363454,
+        "candidate_value": 0.3436773330363454,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "reference_value": 0.35493122191589216,
+        "candidate_value": 0.35493122191589216,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "reference_value": 0.3810422447039513,
+        "candidate_value": 0.3810422447039513,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "reference_value": 0.3,
+        "candidate_value": 0.3,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "reference_value": 0.24,
+        "candidate_value": 0.24,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "reference_value": 0.17,
+        "candidate_value": 0.17,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "reference_value": 0.09,
+        "candidate_value": 0.09,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "reference_value": 0.041999999999999996,
+        "candidate_value": 0.041999999999999996,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "reference_value": 0.06583333333333333,
+        "candidate_value": 0.06583333333333333,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "reference_value": 0.3058333333333333,
+        "candidate_value": 0.3058333333333333,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "reference_value": 0.38333333333333336,
+        "candidate_value": 0.38333333333333336,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "reference_value": 0.4166666666666667,
+        "candidate_value": 0.4166666666666667,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "reference_value": 0.5,
+        "candidate_value": 0.5,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "hit_rate_at_k",
+        "k": 1,
+        "reference_value": 0.3,
+        "candidate_value": 0.0,
+        "absolute_delta": -0.3
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "hit_rate_at_k",
+        "k": 5,
+        "reference_value": 0.5,
+        "candidate_value": 0.09999999999999998,
+        "absolute_delta": -0.4
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "hit_rate_at_k",
+        "k": 10,
+        "reference_value": 0.5,
+        "candidate_value": 0.2,
+        "absolute_delta": -0.3
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "hit_rate_at_k",
+        "k": 20,
+        "reference_value": 0.6,
+        "candidate_value": 0.4,
+        "absolute_delta": -0.19999999999999996
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "hit_rate_at_k",
+        "k": 50,
+        "reference_value": 0.7,
+        "candidate_value": 0.7,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "mrr",
+        "k": null,
+        "reference_value": 0.4106442577030812,
+        "candidate_value": 0.08195584468823008,
+        "absolute_delta": -0.32868841301485113
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "ndcg_at_k",
+        "k": 1,
+        "reference_value": 0.3,
+        "candidate_value": 0.0,
+        "absolute_delta": -0.3
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "ndcg_at_k",
+        "k": 5,
+        "reference_value": 0.3202908625906088,
+        "candidate_value": 0.07328286204777912,
+        "absolute_delta": -0.24700800054282968
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "ndcg_at_k",
+        "k": 10,
+        "reference_value": 0.3436773330363454,
+        "candidate_value": 0.08820887996390847,
+        "absolute_delta": -0.25546845307243693
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "ndcg_at_k",
+        "k": 20,
+        "reference_value": 0.35493122191589216,
+        "candidate_value": 0.14772814962495973,
+        "absolute_delta": -0.20720307229093243
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "ndcg_at_k",
+        "k": 50,
+        "reference_value": 0.3810422447039513,
+        "candidate_value": 0.215042719958858,
+        "absolute_delta": -0.16599952474509333
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "precision_at_k",
+        "k": 1,
+        "reference_value": 0.3,
+        "candidate_value": 0.0,
+        "absolute_delta": -0.3
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "precision_at_k",
+        "k": 5,
+        "reference_value": 0.24,
+        "candidate_value": 0.06,
+        "absolute_delta": -0.18
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "precision_at_k",
+        "k": 10,
+        "reference_value": 0.17,
+        "candidate_value": 0.05,
+        "absolute_delta": -0.12000000000000001
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "precision_at_k",
+        "k": 20,
+        "reference_value": 0.09,
+        "candidate_value": 0.06,
+        "absolute_delta": -0.03
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "precision_at_k",
+        "k": 50,
+        "reference_value": 0.041999999999999996,
+        "candidate_value": 0.041999999999999996,
+        "absolute_delta": 0.0
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "recall_at_k",
+        "k": 1,
+        "reference_value": 0.06583333333333333,
+        "candidate_value": 0.0,
+        "absolute_delta": -0.06583333333333333
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "recall_at_k",
+        "k": 5,
+        "reference_value": 0.3058333333333333,
+        "candidate_value": 0.1,
+        "absolute_delta": -0.20583333333333328
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "recall_at_k",
+        "k": 10,
+        "reference_value": 0.38333333333333336,
+        "candidate_value": 0.125,
+        "absolute_delta": -0.25833333333333336
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "recall_at_k",
+        "k": 20,
+        "reference_value": 0.4166666666666667,
+        "candidate_value": 0.27083333333333337,
+        "absolute_delta": -0.14583333333333331
+      },
+      {
+        "comparison_source": "ranking_experiment",
+        "reference_variant_name": "productiq_search_ranking_retrieval_order",
+        "candidate_variant_name": "productiq_search_ranking_ltr",
+        "metric_name": "recall_at_k",
+        "k": 50,
+        "reference_value": 0.5,
+        "candidate_value": 0.5,
+        "absolute_delta": 0.0
+      }
+    ],
+    "failure_analysis": {
+      "analysis_artifact_path": "resources/evaluation/productiq_search_failure_analysis_v1.json",
+      "analysis_artifact_schema_version": "12.8.0",
+      "failure_record_count": 1320,
+      "aggregate_rows": [
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 1,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 20
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 1,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 7
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 1,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 1,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 13
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 5,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 20
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 5,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 7
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 5,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 13
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 5,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 10,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 20
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 10,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 7
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 10,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 17
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 20,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 20
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 20,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 20,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 21
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 50,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 20
+        },
+        {
+          "variant_name": "productiq_search_baseline_bm25",
+          "analysis_k": 50,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 24
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 1,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 1,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 1,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 1,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 14
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 5,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 5,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 5,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 12
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 5,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 5
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 10,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 10,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 10,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 17
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 20,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 20,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 20,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 18
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 50,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_baseline_rrf",
+          "analysis_k": 50,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 21
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 1,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 33
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 1,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 7
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 1,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 1
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 1,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 5,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 33
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 5,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 7
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 5,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 2
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 5,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 2
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 10,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 33
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 10,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 7
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 10,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 20,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 33
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 20,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 5
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 20,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 6
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 50,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 33
+        },
+        {
+          "variant_name": "productiq_search_baseline_semantic",
+          "analysis_k": 50,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 11
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 1,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 1,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 1,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 1,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 14
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 5,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 5,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 5,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 12
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 5,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 5
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 10,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 10,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 10,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 17
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 20,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 20,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 20,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 18
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 50,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_baseline_ranker",
+          "analysis_k": 50,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 21
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 1,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 1,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 16
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 1,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 5
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 5,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 5,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 16
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 5,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 5,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 2
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 10,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 10,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 16
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 10,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 5
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 20,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 20,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 9
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 20,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 12
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 50,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_ltr",
+          "analysis_k": 50,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 21
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 1,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 1,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 1,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 1,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 14
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 5,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 5,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 5,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 12
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 5,
+          "failure_category": "RETRIEVED_BELOW_K",
+          "record_count": 5
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 10,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 10,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 4
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 10,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 17
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 20,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 20,
+          "failure_category": "DEPTH_LIMITED",
+          "record_count": 3
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 20,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 18
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 50,
+          "failure_category": "ABSENT_FROM_EVALUATED_DEPTH",
+          "record_count": 23
+        },
+        {
+          "variant_name": "productiq_search_ranking_retrieval_order",
+          "analysis_k": 50,
+          "failure_category": "RANKED_IN_TOP_K",
+          "record_count": 21
+        }
+      ],
+      "retrieval_pattern_rows": [
+        {
+          "pattern": "BM25_ONLY",
+          "product_count": 13
+        },
+        {
+          "pattern": "NOT_RETRIEVED_BY_EITHER",
+          "product_count": 20
+        },
+        {
+          "pattern": "RETRIEVED_BY_BOTH",
+          "product_count": 11
+        }
+      ],
+      "diagnostic_limitations": [
+        "Diagnostics describe observed artifact outcomes only.",
+        "Categories are not causal root-cause verdicts."
+      ]
+    },
+    "statistical_analysis": {
+      "analysis_artifact_path": "resources/evaluation/productiq_search_statistical_analysis_v1.json",
+      "analysis_artifact_schema_version": "12.9.0",
+      "comparisons": [
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "hit_rate_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.3,
+          "observed_delta": -0.1,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "hit_rate_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.5,
+          "observed_delta": 0.1,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.3,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "hit_rate_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.5,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3,
+          "confidence_interval_upper": 0.3,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "hit_rate_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.7,
+          "candidate_mean": 0.6,
+          "observed_delta": -0.1,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "hit_rate_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.8,
+          "candidate_mean": 0.7,
+          "observed_delta": -0.1,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "mrr",
+          "k": null,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.42972582972582973,
+          "candidate_mean": 0.4106442577030812,
+          "observed_delta": -0.01908157202274849,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.12149647737883032,
+          "confidence_interval_upper": 0.11904761904761907,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5223880597014925,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "ndcg_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.3,
+          "observed_delta": -0.1,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "ndcg_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.34692787260227564,
+          "candidate_mean": 0.3202908625906088,
+          "observed_delta": -0.02663701001166686,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.13064458147024205,
+          "confidence_interval_upper": 0.1160558421703625,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "ndcg_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3610545698882585,
+          "candidate_mean": 0.3436773330363454,
+          "observed_delta": -0.01737723685191313,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.12625173243671747,
+          "confidence_interval_upper": 0.10737409759082613,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.736318407960199,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "ndcg_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4089329789146756,
+          "candidate_mean": 0.35493122191589216,
+          "observed_delta": -0.054001756998783436,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.14530434198935285,
+          "confidence_interval_upper": 0.045982572571322336,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.3582089552238806,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "ndcg_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4328282233143108,
+          "candidate_mean": 0.3810422447039513,
+          "observed_delta": -0.05178597861035953,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.1378213536894562,
+          "confidence_interval_upper": 0.043778981005225245,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.2835820895522388,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "precision_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.3,
+          "observed_delta": -0.1,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "precision_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.26,
+          "candidate_mean": 0.24,
+          "observed_delta": -0.02,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.1,
+          "confidence_interval_upper": 0.06000000000000001,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "precision_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.17,
+          "candidate_mean": 0.17,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.030000000000000006,
+          "confidence_interval_upper": 0.030000000000000006,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "precision_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.10500000000000001,
+          "candidate_mean": 0.09,
+          "observed_delta": -0.015,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.034999999999999996,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5373134328358209,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "precision_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.048,
+          "candidate_mean": 0.041999999999999996,
+          "observed_delta": -0.006,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.015999999999999997,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5124378109452736,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "recall_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.11583333333333332,
+          "candidate_mean": 0.06583333333333333,
+          "observed_delta": -0.05,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.15,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "recall_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.29583333333333334,
+          "candidate_mean": 0.3058333333333333,
+          "observed_delta": 0.009999999999999998,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.08,
+          "confidence_interval_upper": 0.15,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "recall_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.36666666666666664,
+          "candidate_mean": 0.38333333333333336,
+          "observed_delta": 0.01666666666666667,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.1,
+          "confidence_interval_upper": 0.15,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "recall_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.4166666666666667,
+          "observed_delta": -0.08333333333333334,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.2166666666666667,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5373134328358209,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_rrf",
+          "metric_name": "recall_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5866666666666667,
+          "candidate_mean": 0.5,
+          "observed_delta": -0.08666666666666667,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.24000000000000005,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5124378109452736,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "hit_rate_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.1,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.25870646766169153,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "hit_rate_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.1,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.25870646766169153,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "hit_rate_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.2,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": -0.1,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.26865671641791045,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "hit_rate_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.7,
+          "candidate_mean": 0.2,
+          "observed_delta": -0.5,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.8,
+          "confidence_interval_upper": -0.2,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.1044776119402985,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "hit_rate_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.8,
+          "candidate_mean": 0.3,
+          "observed_delta": -0.5,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.8,
+          "confidence_interval_upper": -0.2,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.06965174129353234,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "mrr",
+          "k": null,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.42972582972582973,
+          "candidate_mean": 0.11893939393939394,
+          "observed_delta": -0.3107864357864358,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6021645021645021,
+          "confidence_interval_upper": -0.05205627705627706,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.01990049751243781,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "ndcg_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.1,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.25870646766169153,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "ndcg_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.34692787260227564,
+          "candidate_mean": 0.055314647000814364,
+          "observed_delta": -0.2916132256014613,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5407836178068269,
+          "confidence_interval_upper": -0.08937070599837127,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.17412935323383086,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "ndcg_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3610545698882585,
+          "candidate_mean": 0.07163633171044212,
+          "observed_delta": -0.2894182381778164,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5081402483875714,
+          "confidence_interval_upper": -0.08937070599837127,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.0945273631840796,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "ndcg_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4089329789146756,
+          "candidate_mean": 0.0838693559740079,
+          "observed_delta": -0.3250636229406677,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5166116430130995,
+          "confidence_interval_upper": -0.15758527263524943,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.03482587064676617,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "ndcg_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4328282233143108,
+          "candidate_mean": 0.11521108963004441,
+          "observed_delta": -0.3176171336842664,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5139032415797111,
+          "confidence_interval_upper": -0.13544956876270375,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.014925373134328358,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "precision_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4,
+          "candidate_mean": 0.1,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.25870646766169153,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "precision_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.26,
+          "candidate_mean": 0.04,
+          "observed_delta": -0.22000000000000003,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.44000000000000006,
+          "confidence_interval_upper": -0.06,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.17412935323383086,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "precision_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.17,
+          "candidate_mean": 0.04,
+          "observed_delta": -0.13,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.27,
+          "confidence_interval_upper": -0.04,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.0945273631840796,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "precision_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.10500000000000001,
+          "candidate_mean": 0.030000000000000006,
+          "observed_delta": -0.075,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.11500000000000002,
+          "confidence_interval_upper": -0.04,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.03482587064676617,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "precision_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.048,
+          "candidate_mean": 0.022,
+          "observed_delta": -0.026000000000000002,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.04,
+          "confidence_interval_upper": -0.012,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.029850746268656716,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "recall_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.11583333333333332,
+          "candidate_mean": 0.02,
+          "observed_delta": -0.09583333333333333,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.20416666666666666,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.25870646766169153,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "recall_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.29583333333333334,
+          "candidate_mean": 0.04,
+          "observed_delta": -0.2558333333333333,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.45583333333333337,
+          "confidence_interval_upper": -0.0625,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.17412935323383086,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "recall_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.36666666666666664,
+          "candidate_mean": 0.065,
+          "observed_delta": -0.30166666666666664,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5116666666666666,
+          "confidence_interval_upper": -0.10833333333333332,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.0945273631840796,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "recall_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.09,
+          "observed_delta": -0.41,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.64,
+          "confidence_interval_upper": -0.21999999999999997,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.03482587064676617,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_baseline_bm25",
+          "candidate_variant_name": "productiq_search_baseline_semantic",
+          "metric_name": "recall_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5866666666666667,
+          "candidate_mean": 0.19,
+          "observed_delta": -0.39666666666666667,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.64,
+          "confidence_interval_upper": -0.17333333333333334,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.029850746268656716,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "hit_rate_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3,
+          "candidate_mean": 0.3,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "hit_rate_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.5,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "hit_rate_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.5,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "hit_rate_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.6,
+          "candidate_mean": 0.6,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "hit_rate_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.7,
+          "candidate_mean": 0.7,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "mrr",
+          "k": null,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4106442577030812,
+          "candidate_mean": 0.4106442577030812,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "ndcg_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3,
+          "candidate_mean": 0.3,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "ndcg_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3202908625906088,
+          "candidate_mean": 0.3202908625906088,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "ndcg_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3436773330363454,
+          "candidate_mean": 0.3436773330363454,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "ndcg_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.35493122191589216,
+          "candidate_mean": 0.35493122191589216,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "ndcg_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3810422447039513,
+          "candidate_mean": 0.3810422447039513,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "precision_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3,
+          "candidate_mean": 0.3,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "precision_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.24,
+          "candidate_mean": 0.24,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "precision_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.17,
+          "candidate_mean": 0.17,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "precision_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.09,
+          "candidate_mean": 0.09,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "precision_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.041999999999999996,
+          "candidate_mean": 0.041999999999999996,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "recall_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.06583333333333333,
+          "candidate_mean": 0.06583333333333333,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "recall_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3058333333333333,
+          "candidate_mean": 0.3058333333333333,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "recall_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.38333333333333336,
+          "candidate_mean": 0.38333333333333336,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "recall_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4166666666666667,
+          "candidate_mean": 0.4166666666666667,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_baseline_ranker",
+          "metric_name": "recall_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.5,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "hit_rate_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3,
+          "candidate_mean": 0.0,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.26865671641791045,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "hit_rate_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.1,
+          "observed_delta": -0.4,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.8,
+          "confidence_interval_upper": 0.1,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.25870646766169153,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "hit_rate_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.2,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.7,
+          "confidence_interval_upper": 0.1,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.42786069651741293,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "hit_rate_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.6,
+          "candidate_mean": 0.4,
+          "observed_delta": -0.2,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.4,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5422885572139303,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "hit_rate_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.7,
+          "candidate_mean": 0.7,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "mrr",
+          "k": null,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4106442577030812,
+          "candidate_mean": 0.08195584468823008,
+          "observed_delta": -0.3286884130148512,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6019388214125057,
+          "confidence_interval_upper": -0.009910310277957335,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.08955223880597014,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "ndcg_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3,
+          "candidate_mean": 0.0,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.26865671641791045,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "ndcg_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3202908625906088,
+          "candidate_mean": 0.0732828620477791,
+          "observed_delta": -0.24700800054282968,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5094130525432135,
+          "confidence_interval_upper": 0.057443534142953535,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.22885572139303484,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "ndcg_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3436773330363454,
+          "candidate_mean": 0.08820887996390844,
+          "observed_delta": -0.25546845307243693,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5040532199007124,
+          "confidence_interval_upper": 0.07236955205908288,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.20398009950248755,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "ndcg_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.35493122191589216,
+          "candidate_mean": 0.14772814962495973,
+          "observed_delta": -0.20720307229093246,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.44783324095152166,
+          "confidence_interval_upper": 0.06165289433608091,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.23880597014925373,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "ndcg_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3810422447039513,
+          "candidate_mean": 0.215042719958858,
+          "observed_delta": -0.16599952474509325,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.3259155697532096,
+          "confidence_interval_upper": 0.028839098218484814,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.18407960199004975,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "precision_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3,
+          "candidate_mean": 0.0,
+          "observed_delta": -0.3,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.6,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.26865671641791045,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "precision_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.24,
+          "candidate_mean": 0.06,
+          "observed_delta": -0.18,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.42000000000000004,
+          "confidence_interval_upper": 0.07999999999999999,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.32338308457711445,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "precision_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.17,
+          "candidate_mean": 0.05,
+          "observed_delta": -0.12000000000000002,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.28,
+          "confidence_interval_upper": 0.029999999999999992,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.29850746268656714,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "precision_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.09,
+          "candidate_mean": 0.06,
+          "observed_delta": -0.030000000000000006,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.08,
+          "confidence_interval_upper": 0.014999999999999994,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.5572139303482587,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "precision_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.041999999999999996,
+          "candidate_mean": 0.041999999999999996,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "recall_at_k",
+          "k": 1,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.06583333333333333,
+          "candidate_mean": 0.0,
+          "observed_delta": -0.06583333333333333,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.13916666666666666,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.26865671641791045,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "recall_at_k",
+          "k": 5,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.3058333333333333,
+          "candidate_mean": 0.1,
+          "observed_delta": -0.2058333333333333,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.4683333333333334,
+          "confidence_interval_upper": 0.1375,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.3781094527363184,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "recall_at_k",
+          "k": 10,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.38333333333333336,
+          "candidate_mean": 0.125,
+          "observed_delta": -0.25833333333333336,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.5916666666666667,
+          "confidence_interval_upper": 0.13333333333333336,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.2885572139303483,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "recall_at_k",
+          "k": 20,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.4166666666666667,
+          "candidate_mean": 0.27083333333333337,
+          "observed_delta": -0.14583333333333331,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": -0.4125,
+          "confidence_interval_upper": 0.12083333333333335,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 0.43283582089552236,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        },
+        {
+          "reference_variant_name": "productiq_search_ranking_retrieval_order",
+          "candidate_variant_name": "productiq_search_ranking_ltr",
+          "metric_name": "recall_at_k",
+          "k": 50,
+          "total_queries": 10,
+          "eligible_queries": 10,
+          "excluded_queries": 0,
+          "exclusion_reasons": [],
+          "reference_mean": 0.5,
+          "candidate_mean": 0.5,
+          "observed_delta": 0.0,
+          "bootstrap_n_samples": 200,
+          "bootstrap_confidence_level": 0.95,
+          "bootstrap_random_seed": 42,
+          "confidence_interval_lower": 0.0,
+          "confidence_interval_upper": 0.0,
+          "permutation_n_samples": 200,
+          "permutation_random_seed": 42,
+          "p_value": 1.0,
+          "multiple_testing_method": "none",
+          "adjusted_p_value": null,
+          "small_sample_warning": "Eligible paired query count is 10 (threshold 30); statistical summaries are conditional on the curated benchmark sample and must not be interpreted as population-level or production-traffic evidence."
+        }
+      ]
+    },
+    "reproducibility": {
+      "benchmark_name": "productiq_search_benchmark_v1",
+      "benchmark_version": "1.0.0",
+      "evaluation_contract_version": "12.1.0",
+      "metric_configuration": {
+        "k_values": [
+          1,
+          5,
+          10,
+          20,
+          50
+        ],
+        "evaluation_top_k": 50,
+        "execution_top_k": 50,
+        "min_relevant_grade": 2,
+        "compute_ndcg": true
+      },
+      "execution_top_k": 50,
+      "evaluation_top_k": 50,
+      "catalog_artifact": "resources/processed/product_representations.parquet",
+      "source_representation_checksum": "7fc2b6c08ef03233bdae1c845f4a087cd578fdb6d861b7d64ec72c71e92c3379",
+      "source_artifacts": [
+        {
+          "pipeline_stage": "12.2",
+          "artifact_path": "resources/evaluation/productiq_search_benchmark_v1.json",
+          "artifact_schema_version": "12.2.0",
+          "deterministic_checksum_sha256": null
+        },
+        {
+          "pipeline_stage": "12.5",
+          "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_bm25_run.json",
+          "artifact_schema_version": "12.5.0",
+          "deterministic_checksum_sha256": "eb36995131af9f6ab2ad1e3ed377e71b7b26626b6b81f642cefe9be5554b617b"
+        },
+        {
+          "pipeline_stage": "12.5",
+          "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_rrf_run.json",
+          "artifact_schema_version": "12.5.0",
+          "deterministic_checksum_sha256": "4d8a8391a2bf4fd3b21026c33ce1b6041a610e12ecdab7889b9816c8fc9f2f32"
+        },
+        {
+          "pipeline_stage": "12.5",
+          "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_semantic_run.json",
+          "artifact_schema_version": "12.5.0",
+          "deterministic_checksum_sha256": "0825f498754aa8674b850cc1aec6f2881c9d15c845090b4409a3ed66466822c5"
+        },
+        {
+          "pipeline_stage": "12.6",
+          "artifact_path": "resources/evaluation/productiq_search_benchmark_v1_baseline_comparison_experiment_v1.json",
+          "artifact_schema_version": "12.6.0",
+          "deterministic_checksum_sha256": "647b1dca68ef48f9b8876f36b7f94ccb6f6bcb35fef9cd33fdf43c39c5bb8498"
+        },
+        {
+          "pipeline_stage": "12.7",
+          "artifact_path": "resources/evaluation/productiq_search_ranking_experiment_v1.json",
+          "artifact_schema_version": "12.7.0",
+          "deterministic_checksum_sha256": "456adc8a470fd74e9c3e52f14f6e5ed5e9af0459aea3c830b424ed4724f61474"
+        },
+        {
+          "pipeline_stage": "12.8",
+          "artifact_path": "resources/evaluation/productiq_search_failure_analysis_v1.json",
+          "artifact_schema_version": "12.8.0",
+          "deterministic_checksum_sha256": "85d0db45aedd5630447fd092a975565524d1a8283d845ecc0bb0d09fa85c1723"
+        },
+        {
+          "pipeline_stage": "12.9",
+          "artifact_path": "resources/evaluation/productiq_search_statistical_analysis_v1.json",
+          "artifact_schema_version": "12.9.0",
+          "deterministic_checksum_sha256": "84159727b2f2ab353c2d5f44ad3db316f7ede6c668e29a675209e39bb6863475"
+        }
+      ],
+      "variant_identities": [
+        [
+          "productiq_search_baseline_bm25",
+          "1.0.0"
+        ],
+        [
+          "productiq_search_baseline_rrf",
+          "1.0.0"
+        ],
+        [
+          "productiq_search_baseline_semantic",
+          "1.0.0"
+        ],
+        [
+          "productiq_search_ranking_baseline_ranker",
+          "1.0.0"
+        ],
+        [
+          "productiq_search_ranking_ltr",
+          "1.0.0"
+        ],
+        [
+          "productiq_search_ranking_retrieval_order",
+          "1.0.0"
+        ]
+      ],
+      "variant_artifact_checksums": [
+        [
+          "productiq_search_baseline_bm25",
+          "eb36995131af9f6ab2ad1e3ed377e71b7b26626b6b81f642cefe9be5554b617b"
+        ],
+        [
+          "productiq_search_baseline_rrf",
+          "4d8a8391a2bf4fd3b21026c33ce1b6041a610e12ecdab7889b9816c8fc9f2f32"
+        ],
+        [
+          "productiq_search_baseline_semantic",
+          "0825f498754aa8674b850cc1aec6f2881c9d15c845090b4409a3ed66466822c5"
+        ]
+      ],
+      "retrieval_index_modes": [
+        [
+          "productiq_search_baseline_bm25",
+          "benchmark_scoped_slice_4912_docs"
+        ],
+        [
+          "productiq_search_baseline_rrf",
+          "benchmark_scoped_slice_4912_docs"
+        ],
+        [
+          "productiq_search_baseline_semantic",
+          null
+        ]
+      ],
+      "ltr_artifact_path": "resources/models/ranking_ltr_reference_v10_7_0",
+      "ltr_artifact_present": true,
+      "statistical_bootstrap_seed": 42,
+      "statistical_permutation_seed": 42,
+      "statistical_multiple_testing_method": "none",
+      "schema_versions": [
+        [
+          "12.1",
+          "12.1.0"
+        ],
+        [
+          "12.2",
+          "12.2.0"
+        ],
+        [
+          "12.5",
+          "12.5.0"
+        ],
+        [
+          "12.6",
+          "12.6.0"
+        ],
+        [
+          "12.7",
+          "12.7.0"
+        ],
+        [
+          "12.8",
+          "12.8.0"
+        ],
+        [
+          "12.9",
+          "12.9.0"
+        ],
+        [
+          "12.10",
+          "12.10.0"
+        ]
+      ],
+      "reproducibility_limitations": [
+        "BM25 baseline runs may use benchmark-scoped retrieval slices rather than full-catalog BM25.",
+        "RRF baseline may inherit scoped BM25 retrieval provenance.",
+        "LTR ranking results depend on a local Phase 10.7 reference artifact at resources/models/ranking_ltr_reference_v10_7_0; fresh clones may need retraining or explicit artifact supply.",
+        "Statistical summaries reflect the curated 10-query benchmark sample only.",
+        "Variant uses retrieval_index_mode='benchmark_scoped_slice_4912_docs'; not a full-catalog BM25 baseline."
+      ]
+    },
+    "limitations": [
+      "Report values are copied from persisted Phase 12 artifacts; metrics are not recomputed.",
+      "No winner, best variant, recommended, promotion, or deployment decision is selected.",
+      "BM25 baseline runs may use benchmark-scoped retrieval slices rather than full-catalog BM25.",
+      "RRF baseline may inherit scoped BM25 retrieval provenance.",
+      "LTR ranking results depend on a local Phase 10.7 reference artifact at resources/models/ranking_ltr_reference_v10_7_0; fresh clones may need retraining or explicit artifact supply.",
+      "Statistical summaries reflect the curated 10-query benchmark sample only.",
+      "Variant uses retrieval_index_mode='benchmark_scoped_slice_4912_docs'; not a full-catalog BM25 baseline."
+    ]
+  },
+  "deterministic_checksum_sha256": "ae87731b66e08e272e1694069a2e0c4100cc79d2adfee44f342843afffdde166"
+}

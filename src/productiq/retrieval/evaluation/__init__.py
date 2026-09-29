@@ -41,6 +41,14 @@ from productiq.retrieval.evaluation.schema import (
     LEXICAL_RETRIEVAL_BENCHMARK_FILENAME,
     LEXICAL_RETRIEVAL_BENCHMARK_VERSION,
 )
+from productiq.retrieval.evaluation.search_evaluation import (
+    SEARCH_EVALUATION_CONTRACT_VERSION,
+    SearchEvaluationBenchmark,
+    SearchEvaluationRequest,
+    SearchEvaluationVariant,
+    SearchMetricConfiguration,
+    compare_search_evaluation_variants,
+)
 from productiq.retrieval.evaluation.semantic_catalog_validation import (
     collect_benchmark_product_ids,
     validate_benchmark_product_ids_in_catalog,
@@ -89,6 +97,7 @@ __all__ = [
     "RETRIEVAL_FAILURE_ANALYSIS_FILENAME",
     "RETRIEVAL_FAILURE_ANALYSIS_JSONL_FILENAME",
     "RETRIEVAL_FAILURE_SUMMARY_FILENAME",
+    "SEARCH_EVALUATION_CONTRACT_VERSION",
     "SEMANTIC_RETRIEVAL_ANALYSIS_FILENAME",
     "SEMANTIC_RETRIEVAL_BENCHMARK_FILENAME",
     "SEMANTIC_RETRIEVAL_BENCHMARK_RUN_FILENAME",
@@ -101,6 +110,10 @@ __all__ = [
     "LexicalRetrievalEvaluator",
     "PerQueryMetricValues",
     "QueryEvaluationResult",
+    "SearchEvaluationBenchmark",
+    "SearchEvaluationRequest",
+    "SearchEvaluationVariant",
+    "SearchMetricConfiguration",
     "SemanticRetrievalBenchmark",
     "SemanticRetrievalEvaluationContext",
     "SemanticRetrievalEvaluationOutput",
@@ -110,6 +123,7 @@ __all__ = [
     "build_per_query_analysis_rows",
     "collect_benchmark_product_ids",
     "compare_evaluation_results",
+    "compare_search_evaluation_variants",
     "count_relevant_in_prefix",
     "default_benchmark_path",
     "default_semantic_benchmark_path",

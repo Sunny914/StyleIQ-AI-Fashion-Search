@@ -39,9 +39,6 @@ logs/
 Thumbs.db
 
 # Local data
-data/
-data/raw/
-data/processed/
 models/
 *.pkl
 
