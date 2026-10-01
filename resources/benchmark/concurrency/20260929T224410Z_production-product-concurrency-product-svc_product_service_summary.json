@@ -1,0 +1,91 @@
+{
+  "contract_version": "1.0.0",
+  "sweep_run_id": "production-product-concurrency-product-svc",
+  "recorded_at_utc": "2026-09-29T22:44:10.549796+00:00",
+  "sweep_configuration": {
+    "contract_version": "1.0.0",
+    "performance_contract_version": "1.0.0",
+    "endpoint": "product",
+    "workload_id": "product_serving_existing_v1",
+    "benchmark_boundary": "service",
+    "warmups": 2,
+    "iterations": 5,
+    "concurrency_levels": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "runner_version": "1.0.0",
+  "runs": [
+    {
+      "concurrency": 1,
+      "benchmark_run_id": "production-product-concurrency-product-svc-svc-c1",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 0.0032999669201672077,
+        "p50_ms": 0.003300025127828121,
+        "p95_ms": 0.003479979932308197,
+        "p99_ms": 0.003495970740914345,
+        "max_ms": 0.0034999684430658817,
+        "mean_ms": 0.0033599906601011753
+      },
+      "throughput_rps": 247525.00747767504
+    },
+    {
+      "concurrency": 2,
+      "benchmark_run_id": "production-product-concurrency-product-svc-svc-c2",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 0.004399975296109915,
+        "p50_ms": 0.011299969628453255,
+        "p95_ms": 0.02640002639964223,
+        "p99_ms": 0.027680036146193743,
+        "max_ms": 0.02800003858283162,
+        "mean_ms": 0.014939997345209122
+      },
+      "throughput_rps": 3386.1573668503706
+    },
+    {
+      "concurrency": 4,
+      "benchmark_run_id": "production-product-concurrency-product-svc-svc-c4",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 0.003800028935074806,
+        "p50_ms": 0.008100003469735384,
+        "p95_ms": 0.015220011118799448,
+        "p99_ms": 0.016004007775336504,
+        "max_ms": 0.016200006939470768,
+        "mean_ms": 0.009400013368576765
+      },
+      "throughput_rps": 5462.689572829049
+    },
+    {
+      "concurrency": 8,
+      "benchmark_run_id": "production-product-concurrency-product-svc-svc-c8",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 0.003500026650726795,
+        "p50_ms": 0.009300012607127428,
+        "p95_ms": 0.012779980897903442,
+        "p99_ms": 0.013115983456373215,
+        "max_ms": 0.013199984095990658,
+        "mean_ms": 0.008539995178580284
+      },
+      "throughput_rps": 6173.6017023459
+    }
+  ]
+}

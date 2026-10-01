@@ -1,0 +1,80 @@
+{
+  "audit_version": "1.0.0",
+  "checks": {
+    "api_regression": "PASS",
+    "artifact_resolution": "PASS",
+    "artifact_startup_laziness": "PASS",
+    "configuration_contract": "PASS",
+    "configuration_runtime_traces": "PASS",
+    "database_pgvector_contract": "PASS",
+    "deployment_manifest_consistency": "PASS",
+    "docker_readiness": "PASS",
+    "health_readiness_semantics": "PASS",
+    "live_postgresql_pgvector": "NOT_RUN",
+    "mypy": "PASS",
+    "ruff": "PASS",
+    "secret_and_path_safety": "PASS",
+    "single_configuration_system": "PASS",
+    "startup_import_safety": "PASS",
+    "test_suite": "PASS"
+  },
+  "closure_statement": "Phase 14 deployment foundation (configuration, runtime artifacts, database contract) is coherent and locally validated; live PostgreSQL/pgvector validation remains opt-in.",
+  "configuration_runtime_traces": {
+    "app_env_to_fastapi": "APP_ENV \u2192 Settings.app_env + ServingConfig.deployment_environment \u2192 create_app(app_settings)",
+    "bm25_artifact": "PRODUCTIQ_BM25_ARTIFACT_PATH \u2192 RuntimeArtifactPaths.bm25_index \u2192 retrieval/benchmark consumers (HTTP default pipeline injects Retriever; not auto-wired)",
+    "cors": "PRODUCTIQ_CORS_ALLOWED_ORIGINS \u2192 Settings \u2192 create_app CORSMiddleware when origins configured",
+    "database_url": "DATABASE_URL \u2192 Settings.database_url \u2192 database.engine.create_engine_from_settings (on demand)",
+    "processed_catalog": "PRODUCTIQ_PROCESSED_CATALOG_PATH \u2192 RuntimeArtifactPaths \u2192 product_wiring.resolved_processed_catalog_path"
+  },
+  "deferred_items": [
+    "Wire all benchmark/evaluation hard-coded artifact paths to Settings.",
+    "Automatic manifest regeneration in CI.",
+    "Runtime checksum verification against artifact bytes.",
+    "Redis/distributed rate limiting (Phase 13 deferred).",
+    "Dockerfile and compose (Phase 15)."
+  ],
+  "docker_prerequisites": {
+    "api_entrypoint": "productiq.api.app:create_app",
+    "artifact_mount_paths_configurable": true,
+    "default_port": "8000 (operator choice; not hard-coded in app)",
+    "env_vars_documented": true,
+    "health": "/health",
+    "install": "pip install -e .",
+    "process_entrypoint": "uvicorn productiq.api.app:create_app --factory",
+    "python_version": "3.13",
+    "readiness": "/ready",
+    "requires_python_project": ">=3.13,<3.14"
+  },
+  "docker_readiness": "READY",
+  "generated_at_utc": "2026-09-30T18:39:16.203000Z",
+  "known_limitations": [
+    "Default create_app does not auto-build production search/recommendation pipelines.",
+    "BM25/embeddings paths resolved but not all offline benchmark modules use Settings yet.",
+    "Committed manifest integrity checksums are point-in-time snapshots.",
+    "Readiness does not probe PostgreSQL/BM25 unless explicitly extended.",
+    "Bare pytest -q fails collection on tests/retrieval/integration conftest (pre-existing)."
+  ],
+  "manifest_audit": {
+    "consistent": true,
+    "manifest_path": "E:/AI-ML ENGINEERING/PORTFOLIO-PROJECTS/ProductIQ/resources/deployment/productiq_deployment_manifest.json",
+    "mismatches": [],
+    "note": "database.configuration and integrity blocks are environment snapshots; contract sections must match builder."
+  },
+  "mypy": "PASS",
+  "phase": "14C",
+  "phase_14_status": "complete",
+  "ruff": "PASS",
+  "security_scan": "PASS",
+  "sub_phases_complete": [
+    "14A",
+    "14B",
+    "14C"
+  ],
+  "tests": {
+    "audit_module": "tests/config/test_phase_14_deployment_foundation_audit.py",
+    "failed": 0,
+    "gate_command": "pytest -q --ignore=tests/retrieval/integration",
+    "passed": 1677,
+    "skipped": 45
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "audit_version": "1.0.0",
+  "checks": {
+    "container_start": "NOT_RUN",
+    "contract_tests": "PASS",
+    "cpu_torch_strategy": "PASS",
+    "docker_build": "FAIL",
+    "dockerfile_present": "PASS",
+    "dockerignore_present": "PASS",
+    "health_endpoint": "NOT_RUN",
+    "mypy": "FAIL",
+    "no_secrets_in_dockerfile": "PASS",
+    "openapi": "NOT_RUN",
+    "pytest_gate": "PASS",
+    "ready_endpoint": "NOT_RUN",
+    "ruff": "FAIL"
+  },
+  "container_runtime": {
+    "command": "docker run --rm -p 8000:8000 -e APP_ENV=production productiq-api:local",
+    "health_ok": null,
+    "health_url": "http://localhost:8000/api/v1/health",
+    "openapi_ok": null,
+    "ready_ok": null,
+    "ready_url": "http://localhost:8000/api/v1/ready",
+    "started": null
+  },
+  "deferred_15b": [
+    "PostgreSQL container",
+    "pgvector container",
+    "docker-compose stack"
+  ],
+  "deferred_15c": [
+    "Full containerized integration audit"
+  ],
+  "docker_build": {
+    "command": "docker build -t productiq-api:local .",
+    "error_summary": "",
+    "image_size": null,
+    "succeeded": false
+  },
+  "generated_at_utc": "2026-09-30T21:04:19.572656Z",
+  "phase": "15A",
+  "phase_15a_status": "BLOCKED",
+  "tests": {
+    "command": "pytest -q --ignore=tests/retrieval/integration",
+    "failed": 0,
+    "passed": 1686,
+    "skipped": 45
+  }
+}

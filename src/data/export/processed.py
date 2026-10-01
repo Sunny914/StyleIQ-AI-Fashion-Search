@@ -27,7 +27,6 @@ from data.export.schema import (
     PROCESSED_MANIFEST_FILENAME,
 )
 from productiq.exceptions import DataExportError
-from productiq.logging import get_logger
 
 PARQUET_ENGINE: Literal["pyarrow"] = "pyarrow"
 
@@ -108,7 +107,9 @@ class ProcessedDatasetWriter:
         manifest_path: Path | None = None,
     ) -> ProcessedDatasetWriteResult:
         """Validate input, write Parquet atomically, validate read-back, and write manifest."""
-        logger = get_logger(__name__)
+        import logging
+
+        logger = logging.getLogger(__name__)
         resolved_output = Path(output_path)
         resolved_manifest = (
             Path(manifest_path)

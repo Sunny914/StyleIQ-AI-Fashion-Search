@@ -1,0 +1,79 @@
+{
+  "manifest_version": "1.0.0",
+  "application": {
+    "name": "ProductIQ",
+    "python_version": "3.13",
+    "api_entrypoint": "productiq.api.app:create_app",
+    "api_version": "v1",
+    "serving_api_major_version": "v1"
+  },
+  "environment": {
+    "app_env": "development",
+    "log_level": "INFO"
+  },
+  "database": {
+    "engine": "postgresql+psycopg",
+    "pgvector_extension": "vector",
+    "embedding_dimension": 384,
+    "products_table": "products",
+    "embedding_column": "embedding",
+    "hnsw_index_name": "ix_products_embedding_hnsw_cosine",
+    "pgvector_operator_class": "vector_cosine_ops",
+    "vector_catalog_schema_version": "1.1.0",
+    "configuration": {
+      "primary_env": "DATABASE_URL",
+      "component_fields_env_prefix": "PRODUCTIQ_DATABASE_*",
+      "host": "localhost",
+      "port": 5432,
+      "name": "productiq",
+      "user": "productiq",
+      "redacted_url": "postgresql+psycopg://productiq:***@localhost:5432/productiq"
+    }
+  },
+  "artifacts": {
+    "paths": {
+      "processed_catalog": "resources/processed/product_catalog.parquet",
+      "bm25_index": "resources/processed/bm25_lexical_index.pkl",
+      "embeddings": "resources/processed/product_embeddings.parquet",
+      "model_artifacts_dir": "resources/models"
+    },
+    "integrity": [
+      {
+        "role": "processed_catalog",
+        "checksum_sha256": "ffd36e92793377b2b4eea467e8109ff1e202691624a7dc04abc7a0b2d1177645",
+        "checksum_algorithm": "sha256",
+        "schema_version": "1.0.0",
+        "note": null
+      },
+      {
+        "role": "bm25_index",
+        "checksum_sha256": "9d4c393c3535944cd7278165ffa3a9c5ddc9a08eef056f55c08b9012c627a855",
+        "checksum_algorithm": "sha256",
+        "schema_version": "1.0.0",
+        "note": null
+      },
+      {
+        "role": "embeddings",
+        "checksum_sha256": "d97a843f54ca2cc404bcce7955fb86edc066c9f504f66e82fc1d9d6a23316dc6",
+        "checksum_algorithm": "sha256",
+        "schema_version": "1.0.0",
+        "note": null
+      }
+    ]
+  },
+  "configuration": {
+    "app_env": "APP_ENV",
+    "database_url": "DATABASE_URL",
+    "artifact_env_vars": [
+      "PRODUCTIQ_PROCESSED_CATALOG_PATH",
+      "PRODUCTIQ_BM25_ARTIFACT_PATH",
+      "PRODUCTIQ_EMBEDDINGS_ARTIFACT_PATH",
+      "PRODUCTIQ_MODEL_ARTIFACTS_DIR"
+    ],
+    "cors": "PRODUCTIQ_CORS_ALLOWED_ORIGINS"
+  },
+  "health": {
+    "liveness": "/health",
+    "readiness": "/ready"
+  }
+}

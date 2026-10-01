@@ -4,8 +4,6 @@ from __future__ import annotations
 
 from enum import StrEnum
 
-from productiq.ranking.evaluation.coverage import candidate_coverage_ratio
-
 
 class RecommendationFailureObservation(StrEnum):
     """Diagnostic observations (not proven root causes)."""
@@ -30,6 +28,8 @@ def observe_seed_failures(
     relevant_dropped_by_constraint_product_ids: tuple[str, ...] = (),
 ) -> tuple[RecommendationFailureObservation, ...]:
     """Classify observable pipeline outcomes for one seed (deterministic)."""
+    from productiq.ranking.evaluation.coverage import candidate_coverage_ratio
+
     relevant = {
         product_id
         for product_id, grade in relevance_grades.items()

@@ -1,0 +1,95 @@
+{
+  "audit_version": "1.0.0",
+  "generated_at_utc": "2026-09-30T10:52:52.852991Z",
+  "phase_13_status": "complete",
+  "phase_scope": "Phase 13 HTTP serving stack \u2014 final integrated production audit (13.10-C).",
+  "serving_api_version": "v1",
+  "observability_contract_version": "1.0.0",
+  "observability_runtime_version": "1.0.0",
+  "closure_statement": "Production-serving architecture implemented and locally validated; external production infrastructure validation remains pending.",
+  "sub_phases_complete": [
+    "13.1",
+    "13.2",
+    "13.3",
+    "13.4",
+    "13.5",
+    "13.6",
+    "13.7",
+    "13.8",
+    "13.9",
+    "13.10-A",
+    "13.10-B",
+    "13.10-C"
+  ],
+  "tests": {
+    "gate_command": "pytest tests/observability tests/api tests/serving tests/recommendation -q",
+    "passed": 523,
+    "failed": 0,
+    "skipped": 11,
+    "audit_module": "tests/api/test_production_serving_final_audit.py"
+  },
+  "readiness_matrix": {
+    "api_contracts": "PASS",
+    "configuration": "PASS",
+    "health": "PASS",
+    "readiness": "PASS",
+    "errors": "PASS",
+    "rate_limiting": "PASS",
+    "concurrency": "PASS",
+    "timeouts": "PASS",
+    "observability": "PASS",
+    "security": "PASS",
+    "dependency_isolation": "PASS",
+    "startup_safety": "PASS",
+    "performance": "PASS",
+    "test_isolation": "PASS",
+    "production_stack": "INFRASTRUCTURE_UNAVAILABLE"
+  },
+  "request_lifecycle": [
+    "RequestIdMiddleware (outer)",
+    "ObservabilityMiddleware",
+    "ResilienceMiddleware",
+    "FastAPI route",
+    "Serving service",
+    "Domain pipeline"
+  ],
+  "rate_limit_forwarded_for": {
+    "default": "PRODUCTIQ_RATE_LIMIT_TRUST_FORWARDED_FOR=false (direct peer only)",
+    "trusted_proxy_deployment": "Set true only behind a trusted reverse proxy that strips/spoof-proofs X-Forwarded-For",
+    "direct_untrusted_deployment": "Leave false; arbitrary X-Forwarded-For is ignored for rate-limit identity"
+  },
+  "timeout_semantics": {
+    "mechanism": "asyncio.wait_for on middleware call_next",
+    "maps_to": "SERVICE_UNAVAILABLE (503)",
+    "limitation": "Does not hard-cancel synchronous CPU work running in the thread pool"
+  },
+  "circuit_breaker": "DEFERRED",
+  "distributed_rate_limiting": "DEFERRED (in-memory only; Redis not required)",
+  "production_infrastructure": {
+    "postgresql_pgvector_bm25": "NOT_RUN / INFRASTRUCTURE_UNAVAILABLE",
+    "redis_rate_limiting": "DEFERRED"
+  },
+  "startup_import": {
+    "create_app_import": "PASS (lazy lifespan logging; see tests/api/test_production_safety.py)",
+    "requires_postgresql": false,
+    "requires_external_telemetry": false
+  },
+  "performance_observations": {
+    "observability_overhead": "Engineering observation only (tests/observability)",
+    "resilience_overhead": "Lightweight middleware checks; no global API lock",
+    "production_benchmarks": "NOT_RUN / INFRASTRUCTURE_UNAVAILABLE unless opt-in flags set"
+  },
+  "known_limitations": [
+    "In-memory rate limits are not shared across horizontal replicas.",
+    "Readiness external probes remain NOT_CHECKED until implemented.",
+    "Request timeout bounds HTTP wait, not in-flight sync domain CPU.",
+    "No authentication/authorization layer in Phase 13.",
+    "Product endpoint has no concurrency gate by design (lighter reads)."
+  ],
+  "deferred_items": [
+    "Redis/distributed rate limiting",
+    "Circuit breakers for remote dependencies",
+    "External observability exporters (Prometheus/OTel)",
+    "Full PostgreSQL/pgvector/BM25 production validation in default CI"
+  ]
+}

@@ -1,0 +1,59 @@
+# Git and local tooling
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# Python environments and caches
+.venv
+venv
+__pycache__
+*.py[cod]
+*.pyo
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+htmlcov
+*.egg-info
+build
+dist
+
+# Secrets (mount at runtime)
+.env
+.env.*
+!.env.example
+
+# Tests and notebooks (not required in production image)
+tests
+notebooks
+
+# Documentation (not required at runtime)
+docs
+
+# Benchmark and evaluation outputs
+resources/benchmark
+resources/evaluation
+resources/raw
+
+# Large / generated artifacts — mount via PRODUCTIQ_* paths (Phase 14)
+resources/processed
+models
+*.pkl
+*.parquet
+*.parquet.tmp
+
+# Logs and OS
+*.log
+logs
+.DS_Store
+Thumbs.db
+verify_log.txt
+_accidental_files_backup
+
+# Scripts not needed inside the API container
+scripts
+
+# Cursor / agent artifacts
+.cursor

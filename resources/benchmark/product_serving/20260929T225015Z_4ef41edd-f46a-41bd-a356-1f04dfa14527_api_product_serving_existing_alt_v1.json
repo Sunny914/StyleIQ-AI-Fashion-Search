@@ -1,0 +1,71 @@
+{
+  "contract_version": "1.0.0",
+  "configuration": {
+    "contract_version": "1.0.0",
+    "benchmark_type": "api",
+    "endpoint": "product",
+    "workload_id": "product_serving_existing_alt_v1",
+    "iterations": 10,
+    "warmups": 3,
+    "concurrency": 1
+  },
+  "workload": {
+    "workload_id": "product_serving_existing_alt_v1",
+    "workload_name": "existing_catalog_product_alt",
+    "endpoint": "product",
+    "http_method": "GET",
+    "route_path": "/api/v1/products/{product_id}",
+    "request_body": null,
+    "path_parameters": {
+      "product_id": "460825114005"
+    },
+    "description": "Alternate existing catalog product."
+  },
+  "latency": {
+    "unit": "ms",
+    "sample_count": 10,
+    "min_ms": 1.5697000198997557,
+    "p50_ms": 2.3271499667316675,
+    "p95_ms": 3.1471300200792025,
+    "p99_ms": 3.304306022473611,
+    "max_ms": 3.343600023072213,
+    "mean_ms": 2.3676699958741665
+  },
+  "throughput": {
+    "unit": "requests_per_second",
+    "requests_per_second": 420.8754206814151
+  },
+  "errors": {
+    "success_count": 10,
+    "error_count": 0,
+    "total_attempts": 10,
+    "error_rate": 0.0
+  },
+  "environment": {
+    "python_version": "3.13.1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "contract_version": "1.0.0",
+    "productiq_version": "0.1.0",
+    "hostname": null
+  },
+  "serving_configuration": {
+    "api_version": "v1",
+    "api_max_top_k": 100,
+    "service_name": "productiq",
+    "artifact_identifiers": {
+      "product_workload_catalog_version": "1.0.0",
+      "catalog_artifact": "resources/processed/product_catalog.parquet",
+      "catalog_provider": "ProcessedParquetProductCatalogReadProvider",
+      "lookup": "in_memory_index_o1",
+      "product_catalog_checksum_sha256": "ffd36e92793377b2b4eea467e8109ff1e202691624a7dc04abc7a0b2d1177645",
+      "product_catalog_schema_version": "1.0.0"
+    }
+  },
+  "provenance": {
+    "benchmark_run_id": "4ef41edd-f46a-41bd-a356-1f04dfa14527-api-product_serving_existing_alt_v1",
+    "recorded_at_utc": "2026-09-29T22:50:15.423329Z",
+    "runner_name": "productiq.serving.performance.runner",
+    "runner_version": "1.0.0"
+  },
+  "stage_measurements": []
+}

@@ -1,0 +1,91 @@
+{
+  "contract_version": "1.0.0",
+  "sweep_run_id": "production-product-concurrency-product-api",
+  "recorded_at_utc": "2026-09-29T22:51:09.683106+00:00",
+  "sweep_configuration": {
+    "contract_version": "1.0.0",
+    "performance_contract_version": "1.0.0",
+    "endpoint": "product",
+    "workload_id": "product_serving_existing_v1",
+    "benchmark_boundary": "api",
+    "warmups": 2,
+    "iterations": 5,
+    "concurrency_levels": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "runner_version": "1.0.0",
+  "runs": [
+    {
+      "concurrency": 1,
+      "benchmark_run_id": "production-product-concurrency-product-api-api-c1",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 1.595499983523041,
+        "p50_ms": 1.750800001900643,
+        "p95_ms": 3.0326399952173233,
+        "p99_ms": 3.192767994478345,
+        "max_ms": 3.2327999942936003,
+        "mean_ms": 2.1042800042778254
+      },
+      "throughput_rps": 474.2078376144543
+    },
+    {
+      "concurrency": 2,
+      "benchmark_run_id": "production-product-concurrency-product-api-api-c2",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 3.9357999921776354,
+        "p50_ms": 7.040299999061972,
+        "p95_ms": 28.172740002628416,
+        "p99_ms": 28.29918800620362,
+        "max_ms": 28.330800007097423,
+        "mean_ms": 14.681199996266514
+      },
+      "throughput_rps": 127.11972146912792
+    },
+    {
+      "concurrency": 4,
+      "benchmark_run_id": "production-product-concurrency-product-api-api-c4",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 3.855199960526079,
+        "p50_ms": 9.010900044813752,
+        "p95_ms": 10.668700013775378,
+        "p99_ms": 10.850220017600805,
+        "max_ms": 10.895600018557161,
+        "mean_ms": 8.289239997975528
+      },
+      "throughput_rps": 327.92691216220663
+    },
+    {
+      "concurrency": 8,
+      "benchmark_run_id": "production-product-concurrency-product-api-api-c8",
+      "success_count": 5,
+      "error_count": 0,
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 6.439800024963915,
+        "p50_ms": 8.470800006762147,
+        "p95_ms": 9.163059992715716,
+        "p99_ms": 9.19493199326098,
+        "max_ms": 9.202899993397295,
+        "mean_ms": 8.266120008192956
+      },
+      "throughput_rps": 412.92624309123227
+    }
+  ]
+}

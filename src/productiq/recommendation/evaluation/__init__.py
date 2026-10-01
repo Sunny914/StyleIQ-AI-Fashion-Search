@@ -1,5 +1,10 @@
 """Recommendation offline evaluation (Phase 11.7)."""
 
+from __future__ import annotations
+
+import importlib
+from typing import Any
+
 from productiq.recommendation.evaluation.benchmark_loader import load_recommendation_benchmark
 from productiq.recommendation.evaluation.benchmark_schema import (
     RECOMMENDATION_BENCHMARK_FILENAME,
@@ -12,16 +17,19 @@ from productiq.recommendation.evaluation.benchmark_schema import (
     RecommendationBenchmarkCase,
     RelevanceJudgment,
 )
-from productiq.recommendation.evaluation.evaluator import (
-    RecommendationSeedPipelineSnapshot,
-    evaluate_recommendation_benchmark,
-    evaluate_seed,
-    evaluate_variant,
-)
 from productiq.recommendation.evaluation.result_schema import (
     RecommendationBenchmarkEvaluationResult,
     RecommendationEvaluationConfig,
     evaluation_result_to_dict,
+)
+
+_LAZY_EVALUATOR_EXPORTS: frozenset[str] = frozenset(
+    {
+        "RecommendationSeedPipelineSnapshot",
+        "evaluate_recommendation_benchmark",
+        "evaluate_seed",
+        "evaluate_variant",
+    }
 )
 
 __all__ = [
@@ -43,3 +51,15 @@ __all__ = [
     "evaluation_result_to_dict",
     "load_recommendation_benchmark",
 ]
+
+
+def __getattr__(name: str) -> Any:
+    if name in _LAZY_EVALUATOR_EXPORTS:
+        evaluator = importlib.import_module("productiq.recommendation.evaluation.evaluator")
+        return getattr(evaluator, name)
+    msg = f"module {__name__!r} has no attribute {name!r}"
+    raise AttributeError(msg)
+
+
+def __dir__() -> list[str]:
+    return sorted(set(globals()) | set(__all__))

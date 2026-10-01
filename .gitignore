@@ -25,6 +25,8 @@ htmlcov/
 
 # Environment/secrets
 .env
+.env.local
+.env.*.local
 
 # Logs
 *.log

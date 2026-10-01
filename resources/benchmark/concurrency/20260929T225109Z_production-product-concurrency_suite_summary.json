@@ -1,0 +1,9 @@
+{
+  "contract_version": "1.0.0",
+  "suite_run_id": "production-product-concurrency",
+  "recorded_at_utc": "2026-09-29T22:51:09.688065+00:00",
+  "sweep_ids": [
+    "production-product-concurrency-product-api",
+    "production-product-concurrency-product-svc"
+  ]
+}

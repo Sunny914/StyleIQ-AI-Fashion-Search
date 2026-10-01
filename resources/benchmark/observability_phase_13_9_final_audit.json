@@ -1,0 +1,59 @@
+{
+  "audit_version": "1.0.0",
+  "generated_at_utc": "2026-09-30T09:55:31.260988Z",
+  "phase_scope": "Phase 13.9 observability contracts, runtime instrumentation, hardening audit.",
+  "observability_contract_version": "1.0.0",
+  "observability_runtime_version": "1.0.0",
+  "sub_phases": [
+    {
+      "phase_id": "13.9.1",
+      "title": "Contracts & architecture",
+      "status": "complete"
+    },
+    {
+      "phase_id": "13.9-B",
+      "title": "Runtime instrumentation",
+      "status": "complete"
+    },
+    {
+      "phase_id": "13.9-C",
+      "title": "Hardening & final audit",
+      "status": "complete"
+    }
+  ],
+  "tests": {
+    "observability_suite_count": 58,
+    "audit_module": "tests/observability/test_observability_audit.py"
+  },
+  "audit_results": {
+    "telemetry_failure_isolation": "PASS (see audit tests)",
+    "security_leakage": "PASS (runtime metadata allowlist + regression tests)",
+    "metric_cardinality": "PASS (MetricObservation validation + runtime audit)",
+    "stage_timing_validation": "PASS (expected span names + duration >= 0)",
+    "request_correlation": "PASS (single RequestIdMiddleware chain)",
+    "concurrency": "PASS (threaded collector stress tests)",
+    "capacity": "PASS (drop-oldest per channel; counters)",
+    "determinism": "PASS (stable names/validation; timestamps non-deterministic by design)",
+    "api_contract_safety": "PASS (existing API test suite; observability additive only)"
+  },
+  "production_path_validation": {
+    "unit_and_composition": "PASS",
+    "real_production_stack": "NOT_RUN / INFRASTRUCTURE_UNAVAILABLE"
+  },
+  "startup_import": {
+    "observability_runtime_import": "PASS",
+    "create_app_via_pytest": "PASS (tests/observability + tests/api)",
+    "bare_python_import_create_app": "FAIL \u2014 pre-existing productiq.logging \u2194 data.export import cycle; not introduced by observability (see api lifespan \u2192 logging \u2192 database loaders)."
+  },
+  "performance_observation": {
+    "test": "tests/observability/test_observability_runtime.py::test_instrumentation_overhead_observation",
+    "interpretation": "Engineering observation only; not an SLO or latency guarantee.",
+    "bound": "mem_elapsed < null_elapsed * 5.0 + 0.5 (wall-clock, noisy)"
+  },
+  "known_limitations": [
+    "No external exporters (Prometheus, OpenTelemetry, SaaS).",
+    "BM25/vector/RRF sub-stage timings not split where code does not expose them.",
+    "Default sink is bounded in-memory only.",
+    "Real PostgreSQL/pgvector/BM25 path requires opt-in env flags."
+  ]
+}

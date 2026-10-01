@@ -1,0 +1,304 @@
+{
+  "contract_version": "1.0.0",
+  "sweep_configuration": {
+    "contract_version": "1.0.0",
+    "performance_contract_version": "1.0.0",
+    "endpoint": "product",
+    "workload_id": "product_serving_existing_v1",
+    "benchmark_boundary": "api",
+    "warmups": 2,
+    "iterations": 5,
+    "concurrency_levels": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "sweep_run_id": "production-product-concurrency-product-api",
+  "recorded_at_utc": "2026-09-29T22:51:09.683106Z",
+  "environment": {
+    "python_version": "3.13.1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "contract_version": "1.0.0",
+    "productiq_version": "0.1.0",
+    "hostname": null
+  },
+  "serving_configuration": {
+    "api_version": "v1",
+    "api_max_top_k": 100,
+    "service_name": "productiq",
+    "artifact_identifiers": {}
+  },
+  "run_results": [
+    {
+      "contract_version": "1.0.0",
+      "configuration": {
+        "contract_version": "1.0.0",
+        "benchmark_type": "concurrency",
+        "endpoint": "product",
+        "workload_id": "product_serving_existing_v1",
+        "iterations": 5,
+        "warmups": 2,
+        "concurrency": 1
+      },
+      "workload": {
+        "workload_id": "product_serving_existing_v1",
+        "workload_name": "existing_catalog_product",
+        "endpoint": "product",
+        "http_method": "GET",
+        "route_path": "/api/v1/products/{product_id}",
+        "request_body": null,
+        "path_parameters": {
+          "product_id": "460946942002"
+        },
+        "description": "Existing product (Nike running seed aligned with evaluation catalog)."
+      },
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 1.595499983523041,
+        "p50_ms": 1.750800001900643,
+        "p95_ms": 3.0326399952173233,
+        "p99_ms": 3.192767994478345,
+        "max_ms": 3.2327999942936003,
+        "mean_ms": 2.1042800042778254
+      },
+      "throughput": {
+        "unit": "requests_per_second",
+        "requests_per_second": 474.2078376144543
+      },
+      "errors": {
+        "success_count": 5,
+        "error_count": 0,
+        "total_attempts": 5,
+        "error_rate": 0.0
+      },
+      "environment": {
+        "python_version": "3.13.1",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "contract_version": "1.0.0",
+        "productiq_version": "0.1.0",
+        "hostname": null
+      },
+      "serving_configuration": {
+        "api_version": "v1",
+        "api_max_top_k": 100,
+        "service_name": "productiq",
+        "artifact_identifiers": {}
+      },
+      "provenance": {
+        "benchmark_run_id": "production-product-concurrency-product-api-api-c1",
+        "recorded_at_utc": "2026-09-29T22:51:09.597454Z",
+        "runner_name": "productiq.serving.performance.runner",
+        "runner_version": "1.0.0"
+      },
+      "stage_measurements": []
+    },
+    {
+      "contract_version": "1.0.0",
+      "configuration": {
+        "contract_version": "1.0.0",
+        "benchmark_type": "concurrency",
+        "endpoint": "product",
+        "workload_id": "product_serving_existing_v1",
+        "iterations": 5,
+        "warmups": 2,
+        "concurrency": 2
+      },
+      "workload": {
+        "workload_id": "product_serving_existing_v1",
+        "workload_name": "existing_catalog_product",
+        "endpoint": "product",
+        "http_method": "GET",
+        "route_path": "/api/v1/products/{product_id}",
+        "request_body": null,
+        "path_parameters": {
+          "product_id": "460946942002"
+        },
+        "description": "Existing product (Nike running seed aligned with evaluation catalog)."
+      },
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 3.9357999921776354,
+        "p50_ms": 7.040299999061972,
+        "p95_ms": 28.172740002628416,
+        "p99_ms": 28.29918800620362,
+        "max_ms": 28.330800007097423,
+        "mean_ms": 14.681199996266514
+      },
+      "throughput": {
+        "unit": "requests_per_second",
+        "requests_per_second": 127.11972146912792
+      },
+      "errors": {
+        "success_count": 5,
+        "error_count": 0,
+        "total_attempts": 5,
+        "error_rate": 0.0
+      },
+      "environment": {
+        "python_version": "3.13.1",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "contract_version": "1.0.0",
+        "productiq_version": "0.1.0",
+        "hostname": null
+      },
+      "serving_configuration": {
+        "api_version": "v1",
+        "api_max_top_k": 100,
+        "service_name": "productiq",
+        "artifact_identifiers": {}
+      },
+      "provenance": {
+        "benchmark_run_id": "production-product-concurrency-product-api-api-c2",
+        "recorded_at_utc": "2026-09-29T22:51:09.641912Z",
+        "runner_name": "productiq.serving.performance.runner",
+        "runner_version": "1.0.0"
+      },
+      "stage_measurements": []
+    },
+    {
+      "contract_version": "1.0.0",
+      "configuration": {
+        "contract_version": "1.0.0",
+        "benchmark_type": "concurrency",
+        "endpoint": "product",
+        "workload_id": "product_serving_existing_v1",
+        "iterations": 5,
+        "warmups": 2,
+        "concurrency": 4
+      },
+      "workload": {
+        "workload_id": "product_serving_existing_v1",
+        "workload_name": "existing_catalog_product",
+        "endpoint": "product",
+        "http_method": "GET",
+        "route_path": "/api/v1/products/{product_id}",
+        "request_body": null,
+        "path_parameters": {
+          "product_id": "460946942002"
+        },
+        "description": "Existing product (Nike running seed aligned with evaluation catalog)."
+      },
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 3.855199960526079,
+        "p50_ms": 9.010900044813752,
+        "p95_ms": 10.668700013775378,
+        "p99_ms": 10.850220017600805,
+        "max_ms": 10.895600018557161,
+        "mean_ms": 8.289239997975528
+      },
+      "throughput": {
+        "unit": "requests_per_second",
+        "requests_per_second": 327.92691216220663
+      },
+      "errors": {
+        "success_count": 5,
+        "error_count": 0,
+        "total_attempts": 5,
+        "error_rate": 0.0
+      },
+      "environment": {
+        "python_version": "3.13.1",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "contract_version": "1.0.0",
+        "productiq_version": "0.1.0",
+        "hostname": null
+      },
+      "serving_configuration": {
+        "api_version": "v1",
+        "api_max_top_k": 100,
+        "service_name": "productiq",
+        "artifact_identifiers": {}
+      },
+      "provenance": {
+        "benchmark_run_id": "production-product-concurrency-product-api-api-c4",
+        "recorded_at_utc": "2026-09-29T22:51:09.662441Z",
+        "runner_name": "productiq.serving.performance.runner",
+        "runner_version": "1.0.0"
+      },
+      "stage_measurements": []
+    },
+    {
+      "contract_version": "1.0.0",
+      "configuration": {
+        "contract_version": "1.0.0",
+        "benchmark_type": "concurrency",
+        "endpoint": "product",
+        "workload_id": "product_serving_existing_v1",
+        "iterations": 5,
+        "warmups": 2,
+        "concurrency": 8
+      },
+      "workload": {
+        "workload_id": "product_serving_existing_v1",
+        "workload_name": "existing_catalog_product",
+        "endpoint": "product",
+        "http_method": "GET",
+        "route_path": "/api/v1/products/{product_id}",
+        "request_body": null,
+        "path_parameters": {
+          "product_id": "460946942002"
+        },
+        "description": "Existing product (Nike running seed aligned with evaluation catalog)."
+      },
+      "latency": {
+        "unit": "ms",
+        "sample_count": 5,
+        "min_ms": 6.439800024963915,
+        "p50_ms": 8.470800006762147,
+        "p95_ms": 9.163059992715716,
+        "p99_ms": 9.19493199326098,
+        "max_ms": 9.202899993397295,
+        "mean_ms": 8.266120008192956
+      },
+      "throughput": {
+        "unit": "requests_per_second",
+        "requests_per_second": 412.92624309123227
+      },
+      "errors": {
+        "success_count": 5,
+        "error_count": 0,
+        "total_attempts": 5,
+        "error_rate": 0.0
+      },
+      "environment": {
+        "python_version": "3.13.1",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "contract_version": "1.0.0",
+        "productiq_version": "0.1.0",
+        "hostname": null
+      },
+      "serving_configuration": {
+        "api_version": "v1",
+        "api_max_top_k": 100,
+        "service_name": "productiq",
+        "artifact_identifiers": {}
+      },
+      "provenance": {
+        "benchmark_run_id": "production-product-concurrency-product-api-api-c8",
+        "recorded_at_utc": "2026-09-29T22:51:09.679947Z",
+        "runner_name": "productiq.serving.performance.runner",
+        "runner_version": "1.0.0"
+      },
+      "stage_measurements": []
+    }
+  ],
+  "thread_safety_notes": [
+    "ProcessedParquetProductCatalogReadProvider builds an immutable in-memory index at startup.",
+    "get_product is a dict lookup; concurrent reads are expected to be safe after initialization.",
+    "Parquet load occurs once; not included in per-request latency samples.",
+    "FastAPI TestClient drives concurrent requests from worker threads in the 13.8.2 runner.",
+    "Thread safety was reviewed but not proven; failures at higher concurrency are reported, not hidden.",
+    "This phase measures behavior; it does not add locks, pools, or caches to production code."
+  ],
+  "limitations": [
+    "Descriptive measurements only; no configuration is ranked or recommended.",
+    "Throughput uses successful requests divided by measured wall time per level.",
+    "Warmups are executed independently at each concurrency level."
+  ]
+}

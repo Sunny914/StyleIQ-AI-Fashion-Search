@@ -1,0 +1,160 @@
+{
+  "audit_version": "1.0.0",
+  "generated_at_utc": "2026-09-30T09:14:06.829977Z",
+  "phase_scope": "Phase 13.8 serving performance measurement, baseline/regression, and evidence workflow.",
+  "sub_phases": [
+    {
+      "phase_id": "13.8.1",
+      "title": "Serving performance contract",
+      "implementation": "implemented",
+      "measurement": "implemented",
+      "notes": "Schema + workloads; validated by contract tests."
+    },
+    {
+      "phase_id": "13.8.2",
+      "title": "Benchmark harness",
+      "implementation": "implemented",
+      "measurement": "implemented",
+      "notes": "Warmups excluded from latency samples; throughput uses wall clock."
+    },
+    {
+      "phase_id": "13.8.3",
+      "title": "Search serving benchmark",
+      "implementation": "implemented",
+      "measurement": "pending",
+      "notes": "Production measurements pending when opt-in benchmark not run."
+    },
+    {
+      "phase_id": "13.8.4",
+      "title": "Recommendation serving benchmark",
+      "implementation": "implemented",
+      "measurement": "pending",
+      "notes": null
+    },
+    {
+      "phase_id": "13.8.5",
+      "title": "Product serving benchmark",
+      "implementation": "implemented",
+      "measurement": "measured",
+      "notes": null
+    },
+    {
+      "phase_id": "13.8.6",
+      "title": "Concurrency sweeps",
+      "implementation": "implemented",
+      "measurement": "measured",
+      "notes": "Product sweeps measured locally; search/recommendation concurrency pending."
+    },
+    {
+      "phase_id": "13.8.7",
+      "title": "Baseline & regression",
+      "implementation": "implemented",
+      "measurement": "implemented",
+      "notes": "Framework only; pinned baseline JSON optional."
+    },
+    {
+      "phase_id": "13.8.8",
+      "title": "Evidence-based optimization",
+      "implementation": "implemented",
+      "measurement": "implemented",
+      "notes": "No production optimization retained."
+    },
+    {
+      "phase_id": "13.8.9",
+      "title": "Hardening & final audit",
+      "implementation": "implemented",
+      "measurement": "implemented",
+      "notes": null
+    }
+  ],
+  "environment_flags": [
+    {
+      "name": "PRODUCTIQ_SEARCH_SERVING_PERFORMANCE_BENCHMARK",
+      "purpose": "Opt-in gate for 13.8.3 production search serving benchmark pytest/script.",
+      "prerequisites": [
+        "PRODUCTIQ_RUN_INTEGRATION_TESTS=1",
+        "PRODUCTIQ_PRODUCTION_RETRIEVAL_SMOKE=1",
+        "PostgreSQL/pgvector retrieval stack"
+      ],
+      "when_disabled": "Production search benchmark tests skip; no artifacts written."
+    },
+    {
+      "name": "PRODUCTIQ_RECOMMENDATION_SERVING_PERFORMANCE_BENCHMARK",
+      "purpose": "Opt-in gate for 13.8.4 production recommendation serving benchmark.",
+      "prerequisites": [
+        "PRODUCTIQ_RUN_INTEGRATION_TESTS=1",
+        "PRODUCTIQ_PRODUCTION_RETRIEVAL_SMOKE=1",
+        "Catalog seeds for recommendation workloads"
+      ],
+      "when_disabled": "Production recommendation benchmark tests skip."
+    },
+    {
+      "name": "PRODUCTIQ_PRODUCT_SERVING_PERFORMANCE_BENCHMARK",
+      "purpose": "Opt-in gate for 13.8.5 production product serving benchmark.",
+      "prerequisites": [
+        "resources/processed/product_catalog.parquet"
+      ],
+      "when_disabled": "Production product benchmark tests skip."
+    },
+    {
+      "name": "PRODUCTIQ_SERVING_CONCURRENCY_BENCHMARK",
+      "purpose": "Opt-in gate for 13.8.6 concurrency sweeps (product measured; search/rec pending).",
+      "prerequisites": [
+        "Endpoint-specific: product parquet and/or retrieval stack for search/rec"
+      ],
+      "when_disabled": "Production concurrency benchmark tests skip."
+    },
+    {
+      "name": "PRODUCTIQ_RUN_INTEGRATION_TESTS",
+      "purpose": "Shared prerequisite for PostgreSQL-backed integration and retrieval benchmarks.",
+      "prerequisites": [
+        "PostgreSQL products table with embeddings"
+      ],
+      "when_disabled": "Integration and retrieval-gated benchmarks skip or fail closed in tests."
+    },
+    {
+      "name": "PRODUCTIQ_PRODUCTION_RETRIEVAL_SMOKE",
+      "purpose": "Production retrieval smoke prerequisite for search/recommendation serving benchmarks.",
+      "prerequisites": [
+        "BM25/HNSW or documented fallback per live_dependencies"
+      ],
+      "when_disabled": "Search/recommendation production serving benchmarks skip in pytest."
+    }
+  ],
+  "import_safety_summary": "FastAPI create_app and serving services do not import productiq.serving.performance; benchmark code lives under serving/performance/ and scripts/ only.",
+  "test_isolation_summary": "Default pytest suites skip production benchmarks unless explicit PRODUCTIQ_* flags; PostgreSQL/BM25/embeddings not required for standard serving/api/recommendation tests.",
+  "determinism_summary": "Workload catalogs, configurations, JSON round-trips, baseline identity, provenance checks, regression comparison, and evidence reports are covered by unit tests; timestamps/run IDs remain non-deterministic by design.",
+  "artifact_integrity": {
+    "run_results_validated": 36,
+    "run_results_failed": 0,
+    "sweeps_validated": 10,
+    "sweeps_failed": 0,
+    "checksum_verifications": 36,
+    "checksum_mismatches": 0,
+    "issues": []
+  },
+  "baseline_safety_summary": "Baselines require explicit pin; overwrite=False by default; identity + provenance matching; BASELINE_NOT_FOUND without nearest-match; no fabricated search/rec baselines.",
+  "concurrency_safety_summary": "Concurrency benchmark does not modify production code for thread safety; error accounting enforced in runner; warmups excluded from measured iterations.",
+  "production_behavior_change_summary": "Phase 13.8.8 retained no optimization; performance infrastructure is isolated from search/retrieval/ranking/recommendation/product serving semantics.",
+  "metric_semantics_summary": "Latency percentiles via compute_latency_statistics_ms; throughput = success_count/wall_seconds; relative_pct_delta returns None for zero baseline; missing throughput not coerced to zero in comparison.",
+  "optimization_status": "No production optimization retained in 13.8.8 or 13.8.9.",
+  "stage_measurements_status": "Empty on checked-in serving benchmark artifacts.",
+  "outstanding_measurement_gaps": [
+    "Search production serving benchmark artifacts missing (13.8.3).",
+    "Recommendation production serving benchmark artifacts missing (13.8.4).",
+    "Search/recommendation concurrency production sweeps pending (13.8.6).",
+    "stage_measurements empty on existing serving benchmark runs."
+  ],
+  "limitations": [
+    "Audit reflects repository state at generation time; pending measurements are not marked complete.",
+    "Product API benchmark latency includes HTTP/TestClient stack.",
+    "No statistical significance testing in Phase 13.8."
+  ],
+  "reproducibility": [
+    "Standard tests: python -m pytest tests/serving tests/api tests/recommendation -q",
+    "Benchmark tests: tests/serving/test_serving_performance_*.py (synthetic) and opt-in production modules",
+    "Compare: scripts/compare_serving_performance.py",
+    "Evidence: scripts/analyze_serving_performance_evidence.py",
+    "Regenerate audit: scripts/run_serving_performance_phase_13_8_audit.py"
+  ]
+}

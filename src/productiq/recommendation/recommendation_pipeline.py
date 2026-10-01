@@ -6,6 +6,8 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from enum import StrEnum
 
+from productiq.observability.runtime.emitter import observe_stage
+from productiq.observability.tracing import SpanKind
 from productiq.recommendation.baseline_ranker import (
     BaselineRecommendationRanker,
     rank_recommendations,
@@ -99,14 +101,24 @@ class RecommendationPipeline:
             requested_top_k=request.top_k,
         )
 
-        seed_product = self.catalog.resolve_seed_product(request.seed_product_id)
+        with observe_stage(
+            "recommendation.seed_resolution",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            seed_product = self.catalog.resolve_seed_product(request.seed_product_id)
 
-        generation = generate_recommendation_candidates(
-            request,
-            catalog=self.catalog,
-            generators=self.generators,
-            filtering_by_product_id=self.filtering_by_product_id,
-        )
+        with observe_stage(
+            "recommendation.candidate_generation",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            generation = generate_recommendation_candidates(
+                request,
+                catalog=self.catalog,
+                generators=self.generators,
+                filtering_by_product_id=self.filtering_by_product_id,
+            )
         validate_candidate_generation_invariants(generation)
         candidates = apply_candidate_pool_top_k(
             generation.candidates,
@@ -140,37 +152,57 @@ class RecommendationPipeline:
             )
             return RecommendationPipelineResult(response=response, execution=execution)
 
-        candidate_products, context_by_product_id = self.product_context_provider.load_candidate_context(
-            product_ids=tuple(candidate.product_id for candidate in candidates),
-        )
+        with observe_stage(
+            "recommendation.context_loading",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            candidate_products, context_by_product_id = self.product_context_provider.load_candidate_context(
+                product_ids=tuple(candidate.product_id for candidate in candidates),
+            )
         seed_filtering = self.filtering_by_product_id.get(request.seed_product_id)
 
-        similarities = self.similarity_engine.compute_for_candidates(
-            seed_product,
-            candidates,
-            candidate_products,
-        )
+        with observe_stage(
+            "recommendation.similarity",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            similarities = self.similarity_engine.compute_for_candidates(
+                seed_product,
+                candidates,
+                candidate_products,
+            )
         validate_content_similarity_batch(candidates=candidates, similarities=similarities)
         similarities_by_product_id = {row.product_id: row for row in similarities}
 
-        features = extract_features_for_candidates(
-            seed_product=seed_product,
-            candidates=candidates,
-            similarities_by_product_id=similarities_by_product_id,
-            context_by_product_id=context_by_product_id,
-            seed_filtering=seed_filtering,
-        )
+        with observe_stage(
+            "recommendation.feature_engineering",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            features = extract_features_for_candidates(
+                seed_product=seed_product,
+                candidates=candidates,
+                similarities_by_product_id=similarities_by_product_id,
+                context_by_product_id=context_by_product_id,
+                seed_filtering=seed_filtering,
+            )
         validate_recommendation_features_batch(candidates=candidates, features=features)
 
         candidates_by_product_id = {candidate.product_id: candidate for candidate in candidates}
-        ranked = rank_recommendations(
-            features,
-            top_k=pool_top_k,
-            config=self.ranker_config or self.ranker.config,
-            candidates_by_product_id=candidates_by_product_id,
-            seed_product_id=request.seed_product_id,
-            recommendation_config=request.config,
-        )
+        with observe_stage(
+            "recommendation.ranking",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            ranked = rank_recommendations(
+                features,
+                top_k=pool_top_k,
+                config=self.ranker_config or self.ranker.config,
+                candidates_by_product_id=candidates_by_product_id,
+                seed_product_id=request.seed_product_id,
+                recommendation_config=request.config,
+            )
         validate_ranked_recommendations_invariants(
             ranked,
             seed_product_id=request.seed_product_id,
@@ -190,12 +222,17 @@ class RecommendationPipeline:
                 if product_id in candidate_products
             },
         )
-        response = select_recommendations_for_request(
-            request,
-            ranked,
-            config=self.selection_config,
-            context=selection_context,
-        )
+        with observe_stage(
+            "recommendation.selection",
+            kind=SpanKind.DOMAIN,
+            operation="recommendation",
+        ):
+            response = select_recommendations_for_request(
+                request,
+                ranked,
+                config=self.selection_config,
+                context=selection_context,
+            )
         validate_selection_output_constraints(
             response,
             ranked_input=ranked,

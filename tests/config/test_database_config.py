@@ -31,7 +31,7 @@ def test_redact_database_url_hides_password() -> None:
 def test_settings_expose_redacted_database_url() -> None:
     settings = Settings(
         _env_file=None,
-        database_url="postgresql://user:topsecret@localhost:5432/productiq",
+        database_url_override="postgresql://user:topsecret@localhost:5432/productiq",
     )
 
     assert "topsecret" not in settings.redacted_database_url

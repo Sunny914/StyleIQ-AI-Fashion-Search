@@ -86,6 +86,12 @@ def test_invalid_configuration_is_rejected(
         Settings(_env_file=None)
 
 
+def test_production_like_environment(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("APP_ENV", "production-like")
+    settings = Settings(_env_file=None)
+    assert settings.app_env is AppEnvironment.PRODUCTION_LIKE
+
+
 def test_settings_expose_typed_values(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("APP_ENV", "production")
     monkeypatch.setenv("LOG_LEVEL", "ERROR")
