@@ -19,6 +19,7 @@ type DetailState =
   | { status: "ready"; product: ProductCardModel; recommendations: ProductCardModel[]; recommendationNote: string | null };
 
 export function ProductDetailView({ productId }: ProductDetailViewProps) {
+  const [attempt, setAttempt] = useState(0);
   const [state, setState] = useState<DetailState>({ status: "loading" });
   const [imageFailed, setImageFailed] = useState(false);
 
@@ -71,7 +72,7 @@ export function ProductDetailView({ productId }: ProductDetailViewProps) {
       }
     })();
     return () => controller.abort();
-  }, [productId]);
+  }, [productId, attempt]);
 
   if (state.status === "loading") {
     return <p className="state-message" role="status">Loading product…</p>;
@@ -89,6 +90,10 @@ export function ProductDetailView({ productId }: ProductDetailViewProps) {
     return (
       <div className="state-message state-message--error" role="alert">
         <p>{state.message}</p>
+        <p>Search services are temporarily unavailable.</p>
+        <button className="retry-button" type="button" onClick={() => setAttempt((value) => value + 1)}>
+          Retry
+        </button>
         <Link href="/search">Back to search</Link>
       </div>
     );
@@ -124,7 +129,9 @@ export function ProductDetailView({ productId }: ProductDetailViewProps) {
         </div>
       </div>
       <section className="recommendations" aria-labelledby="similar-heading">
+        <p className="eyebrow">Related products</p>
         <h2 id="similar-heading">Similar pieces</h2>
+        <p className="recommendations__note">Pieces returned for this product. These are catalog neighbors, not a learned preference profile.</p>
         {recommendations.length > 0 ? (
           <div className="product-grid">
             {recommendations.map((card) => (
