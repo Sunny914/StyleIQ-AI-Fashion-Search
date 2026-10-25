@@ -271,3 +271,9 @@ run_search_evaluation_hardening_audit(Path("."), include_determinism=True, deter
 
 See `docs/architecture/search-evaluation-hardening.md`.
 
+---
+
+## Phase 15C serving integration
+
+Offline evaluation artifacts above are unchanged. Live Compose search/product/recommendation serving is documented in `docs/architecture/docker-serving-integration.md` and audited in `resources/benchmark/phase_15c_serving_audit.md`. Fixture HTTP checks are not a substitute for these retrieval-quality benchmarks.
+

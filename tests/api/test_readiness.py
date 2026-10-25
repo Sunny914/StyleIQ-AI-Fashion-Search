@@ -23,7 +23,7 @@ def test_ready_not_ready_when_services_unconfigured() -> None:
         body = client.get(PLANNED_ROUTE_READY).json()
     assert body["status"] == ReadinessStatus.NOT_READY.value
     names = {check["name"] for check in body["checks"]}
-    assert names == {"search_serving", "recommendation_serving", "product_serving"}
+    assert names >= {"search_serving", "recommendation_serving", "product_serving", "catalog_data"}
 
 
 def test_ready_when_all_services_configured() -> None:

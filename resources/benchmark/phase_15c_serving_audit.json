@@ -1,0 +1,70 @@
+{
+  "audit_version": "1.0.0",
+  "catalog": {
+    "full_catalog_expected": 367172,
+    "full_catalog_row_count": null,
+    "full_catalog_verified": false,
+    "mode": "fixture"
+  },
+  "checks": {
+    "api_image_build": "PASS",
+    "compose_config": "PASS",
+    "fixture_load": "PASS",
+    "full_catalog_load": "NOT_RUN",
+    "http_product": "PASS",
+    "http_recommendation": "PASS",
+    "http_search": "PASS",
+    "mypy": "PASS",
+    "pgvector_schema": "PASS",
+    "pytest_gate": "FAIL",
+    "readiness": "PASS",
+    "ruff": "FAIL"
+  },
+  "deferred": [
+    "Next.js frontend",
+    "cloud deployment",
+    "CI/CD"
+  ],
+  "evidence": {
+    "api_base": "http://127.0.0.1:8010",
+    "fixture_ids": [
+      "compose-demo-001",
+      "compose-demo-002",
+      "compose-demo-003"
+    ],
+    "hnsw_index": "ix_products_embedding_hnsw_cosine",
+    "http": {
+      "product": 200,
+      "ready": 200,
+      "recommendations": 200,
+      "search": 200
+    },
+    "image": "productiq-api:local",
+    "mypy_returncode": 0,
+    "ready_status_value": "ready",
+    "ruff_project_errors": 18
+  },
+  "generated_at_utc": "2026-10-22T16:44:54.645446Z",
+  "notes": [
+    "Live API on http://127.0.0.1:8010 after fixture load; catalog_mode=fixture (3 products, 3 embeddings); NOT the 367172-row catalog.",
+    "HTTP search navy cotton shirt: compose-demo-003 rank 1 (lexical). HTTP search nike running shoes: compose-demo-001 rank 1 (semantic). Women filter excluded compose-demo-001.",
+    "GET /api/v1/products/compose-demo-001 -> 200 Nike. Unknown id -> 404 Product not found.",
+    "POST /api/v1/recommendations seed compose-demo-001 returned compose-demo-003 and compose-demo-002; seed excluded.",
+    "PostgreSQL: 3 rows, embedding vector(384), HNSW ix_products_embedding_hnsw_cosine vector_cosine_ops, extension vector.",
+    "Full non-integration pytest: 1710 passed, 2 failed, 49 skipped in 866s. Failures: (1) compose 127.0.0.1 healthcheck \u2014 removed; 21 compose contract tests then passed. (2) observability SLO test \u2014 passed on rerun.",
+    "Phase 15C contract tests (compose + production_stack): 11 passed after connect_timeout fix.",
+    "Ruff src/tests: 18 errors, all pre-existing outside 15C modules. 15C files ruff-clean.",
+    "mypy on 15C modules: Success.",
+    "full_catalog_load NOT_RUN: 367172-row load was not executed.",
+    "BGE loads at API factory time into HF_HOME=/tmp/hf-cache (named volume avoided due to uid 1000 permissions).",
+    "serving.performance.__init__ no longer eagerly imports TestClient/httpx."
+  ],
+  "phase": "15C",
+  "phase_15c_status": "BLOCKED",
+  "tests": {
+    "command": "pytest -q --ignore=tests/retrieval/integration",
+    "failed": 2,
+    "passed": 1710,
+    "skipped": 49
+  }
+}

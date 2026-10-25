@@ -20,6 +20,9 @@ class ApplicationServices:
     search_service: SearchServingService | None = None
     recommendation_service: RecommendationServingService | None = None
     product_service: ProductServingService | None = None
+    catalog_mode: str | None = None
+    catalog_product_count: int | None = None
+    catalog_embedding_count: int | None = None
 
     def configured_service_names(self) -> tuple[str, ...]:
         names: list[str] = []

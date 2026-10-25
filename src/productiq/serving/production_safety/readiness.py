@@ -99,12 +99,43 @@ def _product_checks(service: ProductServingService | None) -> tuple[ReadinessChe
     return tuple(checks)
 
 
+def _catalog_data_checks(application_services: ApplicationServices) -> tuple[ReadinessCheck, ...]:
+    mode = application_services.catalog_mode
+    if mode is None:
+        return (
+            ReadinessCheck(
+                name="catalog_data",
+                status=DependencyReadinessStatus.NOT_CHECKED,
+                message="catalog not wired for this process",
+            ),
+        )
+    count = application_services.catalog_product_count
+    embeddings = application_services.catalog_embedding_count
+    if mode == "empty":
+        status = DependencyReadinessStatus.NOT_READY
+        message = "catalog table is empty; run load_runtime_catalog"
+    elif mode == "fixture":
+        status = DependencyReadinessStatus.CONFIGURED
+        message = (
+            f"labeled compose-demo fixture ({count} products, {embeddings} embeddings); "
+            "not the 367172-row reference catalog"
+        )
+    elif mode == "full":
+        status = DependencyReadinessStatus.READY
+        message = f"full reference catalog loaded ({count} products, {embeddings} embeddings)"
+    else:
+        status = DependencyReadinessStatus.CONFIGURED
+        message = f"partial catalog ({count} products, {embeddings} embeddings); not full 367172-row set"
+    return (ReadinessCheck(name="catalog_data", status=status, message=message),)
+
+
 def build_readiness_response(application_services: ApplicationServices) -> ReadinessResponse:
     """Aggregate readiness without expensive dependency I/O."""
     checks = (
         *_search_checks(application_services.search_service),
         *_recommendation_checks(application_services.recommendation_service),
         *_product_checks(application_services.product_service),
+        *_catalog_data_checks(application_services),
     )
     configured = {
         "search_serving": application_services.search_service is not None,

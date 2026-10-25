@@ -1,0 +1,61 @@
+{
+  "api_runtime": {
+    "health_ok": true,
+    "ready_ok": true
+  },
+  "audit_version": "1.0.0",
+  "bootstrap": {
+    "error_summary": null,
+    "module": "productiq.database.bootstrap_compose",
+    "succeeded": true
+  },
+  "checks": {
+    "api_health": "PASS",
+    "api_ready": "PASS",
+    "compose_config_valid": "PASS",
+    "compose_contract_tests": "PASS",
+    "compose_database_hostname": "PASS",
+    "compose_file_present": "PASS",
+    "pgvector_schema_contract": "PASS",
+    "postgres_health": "PASS",
+    "pytest_gate": "PASS",
+    "schema_bootstrap": "PASS"
+  },
+  "compose": {
+    "api_service": "productiq-api",
+    "config_error": null,
+    "config_valid": true,
+    "file": "docker-compose.yml",
+    "postgres_service": "postgres"
+  },
+  "database_contract": {
+    "catalog_row_count": 3,
+    "database_name": "productiq",
+    "embedding_column_exists": true,
+    "embedding_column_type": "vector(384)",
+    "embedding_dimension": 384,
+    "embedding_type_is_vector": true,
+    "hnsw_cosine_opclass": true,
+    "hnsw_index_exists": true,
+    "hnsw_operator_class": "vector_cosine_ops",
+    "postgres_reachable": true,
+    "products_table_exists": true,
+    "vector_extension_installed": true
+  },
+  "deferred_15c": [
+    "Full stack integration audit with production-like artifact wiring"
+  ],
+  "generated_at_utc": "2026-10-02T10:48:05.142163Z",
+  "live_validation_notes": [
+    "Compose postgres healthy; bootstrap + pgvector contract verified in container",
+    "API /api/v1/health and /ready returned 200 on host port 8010 (8000 already allocated)"
+  ],
+  "phase": "15B",
+  "phase_15b_status": "COMPLETE",
+  "tests": {
+    "command": "pytest tests/docker/test_phase_15b_compose_contract.py -q",
+    "failed": 0,
+    "passed": 15,
+    "skipped": 0
+  }
+}

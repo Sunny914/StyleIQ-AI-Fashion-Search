@@ -58,8 +58,11 @@ def test_readiness_endpoint_unconfigured_services() -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "not_ready"
-    assert len(body["checks"]) == 3
-    assert all(check["status"] == "not_ready" for check in body["checks"])
+    by_name = {check["name"]: check["status"] for check in body["checks"]}
+    assert by_name["search_serving"] == "not_ready"
+    assert by_name["recommendation_serving"] == "not_ready"
+    assert by_name["product_serving"] == "not_ready"
+    assert by_name["catalog_data"] == "not_checked"
 
 
 def test_api_version_prefix_in_openapi() -> None:

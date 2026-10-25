@@ -9,6 +9,12 @@ from productiq.logging.setup import reset_logging_configuration
 
 
 @pytest.fixture(autouse=True)
+def disable_production_serving_env(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Keep unit tests on the hollow app unless a test constructs Settings explicitly."""
+    monkeypatch.setenv("PRODUCTIQ_ENABLE_PRODUCTION_SERVING", "0")
+
+
+@pytest.fixture(autouse=True)
 def reset_application_state() -> None:
     """Reset cached settings and logging between tests for isolation."""
     get_settings.cache_clear()

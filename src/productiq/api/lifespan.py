@@ -26,6 +26,9 @@ async def build_lifespan(app: FastAPI) -> AsyncIterator[None]:
         yield
     finally:
         app.state.is_running = False
+        runtime = getattr(app.state, "production_serving_runtime", None)
+        if runtime is not None:
+            runtime.engine.dispose()
         logger.info("ProductIQ API shutdown complete")
 
 

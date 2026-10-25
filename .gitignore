@@ -27,6 +27,11 @@ htmlcov/
 .env
 .env.local
 .env.*.local
+frontend/.env.local
+
+# Next.js storefront
+frontend/node_modules/
+frontend/.next/
 
 # Logs
 *.log

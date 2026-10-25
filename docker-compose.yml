@@ -1,0 +1,88 @@
+# ProductIQ Phase 15B/15C — API + PostgreSQL/pgvector (internal Compose network).
+# Usage:
+#   docker compose up -d postgres
+#   docker compose --profile load run --rm catalog-load
+#   docker compose up -d productiq-api
+#
+# Copy .env.example → .env and set POSTGRES_PASSWORD / DATABASE_URL for Compose.
+
+name: productiq
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-productiq}
+      POSTGRES_USER: ${POSTGRES_USER:-productiq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env (see .env.example)}
+    volumes:
+      - productiq_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-productiq} -d ${POSTGRES_DB:-productiq}",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+  productiq-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: productiq-api:local
+    env_file:
+      - .env
+    ports:
+      - "${PRODUCTIQ_API_PORT:-8000}:8000"
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL in .env for Compose (host must be postgres)}
+      PRODUCTIQ_ENABLE_PRODUCTION_SERVING: ${PRODUCTIQ_ENABLE_PRODUCTION_SERVING:-1}
+      PRODUCTIQ_PROCESSED_CATALOG_PATH: ${PRODUCTIQ_PROCESSED_CATALOG_PATH:-/artifacts/processed/product_catalog.parquet}
+      PRODUCTIQ_BM25_ARTIFACT_PATH: ${PRODUCTIQ_BM25_ARTIFACT_PATH:-/artifacts/processed/bm25_lexical_index.pkl}
+      PRODUCTIQ_EMBEDDINGS_ARTIFACT_PATH: ${PRODUCTIQ_EMBEDDINGS_ARTIFACT_PATH:-/artifacts/processed/product_embeddings.parquet}
+      HF_HOME: ${HF_HOME:-/tmp/hf-cache}
+    volumes:
+      - ${PRODUCTIQ_ARTIFACTS_HOST:-./resources/processed}:/artifacts/processed:ro
+      - ${PRODUCTIQ_EMBEDDING_SELECTION_HOST:-./resources/embedding}:/app/resources/embedding:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  catalog-load:
+    profiles: ["load"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: productiq-api:local
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL in .env for Compose (host must be postgres)}
+      PRODUCTIQ_PROCESSED_CATALOG_PATH: ${PRODUCTIQ_PROCESSED_CATALOG_PATH:-/artifacts/processed/product_catalog.parquet}
+      PRODUCTIQ_EMBEDDINGS_ARTIFACT_PATH: ${PRODUCTIQ_EMBEDDINGS_ARTIFACT_PATH:-/artifacts/processed/product_embeddings.parquet}
+    volumes:
+      - ${PRODUCTIQ_ARTIFACTS_HOST:-./resources/processed}:/artifacts/processed:ro
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command:
+      [
+        "python",
+        "-m",
+        "productiq.database.load_runtime_catalog",
+        "--mode",
+        "${PRODUCTIQ_CATALOG_LOAD_MODE:-fixture}",
+        "--json",
+      ]
+
+volumes:
+  productiq_pgdata:

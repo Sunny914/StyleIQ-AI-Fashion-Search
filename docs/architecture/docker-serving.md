@@ -119,8 +119,8 @@ Search/recommendation **business** calls may return configuration errors without
 
 | Phase | Work |
 |-------|------|
-| **15B** | PostgreSQL + pgvector container environment |
-| **15C** | Full containerized integration + audit |
+| **15B** | PostgreSQL + pgvector container environment — see [docker-postgres-pgvector.md](docker-postgres-pgvector.md) |
+| **15C** | Full containerized serving integration — [docker-serving-integration.md](docker-serving-integration.md) |
 
 ## Related
 

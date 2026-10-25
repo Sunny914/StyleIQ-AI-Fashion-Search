@@ -10,7 +10,11 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from productiq.exceptions.base import LexicalRetrievalError
 from productiq.retrieval.contracts import RetrievalRequest
-from productiq.retrieval.lexical import InvertedLexicalIndex, tokenize_lexical_text
+from productiq.retrieval.lexical import (
+    InvertedLexicalIndex,
+    normalize_lexical_query_term,
+    tokenize_lexical_text,
+)
 from productiq.retrieval.query_for_retrieval import RetrievalQueryView, build_retrieval_query_view
 
 DEFAULT_BM25_K1 = 1.5
@@ -127,6 +131,7 @@ class BM25Scorer:
         self._index = index
         self._config = config or BM25Config()
         self._stats = BM25CorpusStatistics.from_index(index)
+        self._term_frequency_maps: dict[str, dict[str, int]] = {}
 
     @property
     def config(self) -> BM25Config:
@@ -140,8 +145,24 @@ class BM25Scorer:
         df = self._index.document_frequency(term)
         return bm25_idf(self._stats.document_count, df)
 
+    def _term_frequency(self, term: str, product_id: str) -> int:
+        """Return TF from a per-query posting map.
+
+        ``InvertedLexicalIndex.term_frequency`` scans every posting. Scoring a
+        large candidate set that way is quadratic and does not change the score.
+        """
+        normalized = normalize_lexical_query_term(term)
+        posting_map = self._term_frequency_maps.get(normalized)
+        if posting_map is None:
+            posting_map = {
+                posting.product_id: posting.term_frequency
+                for posting in self._index.lookup_term(normalized)
+            }
+            self._term_frequency_maps[normalized] = posting_map
+        return posting_map.get(product_id, 0)
+
     def score_term(self, term: str, product_id: str) -> float:
-        term_frequency = self._index.term_frequency(term, product_id)
+        term_frequency = self._term_frequency(term, product_id)
         if term_frequency == 0:
             return 0.0
         if self._stats.document_count == 0:

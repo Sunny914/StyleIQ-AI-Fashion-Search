@@ -96,6 +96,11 @@ class Settings(BaseSettings):
         default=False,
         alias="PRODUCTIQ_CORS_ALLOW_CREDENTIALS",
     )
+    enable_production_serving: bool = Field(
+        default=False,
+        alias="PRODUCTIQ_ENABLE_PRODUCTION_SERVING",
+        description="When true, create_app wires BM25 + pgvector + recommendation (Compose 15C).",
+    )
 
     _resolved_database_url: str = PrivateAttr(default="")
     _cors_allowed_origins: list[str] = PrivateAttr(default_factory=list)

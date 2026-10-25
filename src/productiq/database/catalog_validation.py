@@ -14,6 +14,7 @@ from productiq.database.catalog_contract import (
     CATALOG_NULLABLE_ATTRIBUTE_COLUMNS,
     CATALOG_REQUIRED_COLUMNS,
     CATALOG_SOURCE_CHECK_VALUE,
+    PRODUCT_EMBEDDING_COLUMN,
     PRODUCTS_TABLE_NAME,
 )
 from productiq.database.models.product import Product
@@ -129,7 +130,11 @@ def validate_product_catalog(
 
 def _validate_table_columns(inspector: Inspector) -> None:
     column_info = {column["name"]: column for column in inspector.get_columns(PRODUCTS_TABLE_NAME)}
-    if set(column_info) != set(CATALOG_COLUMN_ORDER):
+    actual_columns = set(column_info)
+    expected_columns = set(CATALOG_COLUMN_ORDER)
+    missing_columns = expected_columns - actual_columns
+    unexpected_columns = actual_columns - expected_columns - {PRODUCT_EMBEDDING_COLUMN}
+    if missing_columns or unexpected_columns:
         msg = "Catalog table columns do not match the ProductIQ contract"
         raise CatalogValidationError(msg)
 

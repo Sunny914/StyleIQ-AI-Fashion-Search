@@ -52,8 +52,9 @@ Thumbs.db
 verify_log.txt
 _accidental_files_backup
 
-# Scripts not needed inside the API container
+# Scripts and the Next.js app are not part of the API image
 scripts
+frontend
 
 # Cursor / agent artifacts
 .cursor

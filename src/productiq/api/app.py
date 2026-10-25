@@ -64,12 +64,29 @@ def create_app(
 ) -> FastAPI:
     """Build a FastAPI application; prefer ``application_services`` for integrated wiring."""
     settings = app_settings or get_settings()
-    services = application_services or build_application_services(
-        serving_config=serving_config,
-        search_service=search_service,
-        recommendation_service=recommendation_service,
-        product_service=product_service,
-    )
+    runtime = None
+    if application_services is not None:
+        services = application_services
+    elif (
+        settings.enable_production_serving
+        and search_service is None
+        and recommendation_service is None
+        and product_service is None
+    ):
+        from productiq.api.services.production_stack import build_production_application_services
+
+        services, runtime = build_production_application_services(
+            settings=settings,
+            serving_config=serving_config,
+        )
+    else:
+        services = build_application_services(
+            serving_config=serving_config,
+            search_service=search_service,
+            recommendation_service=recommendation_service,
+            product_service=product_service,
+        )
+        runtime = None
 
     app = FastAPI(
         title="ProductIQ API",
@@ -84,6 +101,7 @@ def create_app(
     _apply_application_services(app, services)
     app.state.app_settings = settings
     app.state.runtime_artifact_paths = resolve_runtime_artifact_paths(settings)
+    app.state.production_serving_runtime = runtime
     if health_service is not None:
         app.state.health_service = health_service
     app.state.is_running = False

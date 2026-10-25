@@ -2,13 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Any
+
 from productiq.serving.performance.comparison import compare_serving_benchmark_runs
 from productiq.serving.performance.contract_version import SERVING_PERFORMANCE_CONTRACT_VERSION
-from productiq.serving.performance.executors import (
-    run_api_benchmark,
-    run_api_benchmark_app,
-    run_service_benchmark,
-)
 from productiq.serving.performance.runner import (
     BENCHMARK_RUNNER_NAME,
     BENCHMARK_RUNNER_VERSION,
@@ -58,3 +55,21 @@ __all__ = [
     "run_serving_benchmark",
     "run_serving_benchmark_for_workload_id",
 ]
+
+
+def __getattr__(name: str) -> Any:
+    """Load API benchmark executors lazily so production serving does not import TestClient."""
+    if name in {"run_api_benchmark", "run_api_benchmark_app", "run_service_benchmark"}:
+        from productiq.serving.performance.executors import (
+            run_api_benchmark,
+            run_api_benchmark_app,
+            run_service_benchmark,
+        )
+
+        exported = {
+            "run_api_benchmark": run_api_benchmark,
+            "run_api_benchmark_app": run_api_benchmark_app,
+            "run_service_benchmark": run_service_benchmark,
+        }
+        return exported[name]
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")

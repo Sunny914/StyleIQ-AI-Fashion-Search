@@ -75,5 +75,15 @@
   "health": {
     "liveness": "/health",
     "readiness": "/ready"
+  },
+  "compose": {
+    "phase": "15B",
+    "file": "docker-compose.yml",
+    "services": ["postgres", "productiq-api"],
+    "postgres_image": "pgvector/pgvector:pg16",
+    "database_hostname_in_stack": "postgres",
+    "postgres_port_published_to_host": false,
+    "bootstrap_entrypoint": "python -m productiq.database.bootstrap_compose",
+    "notes": "DATABASE_URL must use host postgres inside Compose; set PRODUCTIQ_ENABLE_PRODUCTION_SERVING=1 after explicit load_runtime_catalog; full 367172-row load remains operator-driven"
   }
 }
